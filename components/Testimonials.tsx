@@ -33,7 +33,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-24 bg-[#F0F4F8]">
+    <section className="py-12 bg-[#F0F4F8]">
       <div className="container mx-auto px-4 lg:px-8">
         
         {/* Header Area */}

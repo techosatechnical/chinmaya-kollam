@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { CalendarDays, Award, Users, Activity, Megaphone, Compass, Trophy, Music } from "lucide-react";
 import Link from "next/link";
+import CursorGrid from "./CursorGrid";
 
 const categories = [
   { icon: CalendarDays, title: "Academic Planner", href: "/academics/academic-planner" },
@@ -17,8 +18,27 @@ const categories = [
 
 export function Categories() {
   return (
-    <section className="py-18 bg-white">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className="py-12 bg-white relative overflow-hidden">
+      {/* Background Cursor Grid */}
+      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-auto">
+        <CursorGrid
+          cellSize={70}
+          color="#385EEC"
+          radius={140}
+          falloff="smooth"
+          holdTime={400}
+          fadeDuration={800}
+          lineWidth={1.2}
+          maxOpacity={0.4}
+          fillOpacity={0.1}
+          gridOpacity={0}
+          cellRadius={0}
+          clickPulse
+          pulseSpeed={600}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 pointer-events-none">
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16"
           initial="hidden"
@@ -64,7 +84,7 @@ export function Categories() {
           </motion.h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 pointer-events-none">
           {categories.map((category, index) => (
             <motion.div
               key={category.title}
@@ -72,6 +92,7 @@ export function Categories() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="pointer-events-auto"
             >
               <div className="relative group overflow-hidden rounded-2xl p-[1.5px] transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-1 bg-slate-100 hover:bg-transparent">
                 {/* Animated Border (visible on hover) */}

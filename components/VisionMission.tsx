@@ -21,7 +21,7 @@ export function VisionMission() {
   }, []);
 
   return (
-    <section className="relative z-20 px-4 lg:px-8 -mt-24 md:-mt-32 mb-20 max-w-6xl mx-auto">
+    <section className="relative z-20 px-4 lg:px-8 -mt-24 md:-mt-32 mb-10 max-w-6xl mx-auto">
       <div className="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col md:flex-row">
 
         {/* Left Side: Vision & Mission */}

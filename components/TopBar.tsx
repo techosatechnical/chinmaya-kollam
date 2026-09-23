@@ -5,17 +5,17 @@ export function TopBar() {
     <div className="hidden md:block bg-black text-white text-sm py-2 sticky top-0 z-[60] w-full border-b border-white/10">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex justify-between items-center h-6">
-          
+
           {/* Left: Contact Info */}
           <div className="flex items-center space-x-6 shrink-0">
-            <a href="mailto:info@gmail.com" className="flex items-center space-x-2 hover:text-[#FF6A00] transition-colors">
+            {/* <a href="mailto:info@gmail.com" className="flex items-center space-x-2 hover:text-[#FF6A00] transition-colors">
               <Mail className="w-4 h-4" />
               <span>chin_kollam@chintvm.edu.in</span>
             </a>
             <a href="tel:+0082569854" className="flex items-center space-x-2 hover:text-[#FF6A00] transition-colors">
               <Phone className="w-4 h-4" />
               <span>0474 2712571</span>
-            </a>
+            </a> */}
           </div>
 
           {/* Middle: Scrolling Announcements Marquee */}
@@ -27,11 +27,8 @@ export function TopBar() {
             </div>
           </div>
 
-          {/* Right: Auth Links */}
+          {/* Right: Auth Links Removed */}
           <div className="flex items-center space-x-4 shrink-0">
-            <a href="#" className="hover:text-[#FF6A00] transition-colors">Login</a>
-            <span className="text-gray-600">|</span>
-            <a href="#" className="hover:text-[#FF6A00] transition-colors">Sign up</a>
           </div>
         </div>
       </div>

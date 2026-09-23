@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { VisionMission } from "@/components/VisionMission";
 import { HistoryAnnouncements } from "@/components/HistoryAnnouncements";
+import { LeadershipMessages } from "@/components/LeadershipMessages";
 import { Categories } from "@/components/Categories";
 import { About } from "@/components/About";
 import { RecentNews } from "@/components/RecentNews";
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <VisionMission />
       <HistoryAnnouncements />
+      <LeadershipMessages />
       <Categories />
       <About />
       <RecentNews />

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Box, GraduationCap, Bot, Building, BookOpen, Book, MonitorPlay, Tablet, LayoutDashboard, Sparkles, Check, FileText, FileDown, Shield, Grid, Film, Send, FileCheck, Lock, Trophy, Map, Target, Palette, Library, Beaker, Smile, Flower2, Globe, UserCheck, Info, Flag, Users, User, Award } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Box, GraduationCap, Bot, Building, BookOpen, Book, MonitorPlay, Tablet, LayoutDashboard, Sparkles, Check, FileText, FileDown, Shield, Grid, Film, Send, FileCheck, Lock, Trophy, Map, Target, Palette, Library, Beaker, Smile, Flower2, Globe, UserCheck, Info, Flag, Users, User, Award } from "lucide-react";
 import Link from "next/link";
 
 type NavLink = {
@@ -108,12 +108,12 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center justify-start gap-1 xl:gap-2">
+          <nav className="hidden xl:flex items-center justify-start gap-1">
             {navLinks.map((link) => (
               <div key={link.name} className="relative group">
                 <Link
                   href={link.href}
-                  className="flex items-center gap-1 rounded-full px-3 py-2 text-[14px] font-bold text-slate-700 hover:text-[#FF6A00] transition-colors cursor-pointer tracking-wide"
+                  className="flex items-center gap-1 rounded-full px-1.5 py-2 text-[14px] font-bold text-slate-700 hover:text-[#FF6A00] transition-colors cursor-pointer tracking-wide"
                 >
                   {link.name}
                   {link.hasDropdown && (
@@ -124,35 +124,24 @@ export function Navbar() {
                 {/* Dropdown Menu */}
                 {link.hasDropdown && link.subItems && (
                   <div className="absolute left-0 top-full pt-4 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-out z-50">
-                    <div className={`bg-white rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 p-2 ${link.subItems.length > 7 ? 'w-135 grid grid-cols-2 gap-x-2' : 'w-70'
-                      }`}>
-                      {link.subItems.map((sub) => {
-                        const Icon = sub.icon;
-                        return (
-                          <Link
-                            key={sub.title}
-                            href={sub.href}
-                            className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group/sub"
-                          >
-                            <div className="flex shrink-0 items-center justify-center w-8 h-8 rounded-lg bg-white border border-slate-100 shadow-sm mt-0.5">
-                              {Icon && <Icon className={`w-4 h-4 ${sub.iconColor}`} />}
-                            </div>
-                            <div>
-                              <div className="flex items-center gap-2 flex-wrap mt-1">
-                                <span className="text-[13px] font-semibold text-slate-800 group-hover/sub:text-[#385EEC] transition-colors leading-snug">{sub.title}</span>
-                                {sub.badge && (
-                                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${sub.badge.classes} leading-none whitespace-nowrap`}>
-                                    {sub.badge.text}
-                                  </span>
-                                )}
-                              </div>
-                              {sub.description && (
-                                <p className="text-[11px] text-slate-500 mt-1 leading-tight">{sub.description}</p>
-                              )}
-                            </div>
-                          </Link>
-                        );
-                      })}
+                    <div className={`bg-[#0F284A] rounded-2xl shadow-2xl border border-white/10 p-2.5 ${link.subItems.length > 5 ? 'w-195 grid grid-cols-3 gap-x-2 gap-y-0.5' : 'w-70 flex flex-col gap-0.5'}`}>
+                      {link.subItems.map((sub) => (
+                        <Link
+                          key={sub.title}
+                          href={sub.href}
+                          className="flex items-center justify-between px-4 py-2 text-[14px] font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-all duration-200 rounded-xl group/item"
+                        >
+                          <div className="flex items-center gap-3">
+                            <span>{sub.title}</span>
+                            {sub.badge && (
+                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${sub.badge.classes} leading-none whitespace-nowrap`}>
+                                {sub.badge.text}
+                              </span>
+                            )}
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-white/40 group-hover/item:text-white transition-colors" />
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -160,14 +149,8 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Action Buttons */}
+          {/* Action Buttons Removed */}
           <div className="hidden xl:flex items-center justify-end">
-            <Link
-              href="/login"
-              className="group relative inline-flex items-center gap-1.5 px-6 py-2.5 text-sm font-semibold text-white bg-[#385EEC] hover:bg-[#2849d4] rounded-full shadow-[0_3px_12px_rgba(56,94,236,0.3)] hover:shadow-[0_6px_20px_rgba(56,94,236,0.4)] transition-all duration-200"
-            >
-              Login
-            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -217,36 +200,29 @@ export function Navbar() {
                   </Link>
                   {link.hasDropdown && link.subItems && (
                     <div className="flex flex-col pl-4 mt-1 space-y-1">
-                      {link.subItems.map(sub => {
-                        const Icon = sub.icon;
-                        return (
-                          <Link
-                            key={sub.title}
-                            href={sub.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 text-slate-700"
-                          >
-                            <div className="w-8 h-8 flex items-center justify-center rounded-md bg-white border border-slate-100 shadow-sm shrink-0">
-                              {Icon && <Icon className={`w-4 h-4 ${sub.iconColor}`} />}
-                            </div>
-                            <span className="text-[14px] font-medium">{sub.title}</span>
-                          </Link>
-                        )
-                      })}
+                      {link.subItems.map(sub => (
+                        <Link
+                          key={sub.title}
+                          href={sub.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block px-4 py-2.5 text-[14px] font-medium text-slate-600 hover:text-[#385EEC] hover:bg-slate-50 transition-colors rounded-xl"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span>{sub.title}</span>
+                            {sub.badge && (
+                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${sub.badge.classes} leading-none whitespace-nowrap`}>
+                                {sub.badge.text}
+                              </span>
+                            )}
+                          </div>
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </div>
               ))}
 
-              <div className="pt-6 mt-6 border-t border-slate-100 px-4">
-                <Link
-                  href="/login"
-                  className="w-full flex justify-center items-center px-6 py-3.5 text-[15px] font-semibold text-white bg-[#385EEC] hover:bg-[#2849d4] rounded-xl transition-colors shadow-sm"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Login
-                </Link>
-              </div>
+
             </div>
           </motion.div>
         )}

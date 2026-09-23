@@ -15,7 +15,10 @@ export function CustomCursor() {
   const smoothX = useSpring(mouseX, { damping: 25, stiffness: 150, mass: 0.5 });
   const smoothY = useSpring(mouseY, { damping: 25, stiffness: 150, mass: 0.5 });
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     const moveCursor = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
@@ -52,7 +55,7 @@ export function CustomCursor() {
     };
   }, []);
 
-  if (typeof window === "undefined") return null;
+  if (!mounted) return null;
 
   return (
     <>
