@@ -50,7 +50,7 @@ const navLinks: NavLink[] = [
       { title: "ACADEMIC PLANNER", href: "/academics/academic-planner", icon: Send, iconColor: "text-orange-500" },
       { title: "ACADEMIC RESULTS", href: "/academics/academic-results", icon: FileCheck, iconColor: "text-orange-500" },
       { title: "STUDENT COUNCIL", href: "/academics/student-council", icon: GraduationCap, iconColor: "text-emerald-500" },
-      { title: "CHINMAYA BLOSSOMS(PRE-KG)", href: "/academics/chinmaya-blossoms", icon: Lock, iconColor: "text-slate-500" },
+      { title: "CHINMAYA BLOSSOMS", href: "/academics/chinmaya-blossoms", icon: Lock, iconColor: "text-slate-500" },
       { title: "NEP", href: "/academics/nep", icon: MonitorPlay, iconColor: "text-indigo-500" },
       { title: "SCHOOL SAFETY POLICY", href: "/academics/school-safety-policy", icon: Lock, iconColor: "text-slate-500" },
       { title: "CHILD PROTECTION POLICY", href: "/academics/child-protection-policy", icon: GraduationCap, iconColor: "text-emerald-500" }
