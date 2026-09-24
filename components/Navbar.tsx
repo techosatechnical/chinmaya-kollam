@@ -124,7 +124,7 @@ export function Navbar() {
                 {/* Dropdown Menu */}
                 {link.hasDropdown && link.subItems && (
                   <div className="absolute left-0 top-full pt-4 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-out z-50">
-                    <div className={`bg-[#0F284A] rounded-2xl shadow-2xl border border-white/10 p-2.5 ${link.subItems.length > 5 ? 'w-195 grid grid-cols-3 gap-x-2 gap-y-0.5' : 'w-70 flex flex-col gap-0.5'}`}>
+                    <div className={`bg-[#0F284A]  shadow-2xl border border-white/10 p-2.5 ${link.subItems.length > 5 ? 'w-195 grid grid-cols-3 gap-x-2 gap-y-0.5' : 'w-70 flex flex-col gap-0.5'}`}>
                       {link.subItems.map((sub) => (
                         <Link
                           key={sub.title}

@@ -103,12 +103,6 @@ export function Testimonials() {
                 {testimonial.quote}
               </p>
               
-              <Link 
-                href={testimonial.linkUrl} 
-                className="text-[#0F284A] font-bold hover:text-[#FF9924] transition-colors inline-flex items-center text-[15px] group"
-              >
-                {testimonial.linkText}
-              </Link>
             </motion.div>
           ))}
         </div>
