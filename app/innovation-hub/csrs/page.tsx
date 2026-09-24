@@ -1,0 +1,52 @@
+import React from 'react';
+import { TopBar } from "@/components/TopBar";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+
+export default function CSRSPage() {
+  return (
+    <main className="min-h-screen bg-slate-50 font-sans selection:bg-slate-900 selection:text-white">
+      <TopBar />
+      <Navbar />
+
+      <section className="relative py-28 bg-[#0B1121] text-white flex flex-col items-center justify-center border-b border-white/10">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/image/school.jpeg"
+            alt="CSRS background"
+            className="w-full h-full object-cover opacity-30"
+          />
+        </div>
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-slate-700 bg-slate-900/50 backdrop-blur-md mb-8">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+            <span className="text-sm font-medium tracking-wide text-white uppercase">Innovation Hub</span>
+          </div>
+          
+          <h1 className="py-2 text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white drop-shadow-lg">
+            CSRS
+          </h1>
+          <p className="text-lg md:text-2xl max-w-2xl mx-auto text-white font-medium tracking-tight drop-shadow-md">
+            Chinmaya Social Responsibility Scheme
+          </p>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-32 text-center">
+        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 p-16 max-w-2xl mx-auto">
+          <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+          </div>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Content Coming Soon</h2>
+          <p className="text-slate-600 text-lg">
+            We are currently updating the details for our Chinmaya Social Responsibility Scheme initiatives. Please check back later.
+          </p>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
