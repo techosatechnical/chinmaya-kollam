@@ -16,8 +16,8 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "Eteach - Online Education & LMS Course",
-  description: "Eteach - Online Education & LMS Course Website Template Clone",
+  title: "Chinmaya Vidyalaya Kollam",
+  description: "Providing a strong foundation for students to discover their innate talents and skills.",
 };
 
 export const viewport = {
