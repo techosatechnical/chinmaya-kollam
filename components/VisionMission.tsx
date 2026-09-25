@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Lightbulb, Megaphone, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const quotes = [
   "What you have is all His Gift to you. What you do with what you have is your Gift to Him ...",
@@ -11,6 +12,36 @@ const quotes = [
 
 export function VisionMission() {
   const [currentQuote, setCurrentQuote] = useState(0);
+  const blobRef = useRef<HTMLDivElement>(null);
+  const [constraints, setConstraints] = useState({ left: -1000, right: 0, top: -500, bottom: 1000 });
+
+  useEffect(() => {
+    // Calculate exact constraints so the blob can't leave the horizontal bounds of the screen
+    if (blobRef.current) {
+      const rect = blobRef.current.getBoundingClientRect();
+      setConstraints({
+        left: -rect.left + 10, // 10px padding from left screen edge
+        right: window.innerWidth - rect.right - 10, // 10px padding from right screen edge
+        top: -400,
+        bottom: 600
+      });
+    }
+    
+    // Optional: Update constraints on window resize
+    const handleResize = () => {
+      if (blobRef.current) {
+        const rect = blobRef.current.getBoundingClientRect();
+        setConstraints({
+          left: -rect.left + 10,
+          right: window.innerWidth - rect.right - 10,
+          top: -400,
+          bottom: 600
+        });
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const nextQuote = () => setCurrentQuote((prev) => (prev + 1) % quotes.length);
   const prevQuote = () => setCurrentQuote((prev) => (prev - 1 + quotes.length) % quotes.length);
@@ -25,8 +56,8 @@ export function VisionMission() {
       <div className=" shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col md:flex-row rounded-md overflow-hidden">
 
         {/* Left Side: Vision & Mission */}
-        <div className="w-full md:w-[60%] p-5 lg:p-7 bg-white">
-
+        <div className="w-full md:w-[60%] p-5 lg:p-7 bg-white relative">
+          
           {/* Vision */}
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <div className="shrink-0 w-12 h-12 bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00] rounded-md">
@@ -110,6 +141,52 @@ export function VisionMission() {
         </div>
 
       </div>
+
+      {/* Floating Blob Ad (Right Side) - Draggable */}
+      <motion.div 
+        ref={blobRef}
+        drag
+        dragConstraints={constraints}
+        dragElastic={0.1}
+        whileDrag={{ scale: 1.1, cursor: "grabbing" }}
+        className="hidden lg:block absolute top-1/2 -translate-y-1/2 -right-16 xl:-right-24 z-50 cursor-grab select-none"
+      >
+        <motion.div
+          animate={{
+            borderRadius: [
+              "60% 40% 30% 70% / 60% 30% 70% 40%",
+              "30% 70% 70% 30% / 30% 30% 70% 70%",
+              "60% 40% 30% 70% / 60% 30% 70% 40%"
+            ],
+            y: [0, -15, 0],
+          }}
+          transition={{
+            duration: 6,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
+          className="relative w-44 h-44 xl:w-52 xl:h-52 flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_50px_rgba(168,85,247,0.6)] transition-shadow duration-300 overflow-hidden before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.4),transparent_50%)]"
+        >
+          {/* Text Content */}
+          <div className="relative z-10 text-center flex flex-col items-center justify-center p-4">
+            <span className="text-white font-black text-xl xl:text-2xl leading-tight tracking-tighter drop-shadow-md pointer-events-none">AI &</span>
+            <span className="text-white font-black text-xl xl:text-2xl leading-tight tracking-tighter drop-shadow-md -mt-1 pointer-events-none">Robotics</span>
+            
+            <span className="text-pink-100 font-bold text-[8px] xl:text-[9px] leading-tight mt-2 uppercase tracking-wider drop-shadow-sm border-t border-white/20 pt-1.5 pointer-events-none">
+              Chinmaya Science<br/>Research
+            </span>
+            
+            <Link 
+              href="/innovation-hub/ai-robotics" 
+              draggable={false}
+              onPointerDown={(e) => e.stopPropagation()}
+              className="mt-3 px-3.5 py-1.5 bg-white/20 backdrop-blur-sm rounded-full text-white font-bold text-[9px] xl:text-[10px] uppercase tracking-widest border border-white/30 hover:bg-white/40 transition-colors shadow-inner flex items-center gap-1 cursor-pointer pointer-events-auto"
+            >
+              Explore <ChevronRight className="w-3 h-3 -mr-1" />
+            </Link>
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
