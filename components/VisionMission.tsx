@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Lightbulb, Megaphone, ChevronLeft, ChevronRight } from "lucide-react";
+import { Lightbulb, Megaphone, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
@@ -165,14 +165,62 @@ export function VisionMission() {
             ease: "easeInOut",
             repeat: Infinity,
           }}
-          className="relative w-36 h-36 sm:w-44 sm:h-44 xl:w-52 xl:h-52 flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_50px_rgba(168,85,247,0.6)] transition-shadow duration-300 overflow-hidden before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.4),transparent_50%)]"
+          className="relative w-36 h-36 sm:w-44 sm:h-44 xl:w-52 xl:h-52 flex items-center justify-center bg-linear-to-br from-white via-orange-50 to-orange-200 overflow-hidden before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.8),transparent_60%)]"
         >
           {/* Text Content */}
           <div className="relative z-10 text-center flex flex-col items-center justify-center p-3 sm:p-4">
-            <span className="text-white font-black text-lg sm:text-xl xl:text-2xl leading-tight tracking-tighter drop-shadow-md pointer-events-none">AI &</span>
-            <span className="text-white font-black text-lg sm:text-xl xl:text-2xl leading-tight tracking-tighter drop-shadow-md -mt-1 sm:-mt-1 pointer-events-none">Robotics</span>
             
-            <span className="text-pink-100 font-bold text-[7px] sm:text-[8px] xl:text-[9px] leading-tight mt-1.5 sm:mt-2 uppercase tracking-wider drop-shadow-sm border-t border-white/20 pt-1 sm:pt-1.5 pointer-events-none">
+            {/* Animated Robot/AI Element */}
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 xl:w-12 xl:h-12 mb-1 sm:mb-2 pointer-events-none flex items-center justify-center">
+              {/* Robot Head */}
+              <motion.div 
+                animate={{ y: [0, -3, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-full h-full bg-white/90 backdrop-blur-sm rounded-lg sm:rounded-xl flex items-center justify-center overflow-hidden border-[1.5px] border-orange-300 shadow-[0_2px_8px_rgba(251,146,60,0.25)]"
+              >
+                {/* Robot Eyes */}
+                <div className="flex gap-1.5 sm:gap-2 relative z-10">
+                  <motion.div 
+                    animate={{ scaleY: [1, 0.1, 1, 1], opacity: [1, 1, 1, 0.8] }}
+                    transition={{ duration: 4, repeat: Infinity, times: [0, 0.02, 0.04, 1] }}
+                    className="w-1.5 h-2.5 sm:w-2 sm:h-3.5 bg-orange-500 rounded-full shadow-[0_0_4px_rgba(249,115,22,0.5)]"
+                  />
+                  <motion.div 
+                    animate={{ scaleY: [1, 0.1, 1, 1], opacity: [1, 1, 1, 0.8] }}
+                    transition={{ duration: 4, repeat: Infinity, times: [0, 0.02, 0.04, 1] }}
+                    className="w-1.5 h-2.5 sm:w-2 sm:h-3.5 bg-orange-500 rounded-full shadow-[0_0_4px_rgba(249,115,22,0.5)]"
+                  />
+                </div>
+                
+                {/* AI Scanning Laser */}
+                <motion.div 
+                  animate={{ y: ['-100%', '300%'] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  className="absolute left-0 right-0 h-[1.5px] bg-orange-400/80 shadow-[0_0_6px_rgba(251,146,60,0.8)] z-20"
+                />
+              </motion.div>
+              
+              {/* AI Sparkles */}
+              <motion.div 
+                animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5], rotate: [0, 90] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3"
+              >
+                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500" />
+              </motion.div>
+              <motion.div 
+                animate={{ opacity: [0, 1, 0], scale: [0.3, 0.8, 0.3], rotate: [0, -90] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
+                className="absolute top-1 -left-3 sm:-left-4"
+              >
+                <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-orange-400" />
+              </motion.div>
+            </div>
+            
+            <span className="text-slate-800 font-black text-lg sm:text-xl xl:text-2xl leading-none tracking-tighter drop-shadow-sm pointer-events-none">AI &</span>
+            <span className="text-slate-800 font-black text-lg sm:text-xl xl:text-2xl leading-none tracking-tighter drop-shadow-sm pointer-events-none">Robotics</span>
+            
+            <span className="text-orange-700 font-bold text-[7px] sm:text-[8px] xl:text-[9px] leading-tight mt-1 sm:mt-1.5 uppercase tracking-wider border-t border-orange-300/60 pt-1 sm:pt-1.5 pointer-events-none">
               Chinmaya Science<br/>Research
             </span>
             
@@ -180,7 +228,7 @@ export function VisionMission() {
               href="/innovation-hub/ai-robotics" 
               draggable={false}
               onPointerDown={(e) => e.stopPropagation()}
-              className="mt-2 sm:mt-3 px-2.5 py-1 sm:px-3.5 sm:py-1.5 bg-white/20 backdrop-blur-sm rounded-full text-white font-bold text-[7.5px] sm:text-[9px] xl:text-[10px] uppercase tracking-widest border border-white/30 hover:bg-white/40 transition-colors shadow-inner flex items-center gap-1 cursor-pointer pointer-events-auto"
+              className="mt-1.5 sm:mt-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 bg-white/70 backdrop-blur-md rounded-full text-orange-700 font-bold text-[7.5px] sm:text-[9px] xl:text-[10px] uppercase tracking-widest border border-orange-200 hover:bg-white hover:text-orange-600 transition-colors shadow-sm flex items-center gap-1 cursor-pointer pointer-events-auto"
             >
               Explore <ChevronRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 -mr-0.5 sm:-mr-1" />
             </Link>
