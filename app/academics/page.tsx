@@ -78,7 +78,7 @@ function Hero() {
         <Image src="/image/academics.webp" alt="Academics" fill sizes="100vw" priority className="object-cover" />
       </motion.div>
       {/* Content */}
-      <motion.div style={{ y: textY, opacity: op }} className="relative z-10 text-center px-4 max-w-6xl mx-auto pt-20">
+      <motion.div style={{ y: textY, opacity: op }} className="relative z-10 text-center px-4 max-w-6xl mx-auto pt-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -105,7 +105,7 @@ function Hero() {
 /* ─── CURRICULUM OVERVIEW ────────────────────────────────────── */
 function CurriculumOverview() {
   return (
-    <section className="bg-slate-50 py-16 relative overflow-hidden">
+    <section className="bg-slate-50 py-10 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-100 blur-[100px] opacity-40 translate-x-1/2 -translate-y-1/2" />
 
       <div className="container mx-auto px-4 max-w-5xl relative z-10">
@@ -128,7 +128,7 @@ function CurriculumOverview() {
                 We proudly follow the CBSE stream of examinations, providing a globally recognized standard of education that emphasizes both academic rigor and continuous, comprehensive evaluation.
               </p>
 
-              <div className="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 w-fit">
+              <div className="flex items-center gap-4 bg-slate-50 p-4 rounded-md border border-slate-200 w-fit">
                 <div className="w-12 h-12 rounded-full bg-[#FF6A00]/10 flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-6 h-6 text-[#FF6A00]" />
                 </div>
@@ -160,7 +160,7 @@ function CurriculumOverview() {
 /* ─── SECTIONS GRID ──────────────────────────────────────────── */
 function SectionsGrid() {
   return (
-    <section className="bg-white py-24 pb-32 relative overflow-hidden border-t border-slate-100">
+    <section className="bg-white py-8 pb-32 relative overflow-hidden border-t border-slate-100">
       {/* Background Grid */}
       <div
         className="absolute inset-0 opacity-[0.4]"
@@ -177,7 +177,7 @@ function SectionsGrid() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-4xl md:text-5xl font-black text-slate-800 mb-4">Educational Stages</h2>
           <p className="text-slate-500 text-lg max-w-2xl mx-auto">
@@ -193,12 +193,12 @@ function SectionsGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`group relative bg-white rounded-3xl p-8 border ${section.border} shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 overflow-hidden`}
+              className={`group relative bg-white rounded-md p-8 border ${section.border} shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 overflow-hidden`}
             >
               {/* Hover gradient bleed */}
               <div className={`absolute top-0 right-0 w-32 h-32 bg-linear-to-br ${section.color} opacity-0 group-hover:opacity-5 blur-2xl transition-opacity duration-500 rounded-full translate-x-1/2 -translate-y-1/2`} />
 
-              <div className={`w-14 h-14 rounded-2xl ${section.bg} border ${section.border} flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-500`}>
+              <div className={`w-14 h-14 rounded-md ${section.bg} border ${section.border} flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-500`}>
                 <section.icon className="w-7 h-7 text-slate-700" />
               </div>
 
@@ -221,7 +221,7 @@ function SectionsGrid() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="hidden lg:flex rounded-3xl bg-slate-900 overflow-hidden relative"
+            className="hidden lg:flex rounded-md bg-slate-900 overflow-hidden relative"
           >
             <Image src="/image/academic.jfif" alt="Classroom" fill className="object-cover transition-opacity duration-700  hover:grayscale-0" />
             <div className="absolute inset-0 bg-linear-to-t from-slate-900 to-transparent" />
@@ -249,3 +249,6 @@ export default function AcademicsPage() {
     </main>
   );
 }
+
+
+

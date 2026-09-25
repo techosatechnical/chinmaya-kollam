@@ -9,7 +9,7 @@ export default function ArtsCulturePage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=2000&auto=format&fit=crop"
@@ -27,8 +27,8 @@ export default function ArtsCulturePage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-10">
+        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">A Canvas of Expression</h2>
@@ -43,12 +43,12 @@ export default function ArtsCulturePage() {
               <img 
                 src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop" 
                 alt="Dance" 
-                className="w-full h-64 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500" 
+                className="w-full h-64 object-cover rounded-md shadow-lg hover:scale-105 transition-transform duration-500" 
               />
               <img 
                 src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" 
                 alt="Painting" 
-                className="w-full h-64 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500 mt-8" 
+                className="w-full h-64 object-cover rounded-md shadow-lg hover:scale-105 transition-transform duration-500 mt-8" 
               />
             </div>
           </div>
@@ -59,3 +59,6 @@ export default function ArtsCulturePage() {
     </main>
   );
 }
+
+
+

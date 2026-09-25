@@ -117,7 +117,7 @@ function Hero() {
 /* ─── FEATURED LEADERS ───────────────────────────────────────── */
 function FeaturedLeaders() {
   return (
-    <section className="bg-white py-16 relative overflow-hidden">
+    <section className="bg-white py-10 relative overflow-hidden">
 
       <div className="container mx-auto px-4 max-w-4xl relative z-10">
         <div className="flex flex-col gap-10 md:gap-12">
@@ -176,7 +176,7 @@ function FeaturedLeaders() {
 /* ─── MEMBERS GRID ───────────────────────────────────────────── */
 function MembersGrid() {
   return (
-    <section className="bg-slate-50 py-16 pb-24 relative overflow-hidden">
+    <section className="bg-slate-50 py-10 pb-12 relative overflow-hidden">
       {/* Subtle grid */}
       <div
         className="absolute inset-0 opacity-50"
@@ -194,7 +194,7 @@ function MembersGrid() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex items-center gap-4 mb-12"
+          className="flex items-center gap-4 mb-8"
         >
           <div className="h-px flex-1 bg-linear-to-r from-transparent to-slate-300" />
           <p className="text-slate-400 text-xs font-black uppercase tracking-[0.3em]">Board Members</p>
@@ -210,7 +210,7 @@ function MembersGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.55, delay: i * 0.07 }}
-              className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-lg transition-all duration-400 hover:-translate-y-0.5 flex items-center gap-5 overflow-hidden relative"
+              className="group bg-white rounded-md p-6 border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-lg transition-all duration-400 hover:-translate-y-0.5 flex items-center gap-5 overflow-hidden relative"
             >
               {/* Colored left bar */}
               <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-linear-to-b ${accentColors[i]} opacity-60 group-hover:opacity-100 transition-opacity duration-300`} />
@@ -252,3 +252,6 @@ export default function ManagementPage() {
     </main>
   );
 }
+
+
+

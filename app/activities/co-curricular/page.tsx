@@ -9,7 +9,7 @@ export default function CoCurricularPage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="https://www.theasianschool.net/blog/wp-content/uploads/2019/06/Importance-of-Co-Curricular-Activities-in-School.jpg"
@@ -27,8 +27,8 @@ export default function CoCurricularPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-10">
+        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Beyond the Classroom</h2>
@@ -43,12 +43,12 @@ export default function CoCurricularPage() {
               <img
                 src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1000&auto=format&fit=crop"
                 alt="Debate"
-                className="w-full h-64 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500"
+                className="w-full h-64 object-cover rounded-md shadow-lg hover:scale-105 transition-transform duration-500"
               />
               <img
                 src="https://images.unsplash.com/photo-1564069114553-7215e1ff1890?q=80&w=1000&auto=format&fit=crop"
                 alt="Science Project"
-                className="w-full h-64 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500 mt-8"
+                className="w-full h-64 object-cover rounded-md shadow-lg hover:scale-105 transition-transform duration-500 mt-8"
               />
             </div>
           </div>
@@ -59,3 +59,6 @@ export default function CoCurricularPage() {
     </main>
   );
 }
+
+
+

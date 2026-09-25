@@ -15,7 +15,7 @@ export default function PrincipalDeskPage() {
       <TopBar />
       <Navbar />
       {/* Modern Out-of-the-Box Header */}
-      <section className="relative py-20 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative py-10 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
         {/* Abstract Background Elements */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-slate-800 via-slate-950 to-slate-950"></div>
         <div className="absolute top-0 w-full h-px bg-linear-to-r from-transparent via-slate-400 to-transparent opacity-20"></div>
@@ -42,7 +42,7 @@ export default function PrincipalDeskPage() {
       </section>
 
       {/* Content Section */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-12 space-y-12">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-8 space-y-12">
 
         {/* Principal Section */}
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0 relative">
@@ -98,7 +98,7 @@ export default function PrincipalDeskPage() {
                 fill
                 className="object-cover object-top transition-transform duration-700 hover:scale-110"
               />
-              <div className="absolute inset-0 border border-white/20 rounded-xl pointer-events-none"></div>
+              <div className="absolute inset-0 border border-white/20 rounded-md pointer-events-none"></div>
             </div>
           </div>
           <div className="w-full lg:w-7/12 z-10">
@@ -128,3 +128,6 @@ export default function PrincipalDeskPage() {
     </main>
   );
 }
+
+
+

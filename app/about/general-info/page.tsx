@@ -14,7 +14,7 @@ export default function GeneralInfoPage() {
       <TopBar />
       <Navbar />
       {/* Header */}
-      <section className="relative py-16 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative py-10 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
         {/* Abstract Background Elements */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-950 to-slate-950"></div>
         <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent opacity-20"></div>
@@ -35,13 +35,13 @@ export default function GeneralInfoPage() {
       </section>
 
       {/* PDF Viewer Section */}
-      <section className="max-w-6xl mx-auto px-4 lg:px-8 py-12">
-        <div className="bg-white p-2 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200">
+      <section className="max-w-6xl mx-auto px-4 lg:px-8 py-8">
+        <div className="bg-white p-2 rounded-md shadow-xl shadow-slate-200/50 border border-slate-200">
           {/* We use an iframe to embed the PDF directly in the page */}
           <iframe 
             src="/general%20info.pdf" 
             title="General Information PDF"
-            className="w-full h-[75vh] min-h-[600px] rounded-xl border border-slate-100"
+            className="w-full h-[75vh] min-h-[600px] rounded-md border border-slate-100"
             style={{ backgroundColor: '#e2e8f0' }}
           />
         </div>
@@ -65,3 +65,6 @@ export default function GeneralInfoPage() {
     </main>
   );
 }
+
+
+

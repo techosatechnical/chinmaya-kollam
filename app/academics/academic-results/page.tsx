@@ -19,7 +19,7 @@ export default function AcademicResultsPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <h1 className="py-2 text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white drop-shadow-lg">
             Academic Results
@@ -32,18 +32,18 @@ export default function AcademicResultsPage() {
       </section>
 
       {/* Results Section */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {results.map((result) => (
             <div
               key={result.id}
               onClick={() => setSelectedImage(result.src)}
-              className="w-full bg-white p-4 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 hover:-translate-y-2 cursor-pointer transition-all duration-500 flex flex-col justify-center"
+              className="w-full bg-white p-4 rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 hover:-translate-y-2 cursor-pointer transition-all duration-500 flex flex-col justify-center"
             >
               <img
                 src={result.src}
                 alt={result.alt}
-                className="w-full h-auto max-h-150 rounded-2xl object-contain hover:scale-105 transition-transform duration-500"
+                className="w-full h-auto max-h-150 rounded-md object-contain hover:scale-105 transition-transform duration-500"
               />
             </div>
           ))}
@@ -69,7 +69,7 @@ export default function AcademicResultsPage() {
             <img
               src={selectedImage}
               alt="Zoomed Result"
-              className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10"
+              className="max-w-full max-h-[85vh] object-contain rounded-md shadow-2xl ring-1 ring-white/10"
             />
           </div>
         </div>
@@ -79,3 +79,6 @@ export default function AcademicResultsPage() {
     </main>
   );
 }
+
+
+

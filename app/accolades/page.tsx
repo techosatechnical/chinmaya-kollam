@@ -41,7 +41,7 @@ export default function AccoladesPage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/accolades/sports everrolling trophy.jpeg"
@@ -60,13 +60,13 @@ export default function AccoladesPage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
           {accolades.map((item) => (
             <div
               key={item.id}
               onClick={() => setSelectedImage(item.src)}
-              className="break-inside-avoid rounded-2xl overflow-hidden bg-white border border-slate-200 cursor-pointer group shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
+              className="break-inside-avoid rounded-md overflow-hidden bg-white border border-slate-200 cursor-pointer group shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
             >
               <div className="relative overflow-hidden bg-slate-100">
                 <img
@@ -102,7 +102,7 @@ export default function AccoladesPage() {
             <img
               src={selectedImage}
               alt="Zoomed Accolade"
-              className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10"
+              className="max-w-full max-h-[90vh] object-contain rounded-md shadow-2xl ring-1 ring-white/10"
             />
           </div>
         </div>
@@ -112,3 +112,6 @@ export default function AccoladesPage() {
     </main>
   );
 }
+
+
+

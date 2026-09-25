@@ -11,7 +11,7 @@ export default function ChinmayaBlossomsPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/image/chinmaya blossom.jpeg"
@@ -28,8 +28,8 @@ export default function ChinmayaBlossomsPage() {
       </section>
 
       {/* Content Section */}
-      <section className="max-w-5xl mx-auto px-6 lg:px-8 py-20">
-        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12 overflow-hidden">
+      <section className="max-w-5xl mx-auto px-6 lg:px-8 py-10">
+        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12 overflow-hidden">
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
@@ -44,7 +44,7 @@ export default function ChinmayaBlossomsPage() {
               </p>
             </div>
 
-            <div className="relative group rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative group rounded-md overflow-hidden shadow-2xl">
               <img
                 src="/image/chinmaya blossom1.jpeg"
                 alt="Chinmaya Blossom Kids"
@@ -60,3 +60,6 @@ export default function ChinmayaBlossomsPage() {
     </main>
   );
 }
+
+
+

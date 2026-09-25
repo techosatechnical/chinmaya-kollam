@@ -62,7 +62,7 @@ export default function FacilitiesLandingPage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/facilities/library.jpg"
@@ -80,17 +80,17 @@ export default function FacilitiesLandingPage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {facilities.map((facility, index) => {
             const Icon = facility.icon;
             return (
               <Link key={index} href={facility.href} className="group h-full">
-                <div className="bg-white rounded-3xl p-8 h-full shadow-lg shadow-slate-200/50 border border-slate-200 hover:border-blue-500/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden">
+                <div className="bg-white rounded-md p-8 h-full shadow-lg shadow-slate-200/50 border border-slate-200 hover:border-blue-500/30 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col relative overflow-hidden">
                   <div className={`absolute inset-0 bg-linear-to-br ${facility.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                   
                   <div className="relative z-10 flex-1 flex flex-col">
-                    <div className={`w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-sm ${facility.iconColor}`}>
+                    <div className={`w-16 h-16 rounded-md bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-sm ${facility.iconColor}`}>
                       <Icon className="w-8 h-8" />
                     </div>
                     
@@ -118,3 +118,6 @@ export default function FacilitiesLandingPage() {
     </main>
   );
 }
+
+
+

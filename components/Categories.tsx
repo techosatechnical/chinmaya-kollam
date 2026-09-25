@@ -18,7 +18,7 @@ const categories = [
 
 export function Categories() {
   return (
-    <section className="py-12 bg-white relative overflow-hidden">
+    <section className="py-8 bg-white relative overflow-hidden">
       {/* Background Cursor Grid */}
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-auto">
         <CursorGrid
@@ -40,7 +40,7 @@ export function Categories() {
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10 pointer-events-none">
         <motion.div
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.4 }}
@@ -94,13 +94,13 @@ export function Categories() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="pointer-events-auto"
             >
-              <div className="relative group overflow-hidden rounded-2xl p-[1.5px] transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-1 bg-slate-100 hover:bg-transparent">
+              <div className="relative group overflow-hidden rounded-md p-[1.5px] transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/10 hover:-translate-y-1 bg-slate-100 hover:bg-transparent">
                 {/* Animated Border (visible on hover) */}
                 <div className="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#FF6A00_180deg,transparent_180deg_300deg,#385EEC_360deg)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Inner Card Content */}
-                <Link href={category.href} className="relative z-10 flex items-center p-6 bg-linear-to-br from-white to-slate-50/90 rounded-[14px] h-full w-full">
-                  <div className="w-14 h-14 shrink-0 bg-linear-to-br from-blue-50 to-indigo-50/80 rounded-xl flex items-center justify-center text-primary group-hover:bg-linear-to-br group-hover:from-[#004B87] group-hover:to-[#385EEC] group-hover:text-white group-hover:shadow-md transition-all duration-300 mr-5">
+                <Link href={category.href} className="relative z-10 flex items-center p-6 bg-linear-to-br from-white to-slate-50/90 rounded-md h-full w-full">
+                  <div className="w-14 h-14 shrink-0 bg-linear-to-br from-blue-50 to-indigo-50/80 rounded-md flex items-center justify-center text-primary group-hover:bg-linear-to-br group-hover:from-[#004B87] group-hover:to-[#385EEC] group-hover:text-white group-hover:shadow-md transition-all duration-300 mr-5">
                     <category.icon className="w-7 h-7" />
                   </div>
                   <div>
@@ -115,3 +115,6 @@ export function Categories() {
     </section>
   );
 }
+
+
+

@@ -9,7 +9,7 @@ export default function DownloadsPage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-28 bg-[#0B1121] text-white flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/image/academics2.jpg"
@@ -28,7 +28,7 @@ export default function DownloadsPage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-32 text-center">
-        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 p-16 max-w-2xl mx-auto">
+        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-16 max-w-2xl mx-auto">
           <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg className="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -45,3 +45,6 @@ export default function DownloadsPage() {
     </main>
   );
 }
+
+
+

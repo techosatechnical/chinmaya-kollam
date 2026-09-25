@@ -85,7 +85,7 @@ export default function NewsPage() {
       <Navbar />
 
       {/* Page Header */}
-      <div className="bg-primary py-16 md:py-24 relative overflow-hidden">
+      <div className="bg-primary py-10 md:py-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <motion.h1
@@ -107,12 +107,12 @@ export default function NewsPage() {
       </div>
 
       {/* Main Content Area */}
-      <section className="py-12 flex-1">
+      <section className="py-8 flex-1">
         <div className="container mx-auto px-4 lg:px-8">
 
           {/* Search and Filter Section */}
-          <div className="max-w-4xl mx-auto mb-12">
-            <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+          <div className="max-w-4xl mx-auto mb-8">
+            <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between bg-white p-4 rounded-md shadow-sm border border-slate-100">
               
               {/* Search Bar */}
               <div className="relative w-full lg:w-[35%] xl:w-[30%] shrink-0">
@@ -122,7 +122,7 @@ export default function NewsPage() {
                 <input
                   type="text"
                   placeholder="Search news, events..."
-                  className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 transition-all"
+                  className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 transition-all"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -159,7 +159,7 @@ export default function NewsPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-white rounded-2xl overflow-hidden group hover:shadow-2xl hover:shadow-[#0F284A]/10 transition-all duration-300 border border-slate-100 flex flex-col"
+                    className="bg-white rounded-md overflow-hidden group hover:shadow-2xl hover:shadow-[#0F284A]/10 transition-all duration-300 border border-slate-100 flex flex-col"
                   >
                     <div className="relative overflow-hidden h-56 shrink-0 bg-slate-200">
                       <img
@@ -203,7 +203,7 @@ export default function NewsPage() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-20 bg-white rounded-2xl border border-slate-100"
+              className="text-center py-10 bg-white rounded-md border border-slate-100"
             >
               <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Search className="w-8 h-8 text-slate-300" />
@@ -215,7 +215,7 @@ export default function NewsPage() {
                   setSearchQuery("");
                   setActiveCategory("All");
                 }}
-                className="mt-6 px-6 py-2 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-colors"
+                className="mt-6 px-6 py-2 bg-slate-100 text-slate-700 font-semibold rounded-md hover:bg-slate-200 transition-colors"
               >
                 Clear Filters
               </button>
@@ -229,3 +229,6 @@ export default function NewsPage() {
     </main>
   );
 }
+
+
+

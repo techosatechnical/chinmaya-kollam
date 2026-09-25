@@ -9,7 +9,7 @@ export default function LibraryPage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/facilities/library.jpg"
@@ -27,7 +27,7 @@ export default function LibraryPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-10">
         <div className="bg-white shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
@@ -39,7 +39,7 @@ export default function LibraryPage() {
                 The library is updated every academic year and leads all the children to the path of reading. It serves as a quiet sanctuary for students to explore diverse genres, broaden their horizons, and cultivate a lifelong love for literature.
               </p>
             </div>
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-md overflow-hidden shadow-2xl">
               <img
                 src="/facilities/library.jpg"
                 alt="Vidyalaya Library"
@@ -54,3 +54,6 @@ export default function LibraryPage() {
     </main>
   );
 }
+
+
+

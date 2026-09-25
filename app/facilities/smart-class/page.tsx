@@ -9,7 +9,7 @@ export default function SmartClassPage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/facilities/smart class.jpg"
@@ -30,7 +30,7 @@ export default function SmartClassPage() {
       <section className="max-w-6xl mx-auto px-6 lg:px-8 py-18">
         <div className="bg-white shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-md overflow-hidden shadow-2xl">
               <img
                 src="/facilities/smart class.jpg"
                 alt="Smart Class"
@@ -57,3 +57,6 @@ export default function SmartClassPage() {
     </main>
   );
 }
+
+
+

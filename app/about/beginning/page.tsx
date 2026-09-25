@@ -68,12 +68,12 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative h-[45vh] flex items-center justify-center overflow-hidden bg-[#02133a]">
-    
+
       <motion.div className="absolute inset-0" style={{ y: imgY }}>
         <Image src="/image/about2.webp" alt="Campus" fill sizes="100vw" priority className="object-cover opacity-70" />
       </motion.div>
 
-   
+
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
 
@@ -141,7 +141,7 @@ function QuoteIntro() {
           className="max-w-3xl"
         >
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 rounded-2xl bg-[#FF6A00] flex items-center justify-center shadow-lg shadow-orange-200">
+            <div className="w-12 h-12 rounded-md bg-[#FF6A00] flex items-center justify-center shadow-lg shadow-orange-200">
               <Flame className="w-6 h-6 text-white" />
             </div>
             <div className="h-px flex-1 bg-gradient-to-r from-[#FF6A00]/40 to-transparent" />
@@ -168,7 +168,7 @@ function QuoteIntro() {
 /* ─── TIMELINE ───────────────────────────────────────────────── */
 function Timeline() {
   return (
-    <section className="bg-slate-50 py-24 lg:py-36 relative overflow-hidden">
+    <section className="bg-slate-50 py-8 lg:py-36 relative overflow-hidden">
       {/* Subtle grid */}
       <div className="absolute inset-0 opacity-[0.5]"
         style={{
@@ -220,7 +220,7 @@ function Timeline() {
               </div>
 
               {/* Card */}
-              <div className={`relative ml-0 md:ml-32 lg:ml-48 rounded-2xl border transition-all duration-500 overflow-hidden bg-white
+              <div className={`relative ml-0 md:ml-32 lg:ml-48 rounded-md border transition-all duration-500 overflow-hidden bg-white
                 ${c.milestone
                   ? "border-orange-200 shadow-lg shadow-orange-100"
                   : "border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300"
@@ -270,7 +270,7 @@ function Timeline() {
 /* ─── BENTO CAMPUS GRID ──────────────────────────────────────── */
 function BentoGrid() {
   return (
-    <section className="bg-white py-24 lg:py-32 relative overflow-hidden border-t border-slate-100">
+    <section className="bg-white py-8 lg:py-32 relative overflow-hidden border-t border-slate-100">
       {/* Subtle blob */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-orange-50 blur-3xl opacity-50 translate-x-1/3 -translate-y-1/3 pointer-events-none" />
 
@@ -294,9 +294,9 @@ function BentoGrid() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="col-span-2 row-span-2 relative rounded-3xl overflow-hidden min-h-[320px] group shadow-xl shadow-slate-200"
+            className="col-span-2 row-span-2 relative rounded-md overflow-hidden min-h-[320px] group shadow-xl shadow-slate-200"
           >
-            <Image src="/image/school.jpeg" alt="School Building" fill sizes="50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Image src="/image/about3.webp" alt="School Building" fill sizes="50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#02133a]/70 via-[#02133a]/10 to-transparent" />
             <div className="absolute bottom-6 left-6">
               <p className="text-white/60 text-[10px] uppercase tracking-widest mb-1">Our Home</p>
@@ -310,7 +310,7 @@ function BentoGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="col-span-1 rounded-3xl bg-[#FF6A00] p-7 flex flex-col justify-between min-h-[155px] shadow-lg shadow-orange-200"
+            className="col-span-1 rounded-md bg-[#FF6A00] p-7 flex flex-col justify-between min-h-[155px] shadow-lg shadow-orange-200"
           >
             <MapPin className="w-7 h-7 text-white/70" />
             <div>
@@ -325,7 +325,7 @@ function BentoGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="col-span-1 rounded-3xl bg-[#02133a] p-7 flex flex-col justify-between min-h-[155px] shadow-lg shadow-slate-200"
+            className="col-span-1 rounded-md bg-[#02133a] p-7 flex flex-col justify-between min-h-[155px] shadow-lg shadow-slate-200"
           >
             <GraduationCap className="w-7 h-7 text-blue-300" />
             <div>
@@ -340,9 +340,9 @@ function BentoGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="col-span-2 rounded-3xl bg-purple-50 border border-purple-100 p-7 flex items-center gap-6 shadow-sm"
+            className="col-span-2 rounded-md bg-purple-50 border border-purple-100 p-7 flex items-center gap-6 shadow-sm"
           >
-            <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center shrink-0">
+            <div className="w-14 h-14 rounded-md bg-purple-100 flex items-center justify-center shrink-0">
               <Church className="w-7 h-7 text-purple-600" />
             </div>
             <div>
@@ -359,9 +359,9 @@ function BentoGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.35 }}
-            className="col-span-2 rounded-3xl bg-emerald-50 border border-emerald-100 p-7 flex items-center gap-6 shadow-sm"
+            className="col-span-2 rounded-md bg-emerald-50 border border-emerald-100 p-7 flex items-center gap-6 shadow-sm"
           >
-            <div className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center shrink-0">
+            <div className="w-14 h-14 rounded-md bg-emerald-100 flex items-center justify-center shrink-0">
               <TreePine className="w-7 h-7 text-emerald-600" />
             </div>
             <div>
@@ -378,7 +378,7 @@ function BentoGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="col-span-2 md:col-span-4 rounded-3xl overflow-hidden relative min-h-[180px] shadow-xl shadow-slate-200"
+            className="col-span-2 md:col-span-4 rounded-md overflow-hidden relative min-h-[180px] shadow-xl shadow-slate-200"
           >
             <Image src="/image/about4.jpg" alt="Campus Life" fill sizes="100vw" className="object-cover object-center" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#02133a]/85 via-[#02133a]/60 to-transparent" />
@@ -408,7 +408,7 @@ function Gallery() {
   ];
 
   return (
-    <section className="bg-slate-50 py-24 relative overflow-hidden border-t border-slate-100">
+    <section className="bg-slate-50 py-8 relative overflow-hidden border-t border-slate-100">
       {/* Subtle blob */}
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-blue-50 blur-3xl opacity-60 -translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
@@ -417,7 +417,7 @@ function Gallery() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex items-end justify-between mb-12"
+          className="flex items-end justify-between mb-8"
         >
           <div>
             <p className="text-[#FF6A00] text-xs font-black uppercase tracking-[0.3em] mb-2">Photo Gallery</p>
@@ -435,7 +435,7 @@ function Gallery() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`relative rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-500 ${img.cls}`}
+              className={`relative rounded-md overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-500 ${img.cls}`}
             >
               <Image
                 src={img.src}
@@ -471,3 +471,6 @@ export default function BeginningPage() {
     </main>
   );
 }
+
+
+

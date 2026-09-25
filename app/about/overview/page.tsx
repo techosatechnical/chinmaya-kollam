@@ -41,7 +41,7 @@ const sections = [
     title: "Our Historic Journey",
     icon: History,
     content: "The Vidyalaya was a long pending dream of the people of Kollam. It was first established on 23rd Oct 1985 at Manayilkulangara, Kollam. The Vidyalaya attained its gradual growth and as classes up to VII started functioning, it was shifted to its new sprawling location at Chandanathope in 1996 under the visionary leadership of Chinmaya Educational Trust, Thiruvananthapuram.",
-    image: "/image/school.jpeg",
+    image: "/image/about3.webp",
     color: "from-purple-500/20 to-fuchsia-500/5",
     iconColor: "text-purple-500",
   }
@@ -54,7 +54,7 @@ export default function AboutOverview() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+      <section className="relative pt-32 pb-10 lg:pt-40 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/image/about2.webp"
@@ -138,7 +138,7 @@ export default function AboutOverview() {
                       viewport={{ once: true, margin: "-100px" }}
                       transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                      <div className={`w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center mb-8 border border-slate-100 ${section.iconColor}`}>
+                      <div className={`w-16 h-16 rounded-md bg-white shadow-lg flex items-center justify-center mb-8 border border-slate-100 ${section.iconColor}`}>
                         <section.icon className="w-8 h-8" />
                       </div>
                       <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6 leading-tight">
@@ -165,13 +165,13 @@ export default function AboutOverview() {
       </section>
 
       {/* Image Gallery Grid */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-8 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10"
           >
             <h2 className="text-4xl font-black text-slate-800 mb-4">Glimpses of Our Campus</h2>
             <p className="text-slate-500 max-w-2xl mx-auto">Experience the vibrant life and beautiful surroundings of Chinmaya Vidyalaya.</p>
@@ -190,7 +190,7 @@ export default function AboutOverview() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`relative rounded-2xl overflow-hidden shadow-md group ${img.colSpan} ${img.rowSpan} min-h-62.5`}
+                className={`relative rounded-md overflow-hidden shadow-md group ${img.colSpan} ${img.rowSpan} min-h-62.5`}
               >
                 <Image
                   src={img.src}
@@ -210,3 +210,6 @@ export default function AboutOverview() {
     </main>
   );
 }
+
+
+

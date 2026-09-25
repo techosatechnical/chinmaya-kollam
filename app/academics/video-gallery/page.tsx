@@ -37,7 +37,7 @@ export default function VideoGalleryPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/image/vediogaller banner.jpg"
@@ -81,12 +81,12 @@ export default function VideoGalleryPage() {
       </div>
 
       {/* Video Grid */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredVideos.map((video) => (
             <div
               key={video.id}
-              className="group relative bg-white rounded-3xl overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-200 cursor-pointer hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col"
+              className="group relative bg-white rounded-md overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-200 cursor-pointer hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col"
               onClick={() => setSelectedVideo(video)}
             >
               {/* Thumbnail Container */}
@@ -127,7 +127,7 @@ export default function VideoGalleryPage() {
         </div>
 
         {filteredVideos.length === 0 && (
-          <div className="text-center py-20">
+          <div className="text-center py-10">
             <h2 className="text-2xl font-bold text-slate-400">No videos found for {activeYear}</h2>
           </div>
         )}
@@ -149,7 +149,7 @@ export default function VideoGalleryPage() {
           </button>
 
           <div className="relative z-10 max-w-6xl w-full flex flex-col items-center animate-in zoom-in-95 duration-300">
-            <div className="w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+            <div className="w-full aspect-video bg-black rounded-md overflow-hidden shadow-2xl ring-1 ring-white/10">
               <iframe
                 width="100%"
                 height="100%"
@@ -178,3 +178,6 @@ export default function VideoGalleryPage() {
     </main>
   );
 }
+
+
+

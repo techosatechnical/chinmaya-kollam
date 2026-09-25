@@ -22,14 +22,14 @@ export function VisionMission() {
 
   return (
     <section className="relative z-20 px-4 lg:px-8 -mt-24 md:-mt-32 mb-10 max-w-6xl mx-auto">
-      <div className="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col md:flex-row">
+      <div className=" shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex flex-col md:flex-row rounded-md overflow-hidden">
 
         {/* Left Side: Vision & Mission */}
         <div className="w-full md:w-[60%] p-5 lg:p-7 bg-white">
 
           {/* Vision */}
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            <div className="shrink-0 w-12 h-12 bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00]">
+            <div className="shrink-0 w-12 h-12 bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00] rounded-md">
               <Lightbulb className="w-6 h-6" />
             </div>
             <div>
@@ -42,7 +42,7 @@ export function VisionMission() {
 
           {/* Mission */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <div className="shrink-0 w-12 h-12 bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00]">
+            <div className="shrink-0 w-12 h-12 bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00] rounded-md">
               <Megaphone className="w-6 h-6" />
             </div>
             <div>
@@ -56,7 +56,7 @@ export function VisionMission() {
         </div>
 
         {/* Right Side: Quotes Slider */}
-        <div className="w-full md:w-[40%] bg-[#FF6A00] p-5 lg:p-7 text-white flex flex-col items-center justify-center relative">
+        <div className="w-full md:w-[40%] bg-[#fd8733] p-5 lg:p-7 text-white flex flex-col items-center justify-center relative">
 
           {/* Slider Controls */}
           <button
@@ -113,3 +113,4 @@ export function VisionMission() {
     </section>
   );
 }
+

@@ -36,7 +36,7 @@ export default function PhotoGalleryPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         {/* Unsplash Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -82,12 +82,12 @@ export default function PhotoGalleryPage() {
       </div>
 
       {/* Gallery Grid */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
           {filteredPhotos.map((photo) => (
             <div
               key={photo.id}
-              className={`relative group rounded-3xl overflow-hidden cursor-pointer bg-slate-200 break-inside-avoid shadow-sm hover:shadow-2xl transition-all duration-500 ${photo.height}`}
+              className={`relative group rounded-md overflow-hidden cursor-pointer bg-slate-200 break-inside-avoid shadow-sm hover:shadow-2xl transition-all duration-500 ${photo.height}`}
               onClick={() => setSelectedPhoto(photo)}
             >
               <img
@@ -111,7 +111,7 @@ export default function PhotoGalleryPage() {
         </div>
 
         {filteredPhotos.length === 0 && (
-          <div className="text-center py-20">
+          <div className="text-center py-10">
             <h2 className="text-2xl font-bold text-slate-400">No photos found for {activeYear}</h2>
           </div>
         )}
@@ -133,7 +133,7 @@ export default function PhotoGalleryPage() {
             <img
               src={selectedPhoto.url}
               alt={selectedPhoto.title}
-              className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl"
+              className="max-w-full max-h-[80vh] object-contain rounded-md shadow-2xl"
             />
             <div className="mt-6 text-center">
               <span className="inline-block px-4 py-1.5 bg-blue-600 text-white text-sm font-bold rounded-full mb-3">
@@ -151,3 +151,6 @@ export default function PhotoGalleryPage() {
     </main>
   );
 }
+
+
+

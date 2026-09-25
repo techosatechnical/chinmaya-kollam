@@ -9,7 +9,7 @@ export default function ChinmayaBlossomsFacilityPage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/facilities/pre kg.jpg"
@@ -27,8 +27,8 @@ export default function ChinmayaBlossomsFacilityPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-10">
+        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Joyful Beginnings</h2>
@@ -39,7 +39,7 @@ export default function ChinmayaBlossomsFacilityPage() {
                 The Kindergarten provides a strong foundation for kids to move further and develop their innate talents and skills. It features specialized play areas and interactive teaching methodologies tailored to early childhood development.
               </p>
             </div>
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-md overflow-hidden shadow-2xl">
               <img 
                 src="/facilities/pre kg.jpg" 
                 alt="Pre-KG Facility" 
@@ -54,3 +54,6 @@ export default function ChinmayaBlossomsFacilityPage() {
     </main>
   );
 }
+
+
+

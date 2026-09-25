@@ -68,12 +68,12 @@ export default function NewsletterPage() {
       </section>
 
       {/* Newsletters Grid */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {newsletters.map((newsletter) => (
             <div
               key={newsletter.id}
-              className="group bg-white rounded-3xl overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-200 hover:border-blue-300 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-md overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-200 hover:border-blue-300 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
               {/* Card Header / Faux PDF Cover */}
               <div className={`h-40 bg-linear-to-br ${newsletter.coverColor} p-5 flex flex-col justify-between relative overflow-hidden`}>
@@ -104,7 +104,7 @@ export default function NewsletterPage() {
                   href={newsletter.pdfLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full gap-2 px-4 py-2.5 bg-slate-900 text-white text-sm rounded-xl hover:bg-blue-600 transition-colors font-semibold shadow-lg shadow-slate-200 group-hover:shadow-blue-200"
+                  className="inline-flex items-center justify-center w-full gap-2 px-4 py-2.5 bg-slate-900 text-white text-sm rounded-md hover:bg-blue-600 transition-colors font-semibold shadow-lg shadow-slate-200 group-hover:shadow-blue-200"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -121,3 +121,6 @@ export default function NewsletterPage() {
     </main>
   );
 }
+
+
+

@@ -57,7 +57,7 @@ export default function MentorsPage() {
       <Navbar />
 
       {/* Page Header */}
-      <div className="bg-primary py-16 md:py-24 relative overflow-hidden">
+      <div className="bg-primary py-10 md:py-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <motion.h1
@@ -79,9 +79,9 @@ export default function MentorsPage() {
       </div>
 
       {/* Leadership Section */}
-      <section className="py-16 bg-white border-b border-slate-100">
+      <section className="py-10 bg-white border-b border-slate-100">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-primary mb-4">Our Leadership</h2>
             <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
           </div>
@@ -94,7 +94,7 @@ export default function MentorsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-slate-50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 border border-slate-100 group flex-1"
+                className="bg-slate-50 rounded-md overflow-hidden shadow-md hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 border border-slate-100 group flex-1"
               >
                 <div className="aspect-4/3 w-full relative overflow-hidden flex items-center justify-center bg-slate-200">
                   {leader.image ? (
@@ -129,9 +129,9 @@ export default function MentorsPage() {
       </section>
 
       {/* Teachers Grid */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-10 bg-slate-50">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-primary mb-4">Teaching Faculty</h2>
             <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
           </div>
@@ -144,7 +144,7 @@ export default function MentorsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: (index % 10) * 0.05 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 border border-slate-100 group flex flex-col"
+                className="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 border border-slate-100 group flex flex-col"
               >
                 <div className="bg-linear-to-br from-slate-100 to-slate-200 aspect-square w-full relative overflow-hidden flex items-center justify-center">
                   {mentor.image ? (
@@ -190,3 +190,6 @@ export default function MentorsPage() {
     </main>
   );
 }
+
+
+

@@ -114,7 +114,7 @@ export function Navbar() {
               <div key={link.name} className="relative group">
                 <Link
                   href={link.href}
-                  className="flex items-center gap-1 rounded-full px-1.5 py-2 text-[14px] font-bold text-slate-700 hover:text-[#FF6A00] transition-colors cursor-pointer tracking-wide"
+                  className={`flex items-center gap-1 rounded-full px-2 py-2 text-[14px] font-bold text-slate-700 hover:text-[#FF6A00] transition-colors cursor-pointer tracking-wide ${link.hasDropdown ? "ml-2" : ""}`}
                 >
                   {link.name}
                   {link.hasDropdown && (
@@ -125,24 +125,51 @@ export function Navbar() {
                 {/* Dropdown Menu */}
                 {link.hasDropdown && link.subItems && (
                   <div className="absolute left-0 top-full pt-4 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-out z-50">
-                    <div className={`bg-primary  shadow-2xl border border-white/10 p-2.5 ${link.subItems.length > 5 ? 'w-195 grid grid-cols-3 gap-x-2 gap-y-0.5' : 'w-70 flex flex-col gap-0.5'}`}>
-                      {link.subItems.map((sub) => (
-                        <Link
-                          key={sub.title}
-                          href={sub.href}
-                          className="flex items-center justify-between px-4 py-2 text-[14px] font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-all duration-200 rounded-xl group/item"
-                        >
-                          <div className="flex items-center gap-3">
-                            <span>{sub.title}</span>
-                            {sub.badge && (
-                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${sub.badge.classes} leading-none whitespace-nowrap`}>
-                                {sub.badge.text}
-                              </span>
-                            )}
-                          </div>
-                          <ChevronRight className="w-4 h-4 text-white/40 group-hover/item:text-white transition-colors" />
-                        </Link>
-                      ))}
+                    <div className={`bg-white rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-slate-100 p-3 ${link.subItems.length > 5 ? 'w-180 grid grid-cols-3 gap-2.5' : 'w-70 flex flex-col gap-2'}`}>
+                      {link.subItems.map((sub, index) => {
+                        const themes = [
+                          { text: "text-orange-500", bg: "bg-orange-50", border: "border-orange-200" },
+                          { text: "text-emerald-500", bg: "bg-emerald-50", border: "border-emerald-200" },
+                          { text: "text-indigo-500", bg: "bg-indigo-50", border: "border-indigo-200" },
+                          { text: "text-purple-500", bg: "bg-purple-50", border: "border-purple-200" },
+                          { text: "text-amber-500", bg: "bg-amber-50", border: "border-amber-200" },
+                          { text: "text-blue-500", bg: "bg-blue-50", border: "border-blue-200" },
+                          { text: "text-pink-500", bg: "bg-pink-50", border: "border-pink-200" }
+                        ];
+                        const theme = themes[index % themes.length];
+                        return (
+                          <Link
+                            key={sub.title}
+                            href={sub.href}
+                            className="flex items-center px-3 py-2.5 rounded-xl border border-slate-100 bg-white hover:shadow-md hover:border-slate-200 transition-all group/item relative"
+                          >
+                            <div className="relative shrink-0 ml-1">
+                              <div className={`absolute -top-2 -left-2 px-1 py-[1px] rounded-[4px] text-[9px] font-black border bg-white z-10 ${theme.border} ${theme.text}`}>
+                                {String(index + 1).padStart(2, '0')}
+                              </div>
+                              <div className={`w-9 h-9 rounded-lg border flex items-center justify-center ${theme.border} ${theme.bg}`}>
+                                {sub.icon ? (
+                                  <sub.icon className={`w-4 h-4 ${theme.text}`} />
+                                ) : (
+                                  <div className="w-4 h-4" />
+                                )}
+                              </div>
+                            </div>
+                            <div className="ml-4 flex flex-col justify-center">
+                              <div className="flex items-center gap-2">
+                                <span className="text-slate-800 font-bold text-[13px] leading-tight group-hover/item:text-[#385EEC] transition-colors capitalize">
+                                  {sub.title.toLowerCase()}
+                                </span>
+                                {sub.badge && (
+                                  <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md border ${sub.badge.classes} leading-none whitespace-nowrap`}>
+                                    {sub.badge.text}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -186,13 +213,13 @@ export function Navbar() {
               </button>
             </div>
 
-            <div className="flex flex-col space-y-2 overflow-y-auto h-full pb-20">
+            <div className="flex flex-col space-y-2 overflow-y-auto h-full pb-10">
               {navLinks.map((link) => (
                 <div key={link.name} className="flex flex-col">
                   {link.hasDropdown ? (
                     <button
                       onClick={() => setExpandedMenu(expandedMenu === link.name ? null : link.name)}
-                      className={`group font-[var(--font-heading)] tracking-wide text-[19px] font-extrabold rounded-2xl px-5 py-4 flex justify-between items-center transition-all duration-300 w-full text-left ${expandedMenu === link.name
+                      className={`group font-[var(--font-heading)] tracking-wide text-[19px] font-extrabold rounded-sm px-5 py-4 flex justify-between items-center transition-all duration-300 w-full text-left ${expandedMenu === link.name
                         ? 'bg-white text-[#385EEC] shadow-sm border border-slate-100'
                         : 'text-slate-800 hover:bg-white hover:shadow-sm border border-transparent'
                         }`}
@@ -205,7 +232,7 @@ export function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="group font-[var(--font-heading)] tracking-wide text-[19px] font-extrabold text-slate-800 hover:bg-white hover:text-[#385EEC] hover:shadow-sm border border-transparent rounded-2xl px-5 py-4 flex justify-between items-center transition-all duration-300 w-full text-left"
+                      className="group font-[var(--font-heading)] tracking-wide text-[19px] font-extrabold text-slate-800 hover:bg-white hover:text-[#385EEC] hover:shadow-sm border border-transparent rounded-sm px-5 py-4 flex justify-between items-center transition-all duration-300 w-full text-left"
                     >
                       <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
                     </Link>
@@ -225,11 +252,11 @@ export function Navbar() {
                               key={sub.title}
                               href={sub.href}
                               onClick={() => setIsMobileMenuOpen(false)}
-                              className="group/sub block px-4 py-3 text-[16px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm rounded-xl transition-all duration-300"
+                              className="group/sub block px-4 py-3 text-[16px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm rounded-sm transition-all duration-300"
                             >
                               <div className="flex items-center gap-3">
                                 {sub.icon && (
-                                  <div className={`p-2 rounded-lg bg-slate-100 group-hover/sub:bg-blue-50 group-hover/sub:scale-110 transition-all duration-300 ${sub.iconColor}`}>
+                                  <div className={`p-2 rounded-sm bg-slate-100 group-hover/sub:bg-blue-50 group-hover/sub:scale-110 transition-all duration-300 ${sub.iconColor}`}>
                                     <sub.icon className="w-4 h-4" />
                                   </div>
                                 )}
@@ -257,3 +284,5 @@ export function Navbar() {
     </div>
   );
 }
+
+

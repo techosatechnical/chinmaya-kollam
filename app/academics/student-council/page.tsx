@@ -10,7 +10,7 @@ export default function StudentCouncilPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/image/students council.jpeg"
@@ -27,11 +27,11 @@ export default function StudentCouncilPage() {
       </section>
 
       {/* Content Section */}
-      <section className="max-w-4xl mx-auto px-6 lg:px-8 py-20">
-        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
+      <section className="max-w-4xl mx-auto px-6 lg:px-8 py-10">
+        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
 
           {/* Quote */}
-          <blockquote className="border-l-4 border-blue-500 pl-6 mb-12">
+          <blockquote className="border-l-4 border-blue-500 pl-6 mb-8">
             <p className="italic text-slate-700 font-medium text-xl md:text-2xl leading-relaxed">
               “Student council speaks a lot more about itself rather than just being a group of people, it showcases its unity, cooperation, coordination, and strengths to the world.”
             </p>
@@ -52,7 +52,7 @@ export default function StudentCouncilPage() {
             </p>
 
             {/* Team Roles Callout Box */}
-            <div className="bg-slate-50 rounded-2xl p-8 my-10 border border-slate-100">
+            <div className="bg-slate-50 rounded-md p-8 my-10 border border-slate-100">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Our Vibrant Team Includes:</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-center gap-3">
@@ -94,3 +94,6 @@ export default function StudentCouncilPage() {
     </main>
   );
 }
+
+
+

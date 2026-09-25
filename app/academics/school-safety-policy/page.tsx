@@ -10,7 +10,7 @@ export default function SchoolSafetyPolicyPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2000&auto=format&fit=crop"
@@ -31,7 +31,7 @@ export default function SchoolSafetyPolicyPage() {
       </section>
 
       {/* PDF Viewer Section */}
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-16">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-10">
         <div className="bg-white shadow-xl shadow-slate-200/50 border border-slate-200 overflow-hidden">
           <div className="bg-slate-900 p-4 flex items-center justify-between border-b border-slate-800">
             <div className="flex items-center gap-3 text-white">
@@ -44,7 +44,7 @@ export default function SchoolSafetyPolicyPage() {
               href="/school%20safety%20policy.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-lg transition-colors flex items-center gap-2"
+              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-md transition-colors flex items-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -80,3 +80,6 @@ export default function SchoolSafetyPolicyPage() {
     </main>
   );
 }
+
+
+

@@ -45,9 +45,9 @@ const facilities = [
 
 export function Facilities() {
   return (
-    <section className="py-12 bg-white">
+    <section className="py-8 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +87,7 @@ export function Facilities() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <Link href={facility.href} className="block h-full group">
-                  <div className="bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden h-full flex flex-col items-start transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#0F284A]/10">
+                  <div className="bg-slate-50 border border-slate-100 rounded-md overflow-hidden h-full flex flex-col items-start transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#0F284A]/10">
                     <div className="w-full h-48 overflow-hidden">
                       <img 
                         src={facility.image} 
@@ -117,3 +117,6 @@ export function Facilities() {
     </section>
   );
 }
+
+
+

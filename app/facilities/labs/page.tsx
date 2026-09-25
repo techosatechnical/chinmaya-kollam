@@ -40,7 +40,7 @@ export default function LabsPage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/facilities/chem lab.jpeg"
@@ -58,7 +58,7 @@ export default function LabsPage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 overflow-x-hidden">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-10 overflow-x-hidden">
         <div className="space-y-16">
           {labs.map((lab, index) => (
             <motion.div
@@ -93,3 +93,4 @@ export default function LabsPage() {
     </main>
   );
 }
+

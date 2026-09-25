@@ -42,7 +42,7 @@ export default function FrontrunnersPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-20 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative py-10 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-slate-800 via-slate-950 to-slate-950"></div>
         <div className="absolute top-0 w-full h-px bg-linear-to-r from-transparent via-slate-400 to-transparent opacity-20"></div>
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
@@ -63,12 +63,12 @@ export default function FrontrunnersPage() {
       </section>
 
       {/* Testimonials Grid (Grid Layout with Equal Heights) */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {testimonials.map((item) => (
             <div
               key={item.id}
-              className="relative bg-white p-8 md:p-10 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              className="relative bg-white p-8 md:p-10 rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
               {/* Decorative Quote Mark */}
               <div className="absolute top-6 right-8 text-slate-100 font-serif text-8xl leading-none select-none pointer-events-none">
@@ -121,7 +121,7 @@ export default function FrontrunnersPage() {
       {/* Modal */}
       {selectedItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-          <div className="relative bg-white rounded-3xl shadow-2xl max-w-3xl w-full p-8 md:p-12 max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative bg-white rounded-md shadow-2xl max-w-3xl w-full p-8 md:p-12 max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
             <button
               onClick={() => setSelectedItem(null)}
               className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors p-2 bg-slate-100 rounded-full"
@@ -167,3 +167,6 @@ export default function FrontrunnersPage() {
     </main>
   );
 }
+
+
+

@@ -48,7 +48,7 @@ export function LeadershipMessages() {
   const [activeMessage, setActiveMessage] = useState<string | null>(null);
 
   return (
-    <section className="py-12 bg-[#F5F5F5]">
+    <section className="py-8 bg-[#F5F5F5]">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {messages.map((item, index) => (
@@ -66,7 +66,7 @@ export function LeadershipMessages() {
               </h3>
 
               {/* Card */}
-              <div className="w-full flex flex-col sm:flex-row h-auto sm:h-[320px] shadow-xl overflow-hidden group cursor-pointer" onClick={() => setActiveMessage(item.id)}>
+              <div className="w-full flex flex-col sm:flex-row h-auto sm:h-[320px] shadow-xl rounded-md overflow-hidden group cursor-pointer" onClick={() => setActiveMessage(item.id)}>
                 {/* Left Blue Box */}
                 <div className="w-full sm:w-1/2 bg-[#1A457B] p-8 flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -84,7 +84,7 @@ export function LeadershipMessages() {
                     src={item.image}
                     alt={item.name}
                     fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className={`object-cover ${item.id === 'principal' ? 'object-[center_20%]' : 'object-top'} group-hover:scale-105 transition-transform duration-700 ease-out`}
                   />
                   {/* Subtle gradient overlay to make image look premium */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -112,7 +112,7 @@ export function LeadershipMessages() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row z-10"
+              className="relative w-full max-w-3xl bg-white rounded-md shadow-2xl overflow-hidden flex flex-col md:flex-row z-10"
             >
               {(() => {
                 const data = messages.find((m) => m.id === activeMessage)!;
@@ -169,3 +169,6 @@ export function LeadershipMessages() {
     </section>
   );
 }
+
+
+

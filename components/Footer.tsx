@@ -4,9 +4,9 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export function Footer() {
   return (
-    <footer className="bg-[#0B1121] pt-20 pb-10">
+    <footer className="bg-[#0B1121] pt-10 pb-10">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 lg:gap-12 mb-12 lg:mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 lg:gap-12 mb-8 lg:mb-10">
           <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <img src="/logos/CV Kollam WHITE.png" alt="Chinmaya Vidyalaya Kollam Logo" className="h-20 w-auto" />
@@ -54,15 +54,15 @@ export function Footer() {
             <h3 className="text-xl font-bold text-white mb-6">Contact Info</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-4">
-                <MapPin className="w-5 h-5 text-blue-500 shrink-0 mt-1" />
-                <span className="text-slate-400 text-sm">Chinmaya Vidyalaya<br/>Kollam, Kerala</span>
+                <MapPin className="w-5 h-5 text-orange-400 shrink-0 mt-1" />
+                <span className="text-slate-400 text-sm">Chinmaya Vidyalaya<br />Kollam, Kerala</span>
               </li>
               <li className="flex items-start space-x-4">
-                <Mail className="w-5 h-5 text-blue-500 shrink-0 mt-1" />
+                <Mail className="w-5 h-5 text-orange-400 shrink-0 mt-1" />
                 <span className="text-slate-400 text-sm">info@chinmayakollam.edu.in</span>
               </li>
               <li className="flex items-start space-x-4">
-                <Phone className="w-5 h-5 text-blue-500 shrink-0 mt-1" />
+                <Phone className="w-5 h-5 text-orange-400 shrink-0 mt-1" />
                 <span className="text-slate-400 text-sm">+91 0000 000 000</span>
               </li>
             </ul>
@@ -70,13 +70,17 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
-          <p>© 2024 Chinmaya Vidyalaya Kollam. All Rights Reserved.</p>
+          <p>© 2026 Chinmaya Vidyalaya Kollam. All Rights Reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
           </div>
         </div>
+        <div className="mt-8 text-center text-xs text-slate-600">
+          Powered by <a href="#" className="text-slate-400 hover:text-white transition-colors font-medium">techosa.it</a>
+        </div>
       </div>
     </footer>
   );
 }
+

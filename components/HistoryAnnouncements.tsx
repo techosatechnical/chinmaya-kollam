@@ -39,7 +39,7 @@ const announcements = [
 
 export function HistoryAnnouncements() {
   return (
-    <section className="py-12 bg-slate-50 relative overflow-hidden">
+    <section className="py-8 bg-slate-50 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-linear-to-br from-blue-200/20 to-purple-200/20 blur-3xl" />
@@ -83,9 +83,9 @@ export function HistoryAnnouncements() {
               </motion.h2>
               <div className="w-20 h-1.5 bg-linear-to-r from-[#385EEC] to-blue-400 rounded-full mb-8" />
 
-              <div className="relative w-full h-64 sm:h-80 mb-10 rounded-2xl overflow-hidden shadow-2xl group">
+              <div className="relative w-full h-64 sm:h-80 mb-10 rounded-md overflow-hidden shadow-2xl group">
                 <Image
-                  src="/image/school.jpeg"
+                  src="/image/about3.webp"
                   alt="Chinmaya Vidyalaya School Campus"
                   fill
                   className="object-cover scale-[1.6] group-hover:scale-[1.65] transition-transform duration-700 ease-out"
@@ -105,7 +105,7 @@ export function HistoryAnnouncements() {
               <div className="mt-10">
                 <Link
                   href="/about/beginning"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#004B87] text-white font-bold text-sm uppercase tracking-wide hover:bg-[#003666] transition-all duration-300 shadow-lg shadow-[#004B87]/30 group"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#004B87] text-white font-bold text-sm uppercase tracking-wide hover:bg-[#003666] hover:text-orange-300 transition-all duration-300 shadow-lg shadow-[#004B87]/30 group"
                 >
                   Read More
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -129,21 +129,8 @@ export function HistoryAnnouncements() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF6A00] opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-4 w-4 bg-[#FF6A00]"></span>
                   </span>
-                  <div className="flex-1 h-15 relative -mt-1">
-                    <WarpText
-                      text="ANNOUNCEMENTS"
-                      color="#004B87"
-                      warpStrength={0.08}
-                      warpScale={1.7}
-                      speed={0.55}
-                      pointerInfluence={0.42}
-                      pointerStrength={0.38}
-                      refraction={0.018}
-                      ripple
-                      fontSize="2.25rem"
-                      fontWeight={900}
-                      style={{ height: '100%', width: '100%' }}
-                    />
+                  <div className="flex-1 h-15 relative -mt-1 flex items-center">
+                    <span className="text-[#004B87] text-[2.25rem] font-black leading-none">ANNOUNCEMENTS</span>
                   </div>
                 </h3>
               </div>
@@ -166,10 +153,10 @@ export function HistoryAnnouncements() {
                       <Link
                         href="/announcements"
                         key={`${announcement.id}-${index}`}
-                        className="group flex items-center gap-5 p-5 mb-4 bg-white/90 backdrop-blur-sm rounded-2xl border border-white shadow-[0_4px_15px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_25px_rgb(56,94,236,0.12)] hover:-translate-y-1 hover:border-blue-100 transition-all duration-300"
+                        className="group flex items-center gap-5 p-5 mb-4 bg-white/90 backdrop-blur-sm rounded-md border border-white shadow-[0_4px_15px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_25px_rgb(56,94,236,0.12)] hover:-translate-y-1 hover:border-blue-100 transition-all duration-300"
                       >
                         {/* Date Badge */}
-                        <div className="flex flex-col items-center justify-center min-w-16.25 h-16.25 rounded-2xl bg-blue-50 text-[#004B87] group-hover:bg-[#004B87] group-hover:text-white transition-colors shrink-0 shadow-inner">
+                        <div className="flex flex-col items-center justify-center min-w-16.25 h-16.25 rounded-md bg-blue-50 text-[#004B87] group-hover:bg-[#004B87] group-hover:text-white transition-colors shrink-0 shadow-inner">
                           <span className="text-[11px] font-bold uppercase tracking-widest">{month}</span>
                           <span className="text-2xl font-black leading-none mt-0.5">{day}</span>
                         </div>
@@ -210,3 +197,6 @@ export function HistoryAnnouncements() {
     </section>
   );
 }
+
+
+
