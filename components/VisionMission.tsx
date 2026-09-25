@@ -149,7 +149,7 @@ export function VisionMission() {
         dragConstraints={constraints}
         dragElastic={0.1}
         whileDrag={{ scale: 1.1, cursor: "grabbing" }}
-        className="hidden lg:block absolute top-1/2 -translate-y-1/2 -right-16 xl:-right-24 z-50 cursor-grab select-none"
+        className="absolute -top-12 -right-4 sm:-right-8 md:top-1/2 md:-translate-y-1/2 md:-right-16 xl:-right-24 z-50 cursor-grab select-none"
       >
         <motion.div
           animate={{
@@ -165,14 +165,14 @@ export function VisionMission() {
             ease: "easeInOut",
             repeat: Infinity,
           }}
-          className="relative w-44 h-44 xl:w-52 xl:h-52 flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_50px_rgba(168,85,247,0.6)] transition-shadow duration-300 overflow-hidden before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.4),transparent_50%)]"
+          className="relative w-36 h-36 sm:w-44 sm:h-44 xl:w-52 xl:h-52 flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_50px_rgba(168,85,247,0.6)] transition-shadow duration-300 overflow-hidden before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.4),transparent_50%)]"
         >
           {/* Text Content */}
-          <div className="relative z-10 text-center flex flex-col items-center justify-center p-4">
-            <span className="text-white font-black text-xl xl:text-2xl leading-tight tracking-tighter drop-shadow-md pointer-events-none">AI &</span>
-            <span className="text-white font-black text-xl xl:text-2xl leading-tight tracking-tighter drop-shadow-md -mt-1 pointer-events-none">Robotics</span>
+          <div className="relative z-10 text-center flex flex-col items-center justify-center p-3 sm:p-4">
+            <span className="text-white font-black text-lg sm:text-xl xl:text-2xl leading-tight tracking-tighter drop-shadow-md pointer-events-none">AI &</span>
+            <span className="text-white font-black text-lg sm:text-xl xl:text-2xl leading-tight tracking-tighter drop-shadow-md -mt-1 sm:-mt-1 pointer-events-none">Robotics</span>
             
-            <span className="text-pink-100 font-bold text-[8px] xl:text-[9px] leading-tight mt-2 uppercase tracking-wider drop-shadow-sm border-t border-white/20 pt-1.5 pointer-events-none">
+            <span className="text-pink-100 font-bold text-[7px] sm:text-[8px] xl:text-[9px] leading-tight mt-1.5 sm:mt-2 uppercase tracking-wider drop-shadow-sm border-t border-white/20 pt-1 sm:pt-1.5 pointer-events-none">
               Chinmaya Science<br/>Research
             </span>
             
@@ -180,9 +180,9 @@ export function VisionMission() {
               href="/innovation-hub/ai-robotics" 
               draggable={false}
               onPointerDown={(e) => e.stopPropagation()}
-              className="mt-3 px-3.5 py-1.5 bg-white/20 backdrop-blur-sm rounded-full text-white font-bold text-[9px] xl:text-[10px] uppercase tracking-widest border border-white/30 hover:bg-white/40 transition-colors shadow-inner flex items-center gap-1 cursor-pointer pointer-events-auto"
+              className="mt-2 sm:mt-3 px-2.5 py-1 sm:px-3.5 sm:py-1.5 bg-white/20 backdrop-blur-sm rounded-full text-white font-bold text-[7.5px] sm:text-[9px] xl:text-[10px] uppercase tracking-widest border border-white/30 hover:bg-white/40 transition-colors shadow-inner flex items-center gap-1 cursor-pointer pointer-events-auto"
             >
-              Explore <ChevronRight className="w-3 h-3 -mr-1" />
+              Explore <ChevronRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 -mr-0.5 sm:-mr-1" />
             </Link>
           </div>
         </motion.div>
