@@ -87,9 +87,9 @@ export function VisionMission() {
         </div>
 
         {/* Right Side: Quotes Slider */}
-        <div
-          className="w-full md:w-[40%] p-5 lg:p-7 text-white flex flex-col items-center justify-center relative bg-cover bg-center"
-          style={{ backgroundImage: 'linear-gradient(to bottom, rgba(253, 135, 51, 0.4), rgba(253, 135, 51, 0.7)), url("/image/gurudev2.jfif")' }}
+        <div 
+          className="w-full md:w-[40%] px-5 lg:px-7 pt-52 md:pt-60 pb-0 text-white flex flex-col items-center justify-end relative bg-cover bg-[center_35%]"
+          style={{ backgroundImage: 'linear-gradient(to bottom, rgba(253, 135, 51, 0.1), rgba(253, 135, 51, 0.95)), url("/image/gurudev2.jfif")' }}
         >
 
           {/* Slider Controls */}
@@ -106,9 +106,9 @@ export function VisionMission() {
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          <h3 className="text-white text-lg font-bold mb-3 relative z-10">Quotes from Gurudev</h3>
+          <h3 className="text-white text-lg font-bold mt-6 mb-1 relative z-10">Quotes from Gurudev</h3>
 
-          <div className="h-24 flex items-center justify-center relative w-full overflow-hidden mb-6 px-6">
+          <div className="h-24 flex items-center justify-center relative w-full overflow-hidden mb-2 px-6">
             <AnimatePresence mode="wait">
               <motion.p
                 key={currentQuote}
