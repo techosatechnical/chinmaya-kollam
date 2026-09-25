@@ -104,7 +104,7 @@ export function Navbar() {
       <header className="w-full max-w-[98%] xl:max-w-350 mx-auto pt-2 relative z-50 flex items-center gap-2 lg:gap-4">
         <div className="flex w-full items-center justify-between rounded-full bg-linear-to-r from-indigo-100/50 via-sky-100/90 to-blue-100/50 backdrop-blur-md border border-slate-200/60 px-4 py-2 lg:py-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.05)]">
           {/* Logo outside */}
-          <Link href="/" className="flex items-center shrink-0">
+          <Link href="/" className="flex items-center shrink-0 ml-4 lg:ml-6">
             <img src="/logos/CV Kollam BLACK.png" alt="Logo" className="h-20 w-auto" />
           </Link>
 

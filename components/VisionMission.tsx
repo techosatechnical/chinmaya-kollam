@@ -26,7 +26,7 @@ export function VisionMission() {
         bottom: 600
       });
     }
-    
+
     // Optional: Update constraints on window resize
     const handleResize = () => {
       if (blobRef.current) {
@@ -57,7 +57,7 @@ export function VisionMission() {
 
         {/* Left Side: Vision & Mission */}
         <div className="w-full md:w-[60%] p-5 lg:p-7 bg-white relative">
-          
+
           {/* Vision */}
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <div className="shrink-0 w-12 h-12 bg-[#FF6A00]/10 flex items-center justify-center text-[#FF6A00] rounded-md">
@@ -87,28 +87,26 @@ export function VisionMission() {
         </div>
 
         {/* Right Side: Quotes Slider */}
-        <div className="w-full md:w-[40%] bg-[#fd8733] p-5 lg:p-7 text-white flex flex-col items-center justify-center relative">
+        <div
+          className="w-full md:w-[40%] p-5 lg:p-7 text-white flex flex-col items-center justify-center relative bg-cover bg-center"
+          style={{ backgroundImage: 'linear-gradient(to bottom, rgba(253, 135, 51, 0.4), rgba(253, 135, 51, 0.7)), url("/image/gurudev2.jfif")' }}
+        >
 
           {/* Slider Controls */}
           <button
             onClick={prevQuote}
-            className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-white/20 transition-colors z-10"
+            className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-white/20 transition-colors z-10 rounded-full"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={nextQuote}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-white/20 transition-colors z-10"
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 hover:bg-white/20 transition-colors z-10 rounded-full"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          <img
-            src="/image/chinmayananda.jpg"
-            alt="Gurudev"
-            className="w-16 h-16 rounded-full border-2 border-white/20 object-cover mb-3 shadow-xl"
-          />
-          <h3 className="text-lg font-bold mb-3">Quotes from Gurudev</h3>
+          <h3 className="text-white text-lg font-bold mb-3 relative z-10">Quotes from Gurudev</h3>
 
           <div className="h-24 flex items-center justify-center relative w-full overflow-hidden mb-6 px-6">
             <AnimatePresence mode="wait">
@@ -143,7 +141,7 @@ export function VisionMission() {
       </div>
 
       {/* Floating Blob Ad (Right Side) - Draggable */}
-      <motion.div 
+      <motion.div
         ref={blobRef}
         drag
         dragConstraints={constraints}
@@ -169,31 +167,31 @@ export function VisionMission() {
         >
           {/* Text Content */}
           <div className="relative z-10 flex flex-col items-center justify-center p-3 sm:p-4 w-full">
-            
+
             {/* Header Row: Robot + AI & Robotics */}
             <div className="flex items-center gap-1.5 sm:gap-2 mb-1 justify-center w-full">
-              
+
               {/* Custom Image-Matched Cute Robot (Orange Theme) */}
-              <motion.div 
+              <motion.div
                 animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 className="relative w-12 h-12 sm:w-14 sm:h-14 pointer-events-none shrink-0 drop-shadow-sm"
               >
                 <svg viewBox="0 0 100 100" fill="none" stroke="#1e293b" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-                  
+
                   {/* Left Arm */}
-                  <motion.g 
-                    animate={{ rotate: [-5, 5, -5] }} 
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} 
+                  <motion.g
+                    animate={{ rotate: [-5, 5, -5] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                     style={{ transformOrigin: "25px 65px" }}
                   >
                     <rect x="12" y="54" width="16" height="38" rx="8" fill="white" transform="rotate(20, 20, 73)" />
                   </motion.g>
-                  
+
                   {/* Right Arm */}
-                  <motion.g 
-                    animate={{ rotate: [5, -5, 5] }} 
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} 
+                  <motion.g
+                    animate={{ rotate: [5, -5, 5] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                     style={{ transformOrigin: "75px 65px" }}
                   >
                     <rect x="72" y="54" width="16" height="38" rx="8" fill="white" transform="rotate(-20, 80, 73)" />
@@ -201,7 +199,7 @@ export function VisionMission() {
 
                   {/* Body */}
                   <path d="M 35 52 C 10 65 20 95 50 98 C 80 95 90 65 65 52 Z" fill="white" />
-                  
+
                   {/* Collar/Neck */}
                   <path d="M 38 52 C 38 60 62 60 62 52 Z" fill="white" />
 
@@ -219,36 +217,36 @@ export function VisionMission() {
                   <rect x="24" y="15" width="52" height="34" rx="12" fill="#1e293b" stroke="none" />
 
                   {/* Eyes (Happy Orange) */}
-                  <motion.path 
+                  <motion.path
                     animate={{ scaleY: [1, 0.1, 1, 1] }}
                     transition={{ duration: 4, repeat: Infinity, times: [0, 0.05, 0.1, 1] }}
                     style={{ transformOrigin: "36px 30px" }}
-                    d="M 30 30 A 6 6 0 0 1 42 30 Z" fill="#f97316" stroke="none" 
+                    d="M 30 30 A 6 6 0 0 1 42 30 Z" fill="#f97316" stroke="none"
                   />
-                  <motion.path 
+                  <motion.path
                     animate={{ scaleY: [1, 0.1, 1, 1] }}
                     transition={{ duration: 4, repeat: Infinity, times: [0, 0.05, 0.1, 1] }}
                     style={{ transformOrigin: "64px 30px" }}
-                    d="M 58 30 A 6 6 0 0 1 70 30 Z" fill="#f97316" stroke="none" 
+                    d="M 58 30 A 6 6 0 0 1 70 30 Z" fill="#f97316" stroke="none"
                   />
 
                   {/* Mouth (Happy Smile) */}
-                  <motion.path 
+                  <motion.path
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     style={{ transformOrigin: "50px 38px" }}
-                    d="M 45 38 A 5 5 0 0 0 55 38 Z" fill="#f97316" stroke="none" 
+                    d="M 45 38 A 5 5 0 0 0 55 38 Z" fill="#f97316" stroke="none"
                   />
 
                   {/* Visor Highlight */}
                   <path d="M 28 22 C 34 18 42 18 48 20" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="3" strokeLinecap="round" />
-                  
+
                   {/* Head Highlight */}
                   <path d="M 24 16 A 12 12 0 0 1 36 12" fill="none" stroke="white" strokeWidth="4" strokeLinecap="round" />
                 </svg>
-                
+
                 {/* AI Sparkles */}
-                <motion.div 
+                <motion.div
                   animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5], rotate: [0, 90] }}
                   transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                   className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2"
@@ -263,13 +261,13 @@ export function VisionMission() {
                 <span className="text-slate-800 font-black text-[15px] sm:text-[17px] xl:text-[20px] tracking-tighter drop-shadow-sm pointer-events-none mt-[1px]">Robotics</span>
               </div>
             </div>
-            
+
             <span className="text-orange-700 font-bold text-[7px] sm:text-[8px] xl:text-[9px] leading-tight mt-1 uppercase tracking-wider border-t border-orange-300/60 pt-1 sm:pt-1.5 pointer-events-none text-center">
-              Chinmaya Science<br/>Research
+              Chinmaya Science<br />Research
             </span>
-            
-            <Link 
-              href="/innovation-hub/ai-robotics" 
+
+            <Link
+              href="/innovation-hub/ai-robotics"
               draggable={false}
               onPointerDown={(e) => e.stopPropagation()}
               className="mt-1.5 sm:mt-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 bg-white/70 backdrop-blur-md rounded-full text-orange-700 font-bold text-[7.5px] sm:text-[9px] xl:text-[10px] uppercase tracking-widest border border-orange-200 hover:bg-white hover:text-orange-600 transition-colors shadow-sm flex items-center gap-1 cursor-pointer pointer-events-auto"
