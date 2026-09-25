@@ -168,59 +168,103 @@ export function VisionMission() {
           className="relative w-36 h-36 sm:w-44 sm:h-44 xl:w-52 xl:h-52 flex items-center justify-center bg-linear-to-br from-white via-orange-50 to-orange-200 overflow-hidden before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.8),transparent_60%)]"
         >
           {/* Text Content */}
-          <div className="relative z-10 text-center flex flex-col items-center justify-center p-3 sm:p-4">
+          <div className="relative z-10 flex flex-col items-center justify-center p-3 sm:p-4 w-full">
             
-            {/* Animated Robot/AI Element */}
-            <div className="relative w-8 h-8 sm:w-10 sm:h-10 xl:w-12 xl:h-12 mb-1 sm:mb-2 pointer-events-none flex items-center justify-center">
-              {/* Robot Head */}
-              <motion.div 
-                animate={{ y: [0, -3, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-full h-full bg-white/90 backdrop-blur-sm rounded-lg sm:rounded-xl flex items-center justify-center overflow-hidden border-[1.5px] border-orange-300 shadow-[0_2px_8px_rgba(251,146,60,0.25)]"
-              >
-                {/* Robot Eyes */}
-                <div className="flex gap-1.5 sm:gap-2 relative z-10">
-                  <motion.div 
-                    animate={{ scaleY: [1, 0.1, 1, 1], opacity: [1, 1, 1, 0.8] }}
-                    transition={{ duration: 4, repeat: Infinity, times: [0, 0.02, 0.04, 1] }}
-                    className="w-1.5 h-2.5 sm:w-2 sm:h-3.5 bg-orange-500 rounded-full shadow-[0_0_4px_rgba(249,115,22,0.5)]"
-                  />
-                  <motion.div 
-                    animate={{ scaleY: [1, 0.1, 1, 1], opacity: [1, 1, 1, 0.8] }}
-                    transition={{ duration: 4, repeat: Infinity, times: [0, 0.02, 0.04, 1] }}
-                    className="w-1.5 h-2.5 sm:w-2 sm:h-3.5 bg-orange-500 rounded-full shadow-[0_0_4px_rgba(249,115,22,0.5)]"
-                  />
-                </div>
-                
-                {/* AI Scanning Laser */}
-                <motion.div 
-                  animate={{ y: ['-100%', '300%'] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="absolute left-0 right-0 h-[1.5px] bg-orange-400/80 shadow-[0_0_6px_rgba(251,146,60,0.8)] z-20"
-                />
-              </motion.div>
+            {/* Header Row: Robot + AI & Robotics */}
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-1 justify-center w-full">
               
-              {/* AI Sparkles */}
+              {/* Custom Image-Matched Cute Robot (Orange Theme) */}
               <motion.div 
-                animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5], rotate: [0, 90] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3"
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-12 h-12 sm:w-14 sm:h-14 pointer-events-none shrink-0 drop-shadow-sm"
               >
-                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500" />
+                <svg viewBox="0 0 100 100" fill="none" stroke="#1e293b" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+                  
+                  {/* Left Arm */}
+                  <motion.g 
+                    animate={{ rotate: [-5, 5, -5] }} 
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} 
+                    style={{ transformOrigin: "25px 65px" }}
+                  >
+                    <rect x="12" y="54" width="16" height="38" rx="8" fill="white" transform="rotate(20, 20, 73)" />
+                  </motion.g>
+                  
+                  {/* Right Arm */}
+                  <motion.g 
+                    animate={{ rotate: [5, -5, 5] }} 
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }} 
+                    style={{ transformOrigin: "75px 65px" }}
+                  >
+                    <rect x="72" y="54" width="16" height="38" rx="8" fill="white" transform="rotate(-20, 80, 73)" />
+                  </motion.g>
+
+                  {/* Body */}
+                  <path d="M 35 52 C 10 65 20 95 50 98 C 80 95 90 65 65 52 Z" fill="white" />
+                  
+                  {/* Collar/Neck */}
+                  <path d="M 38 52 C 38 60 62 60 62 52 Z" fill="white" />
+
+                  {/* Chest Detail (Orange Theme) */}
+                  <path d="M 26 76 L 42 80 L 42 84 L 58 84 L 58 80 L 74 76" fill="none" stroke="#f97316" strokeWidth="2.5" />
+
+                  {/* Ears */}
+                  <path d="M 18 25 C 6 25 6 45 18 45 Z" fill="white" />
+                  <path d="M 82 25 C 94 25 94 45 82 45 Z" fill="white" />
+
+                  {/* Head */}
+                  <rect x="18" y="8" width="64" height="48" rx="22" fill="white" />
+
+                  {/* Visor */}
+                  <rect x="24" y="15" width="52" height="34" rx="12" fill="#1e293b" stroke="none" />
+
+                  {/* Eyes (Happy Orange) */}
+                  <motion.path 
+                    animate={{ scaleY: [1, 0.1, 1, 1] }}
+                    transition={{ duration: 4, repeat: Infinity, times: [0, 0.05, 0.1, 1] }}
+                    style={{ transformOrigin: "36px 30px" }}
+                    d="M 30 30 A 6 6 0 0 1 42 30 Z" fill="#f97316" stroke="none" 
+                  />
+                  <motion.path 
+                    animate={{ scaleY: [1, 0.1, 1, 1] }}
+                    transition={{ duration: 4, repeat: Infinity, times: [0, 0.05, 0.1, 1] }}
+                    style={{ transformOrigin: "64px 30px" }}
+                    d="M 58 30 A 6 6 0 0 1 70 30 Z" fill="#f97316" stroke="none" 
+                  />
+
+                  {/* Mouth (Happy Smile) */}
+                  <motion.path 
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    style={{ transformOrigin: "50px 38px" }}
+                    d="M 45 38 A 5 5 0 0 0 55 38 Z" fill="#f97316" stroke="none" 
+                  />
+
+                  {/* Visor Highlight */}
+                  <path d="M 28 22 C 34 18 42 18 48 20" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="3" strokeLinecap="round" />
+                  
+                  {/* Head Highlight */}
+                  <path d="M 24 16 A 12 12 0 0 1 36 12" fill="none" stroke="white" strokeWidth="4" strokeLinecap="round" />
+                </svg>
+                
+                {/* AI Sparkles */}
+                <motion.div 
+                  animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5], rotate: [0, 90] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                  className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2"
+                >
+                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-orange-400" />
+                </motion.div>
               </motion.div>
-              <motion.div 
-                animate={{ opacity: [0, 1, 0], scale: [0.3, 0.8, 0.3], rotate: [0, -90] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
-                className="absolute top-1 -left-3 sm:-left-4"
-              >
-                <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-orange-400" />
-              </motion.div>
+
+              {/* Text AI & Robotics */}
+              <div className="flex flex-col text-left leading-none">
+                <span className="text-slate-800 font-black text-[15px] sm:text-[17px] xl:text-[20px] tracking-tighter drop-shadow-sm pointer-events-none">AI &</span>
+                <span className="text-slate-800 font-black text-[15px] sm:text-[17px] xl:text-[20px] tracking-tighter drop-shadow-sm pointer-events-none mt-[1px]">Robotics</span>
+              </div>
             </div>
             
-            <span className="text-slate-800 font-black text-lg sm:text-xl xl:text-2xl leading-none tracking-tighter drop-shadow-sm pointer-events-none">AI &</span>
-            <span className="text-slate-800 font-black text-lg sm:text-xl xl:text-2xl leading-none tracking-tighter drop-shadow-sm pointer-events-none">Robotics</span>
-            
-            <span className="text-orange-700 font-bold text-[7px] sm:text-[8px] xl:text-[9px] leading-tight mt-1 sm:mt-1.5 uppercase tracking-wider border-t border-orange-300/60 pt-1 sm:pt-1.5 pointer-events-none">
+            <span className="text-orange-700 font-bold text-[7px] sm:text-[8px] xl:text-[9px] leading-tight mt-1 uppercase tracking-wider border-t border-orange-300/60 pt-1 sm:pt-1.5 pointer-events-none text-center">
               Chinmaya Science<br/>Research
             </span>
             
