@@ -58,7 +58,7 @@ const chapters = [
   },
 ];
 
-/* ─── HERO ──────────────────────────────────────────────────── */
+
 function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -68,12 +68,12 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative h-[45vh] flex items-center justify-center overflow-hidden bg-[#02133a]">
-      {/* Parallax image */}
+    
       <motion.div className="absolute inset-0" style={{ y: imgY }}>
         <Image src="/image/about2.webp" alt="Campus" fill sizes="100vw" priority className="object-cover opacity-70" />
       </motion.div>
 
-      {/* Dark vignette — edges only so image stays vivid */}
+   
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
 
@@ -81,7 +81,7 @@ function Hero() {
   );
 }
 
-/* ─── ORIGIN HEADING ─────────────────────────────────────────── */
+
 function OriginHeading() {
   return (
     <section className="bg-white pt-14 pb-2">

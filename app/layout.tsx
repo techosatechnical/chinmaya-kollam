@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   description: "Eteach - Online Education & LMS Course Website Template Clone",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

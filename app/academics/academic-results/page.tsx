@@ -21,11 +21,6 @@ export default function AcademicResultsPage() {
       {/* Header */}
       <section className="relative py-28 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-slate-700 bg-slate-900/50 backdrop-blur-md mb-8">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-sm font-medium tracking-wide text-white uppercase">Excellence & Achievements</span>
-          </div>
-
           <h1 className="py-2 text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white drop-shadow-lg">
             Academic Results
           </h1>
@@ -40,15 +35,15 @@ export default function AcademicResultsPage() {
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {results.map((result) => (
-            <div 
+            <div
               key={result.id}
               onClick={() => setSelectedImage(result.src)}
               className="w-full bg-white p-4 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 hover:-translate-y-2 cursor-pointer transition-all duration-500 flex flex-col justify-center"
             >
-              <img 
-                src={result.src} 
+              <img
+                src={result.src}
                 alt={result.alt}
-                className="w-full h-auto max-h-[600px] rounded-2xl object-contain hover:scale-105 transition-transform duration-500"
+                className="w-full h-auto max-h-150 rounded-2xl object-contain hover:scale-105 transition-transform duration-500"
               />
             </div>
           ))}
@@ -60,8 +55,8 @@ export default function AcademicResultsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-slate-950/90 backdrop-blur-xl animate-in fade-in duration-200">
           {/* Background click to close */}
           <div className="absolute inset-0 z-0" onClick={() => setSelectedImage(null)}></div>
-          
-          <button 
+
+          <button
             onClick={() => setSelectedImage(null)}
             className="absolute top-6 right-6 md:top-10 md:right-10 text-white/50 hover:text-white transition-colors p-3 bg-white/10 hover:bg-white/20 rounded-full z-50 backdrop-blur-md"
           >
@@ -69,10 +64,10 @@ export default function AcademicResultsPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          
+
           <div className="relative z-10 max-w-5xl w-full max-h-full flex flex-col items-center animate-in zoom-in-95 duration-300">
-            <img 
-              src={selectedImage} 
+            <img
+              src={selectedImage}
               alt="Zoomed Result"
               className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10"
             />

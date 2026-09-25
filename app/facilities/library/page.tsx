@@ -28,7 +28,7 @@ export default function LibraryPage() {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 lg:px-8 py-20">
-        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
+        <div className="bg-white shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">A World of Knowledge</h2>
@@ -40,10 +40,10 @@ export default function LibraryPage() {
               </p>
             </div>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src="/facilities/library.jpg" 
-                alt="Vidyalaya Library" 
-                className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700" 
+              <img
+                src="/facilities/library.jpg"
+                alt="Vidyalaya Library"
+                className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>

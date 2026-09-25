@@ -6,8 +6,8 @@ export function Footer() {
   return (
     <footer className="bg-[#0B1121] pt-20 pb-10">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div>
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 lg:gap-12 mb-12 lg:mb-16">
+          <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <img src="/logos/CV Kollam WHITE.png" alt="Chinmaya Vidyalaya Kollam Logo" className="h-20 w-auto" />
             </Link>
@@ -30,7 +30,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="col-span-1">
             <h3 className="text-xl font-bold text-white mb-6">Quick Links</h3>
             <ul className="space-y-3">
               <li><Link href="/" className="text-slate-400 hover:text-white transition-colors text-sm">Home</Link></li>
@@ -40,7 +40,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="col-span-1">
             <h3 className="text-xl font-bold text-white mb-6">Explore</h3>
             <ul className="space-y-3">
               <li><Link href="/facilities" className="text-slate-400 hover:text-white transition-colors text-sm">Facilities</Link></li>
@@ -50,7 +50,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <h3 className="text-xl font-bold text-white mb-6">Contact Info</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-4">

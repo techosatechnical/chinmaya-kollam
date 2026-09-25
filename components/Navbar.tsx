@@ -97,14 +97,15 @@ const navLinks: NavLink[] = [
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
 
   return (
     <div className="sticky top-2 md:top-11 z-50 h-0 w-full">
       <header className="w-full max-w-[98%] xl:max-w-350 mx-auto pt-2 relative z-50 flex items-center gap-2 lg:gap-4">
-        <div className="flex w-full items-center justify-between rounded-full bg-white/90 backdrop-blur-md border border-slate-200/60 px-4 py-2 lg:py-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.05)]">
+        <div className="flex w-full items-center justify-between rounded-full bg-linear-to-r from-indigo-100/50 via-sky-100/90 to-blue-100/50 backdrop-blur-md border border-slate-200/60 px-4 py-2 lg:py-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.05)]">
           {/* Logo outside */}
           <Link href="/" className="flex items-center shrink-0">
-            <img src="/logos/CV Kollam BLACK.png" alt="Logo" className="h-14 w-auto" />
+            <img src="/logos/CV Kollam BLACK.png" alt="Logo" className="h-20 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
@@ -124,7 +125,7 @@ export function Navbar() {
                 {/* Dropdown Menu */}
                 {link.hasDropdown && link.subItems && (
                   <div className="absolute left-0 top-full pt-4 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-out z-50">
-                    <div className={`bg-[#0F284A]  shadow-2xl border border-white/10 p-2.5 ${link.subItems.length > 5 ? 'w-195 grid grid-cols-3 gap-x-2 gap-y-0.5' : 'w-70 flex flex-col gap-0.5'}`}>
+                    <div className={`bg-primary  shadow-2xl border border-white/10 p-2.5 ${link.subItems.length > 5 ? 'w-195 grid grid-cols-3 gap-x-2 gap-y-0.5' : 'w-70 flex flex-col gap-0.5'}`}>
                       {link.subItems.map((sub) => (
                         <Link
                           key={sub.title}
@@ -173,10 +174,10 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-            className="fixed inset-0 z-100 bg-white p-6 shadow-2xl"
+            className="fixed inset-0 z-[100] bg-slate-50/95 backdrop-blur-xl p-6 shadow-2xl"
           >
-            <div className="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
-              <img src="/logos/kollogo.png" alt="Logo" className="h-8 w-auto" />
+            <div className="flex justify-between items-center mb-8 border-b border-slate-200/60 pb-4">
+              <img src="/logos/CV Kollam BLACK.png" alt="Logo" className="h-20 w-auto" />
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-10 h-10 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center transition-colors"
@@ -188,37 +189,63 @@ export function Navbar() {
             <div className="flex flex-col space-y-2 overflow-y-auto h-full pb-20">
               {navLinks.map((link) => (
                 <div key={link.name} className="flex flex-col">
-                  <Link
-                    href={link.href}
-                    onClick={() => !link.hasDropdown && setIsMobileMenuOpen(false)}
-                    className="group text-[15px] font-semibold text-slate-800 hover:bg-slate-50 rounded-2xl px-4 py-3 flex justify-between items-center transition-colors"
-                  >
-                    {link.name}
-                    {link.hasDropdown && (
-                      <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-slate-600 transition-colors" />
-                    )}
-                  </Link>
-                  {link.hasDropdown && link.subItems && (
-                    <div className="flex flex-col pl-4 mt-1 space-y-1">
-                      {link.subItems.map(sub => (
-                        <Link
-                          key={sub.title}
-                          href={sub.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="block px-4 py-2.5 text-[14px] font-medium text-slate-600 hover:text-[#385EEC] hover:bg-slate-50 transition-colors rounded-xl"
-                        >
-                          <div className="flex items-center justify-between">
-                            <span>{sub.title}</span>
-                            {sub.badge && (
-                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${sub.badge.classes} leading-none whitespace-nowrap`}>
-                                {sub.badge.text}
-                              </span>
-                            )}
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
+                  {link.hasDropdown ? (
+                    <button
+                      onClick={() => setExpandedMenu(expandedMenu === link.name ? null : link.name)}
+                      className={`group font-[var(--font-heading)] tracking-wide text-[19px] font-extrabold rounded-2xl px-5 py-4 flex justify-between items-center transition-all duration-300 w-full text-left ${expandedMenu === link.name
+                        ? 'bg-white text-[#385EEC] shadow-sm border border-slate-100'
+                        : 'text-slate-800 hover:bg-white hover:shadow-sm border border-transparent'
+                        }`}
+                    >
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${expandedMenu === link.name ? 'rotate-180 text-[#385EEC]' : 'text-slate-400 group-hover:text-[#FF6A00]'
+                        }`} />
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="group font-[var(--font-heading)] tracking-wide text-[19px] font-extrabold text-slate-800 hover:bg-white hover:text-[#385EEC] hover:shadow-sm border border-transparent rounded-2xl px-5 py-4 flex justify-between items-center transition-all duration-300 w-full text-left"
+                    >
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+                    </Link>
                   )}
+
+                  <AnimatePresence>
+                    {link.hasDropdown && expandedMenu === link.name && link.subItems && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col pl-4 mt-2 mb-2 space-y-1 border-l-2 border-slate-200/60 ml-6">
+                          {link.subItems.map(sub => (
+                            <Link
+                              key={sub.title}
+                              href={sub.href}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="group/sub block px-4 py-3 text-[16px] font-medium text-slate-600 hover:text-slate-900 hover:bg-white hover:shadow-sm rounded-xl transition-all duration-300"
+                            >
+                              <div className="flex items-center gap-3">
+                                {sub.icon && (
+                                  <div className={`p-2 rounded-lg bg-slate-100 group-hover/sub:bg-blue-50 group-hover/sub:scale-110 transition-all duration-300 ${sub.iconColor}`}>
+                                    <sub.icon className="w-4 h-4" />
+                                  </div>
+                                )}
+                                <span className="group-hover/sub:translate-x-1 transition-transform duration-300">{sub.title}</span>
+                                {sub.badge && (
+                                  <span className={`ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full border ${sub.badge.classes} leading-none whitespace-nowrap`}>
+                                    {sub.badge.text}
+                                  </span>
+                                )}
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
 

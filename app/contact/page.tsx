@@ -13,7 +13,7 @@ export default function ContactPage() {
       <Navbar />
 
       {/* Page Header */}
-      <div className="bg-primary py-16 md:py-24 relative overflow-hidden">
+      <div className="bg-primary pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <motion.h1
@@ -74,7 +74,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="bg-white rounded-2xl p-6 shadow-xl shadow-[#0F284A]/5 border border-slate-100 flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300"
+              className="bg-white rounded-2xl p-6 shadow-xl shadow-primary/5 border border-slate-100 flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300"
             >
               <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
                 <Mail className="w-6 h-6" />
@@ -88,7 +88,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="bg-white rounded-2xl p-6 shadow-xl shadow-[#0F284A]/5 border border-slate-100 flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300"
+              className="bg-white rounded-2xl p-6 shadow-xl shadow-primary/5 border border-slate-100 flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300"
             >
               <div className="w-14 h-14 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
                 <Clock className="w-6 h-6" />
@@ -104,7 +104,7 @@ export default function ContactPage() {
             <div className="w-full lg:w-1/2 p-8 md:p-12">
               <div className="mb-8">
                 <h2 className="text-3xl font-bold text-slate-900 mb-2 flex items-center gap-3">
-                  <MessageCircle className="w-8 h-8 text-[#FF9924]" />
+                  <MessageCircle className="w-8 h-8 text-secondary" />
                   Send us a Message
                 </h2>
                 <p className="text-slate-600">Fill out the form below and our team will get back to you shortly.</p>
@@ -114,22 +114,22 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-semibold text-slate-700">Full Name</label>
-                    <input type="text" id="name" placeholder="John Doe" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 focus:border-[#385EEC] transition-all" />
+                    <input type="text" id="name" placeholder="John Doe" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 transition-all" />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-semibold text-slate-700">Email Address</label>
-                    <input type="email" id="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 focus:border-[#385EEC] transition-all" />
+                    <input type="email" id="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 transition-all" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="phone" className="text-sm font-semibold text-slate-700">Phone Number</label>
-                    <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 focus:border-[#385EEC] transition-all" />
+                    <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 transition-all" />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="subject" className="text-sm font-semibold text-slate-700">Inquiry Type</label>
-                    <select id="subject" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 focus:border-[#385EEC] transition-all appearance-none cursor-pointer">
+                    <select id="subject" className="w-full px-4 py-3 rounded-xl border bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 focus:border-[#385EEC] transition-all appearance-none cursor-pointer">
                       <option value="">Select an option</option>
                       <option value="admissions">Admissions</option>
                       <option value="fees">Fee Payment</option>
@@ -141,10 +141,10 @@ export default function ContactPage() {
 
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-semibold text-slate-700">Your Message</label>
-                  <textarea id="message" rows={5} placeholder="How can we help you?" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 focus:border-[#385EEC] transition-all resize-none"></textarea>
+                  <textarea id="message" rows={5} placeholder="How can we help you?" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#385EEC]/50 transition-all resize-none"></textarea>
                 </div>
 
-                <button type="button" className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0F284A] text-white font-bold rounded-xl hover:bg-[#385EEC] transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[#385EEC]/30">
+                <button type="button" className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-[#385EEC] transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[#385EEC]/30">
                   <Send className="w-5 h-5" />
                   Send Message
                 </button>
@@ -152,7 +152,7 @@ export default function ContactPage() {
             </div>
 
             {/* Map Section */}
-            <div className="w-full lg:w-1/2 min-h-[400px] lg:min-h-full bg-slate-200 relative">
+            <div className="w-full lg:w-1/2 min-h-100 lg:min-h-full bg-slate-200 relative">
               <iframe
                 src="https://maps.google.com/maps?ll=8.934493,76.638692&z=15&t=m&hl=en&gl=IN&mapclient=embed&cid=1689960815386803714&output=embed"
                 className="absolute inset-0 w-full h-full border-0"
