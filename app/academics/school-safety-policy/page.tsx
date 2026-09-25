@@ -10,7 +10,7 @@ export default function SchoolSafetyPolicyPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2000&auto=format&fit=crop"
@@ -80,6 +80,7 @@ export default function SchoolSafetyPolicyPage() {
     </main>
   );
 }
+
 
 
 

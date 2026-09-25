@@ -9,7 +9,7 @@ export default function SportsTeamPage() {
       <TopBar />
       <Navbar />
 
-      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.stockcake.com/public/b/2/b/b2b36ee9-429a-485b-bd61-7f6531cc6fee_large/sunset-soccer-team-stockcake.jpg"
@@ -59,6 +59,7 @@ export default function SportsTeamPage() {
     </main>
   );
 }
+
 
 
 

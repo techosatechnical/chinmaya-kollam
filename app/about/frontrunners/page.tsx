@@ -42,7 +42,7 @@ export default function FrontrunnersPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-10 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative pt-48 pb-12 md:pt-64 md:pb-20 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-slate-800 via-slate-950 to-slate-950"></div>
         <div className="absolute top-0 w-full h-px bg-linear-to-r from-transparent via-slate-400 to-transparent opacity-20"></div>
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
@@ -52,7 +52,7 @@ export default function FrontrunnersPage() {
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
 
-          <h1 className="py-6 text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
+          <h1 className=" text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
             Our Frontrunners
           </h1>
 
@@ -167,6 +167,7 @@ export default function FrontrunnersPage() {
     </main>
   );
 }
+
 
 
 

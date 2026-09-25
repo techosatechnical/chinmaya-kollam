@@ -14,7 +14,7 @@ export default function GeneralInfoPage() {
       <TopBar />
       <Navbar />
       {/* Header */}
-      <section className="relative py-10 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-slate-950 text-white overflow-hidden flex flex-col items-center justify-center">
         {/* Abstract Background Elements */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-950 to-slate-950"></div>
         <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent opacity-20"></div>
@@ -65,6 +65,7 @@ export default function GeneralInfoPage() {
     </main>
   );
 }
+
 
 
 

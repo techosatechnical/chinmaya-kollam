@@ -20,7 +20,7 @@ export default function NEPPage() {
       <Navbar />
 
       {/* Header */}
-      <section className="relative py-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/image/NEP1.jpeg"
@@ -90,6 +90,7 @@ export default function NEPPage() {
     </main>
   );
 }
+
 
 
 

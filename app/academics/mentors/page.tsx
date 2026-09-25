@@ -57,7 +57,7 @@ export default function MentorsPage() {
       <Navbar />
 
       {/* Page Header */}
-      <div className="bg-primary py-10 md:py-8 relative overflow-hidden">
+      <div className="bg-primary pt-32 pb-10 md:pt-40 md:pb-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <motion.h1
