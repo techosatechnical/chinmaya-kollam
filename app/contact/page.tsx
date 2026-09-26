@@ -13,7 +13,7 @@ export default function ContactPage() {
       <Navbar />
 
       {/* Page Header */}
-      <div className="bg-primary pt-32 pb-16 md:pt-40 md:pb-12 relative overflow-hidden">
+      <div className="bg-primary pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
           <motion.h1
@@ -39,7 +39,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 lg:px-8">
 
           {/* Contact Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 relative z-20 -mt-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 relative z-20 -mt-12 md:-mt-20">
 
             {/* Card 1 */}
             <motion.div

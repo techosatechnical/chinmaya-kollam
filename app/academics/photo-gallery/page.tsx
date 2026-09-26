@@ -53,7 +53,7 @@ export default function PhotoGalleryPage() {
             <span className="text-sm font-medium tracking-wide text-slate-300 uppercase">Memories & Moments</span>
           </div>
 
-          <h1 className="py-2 text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
+          <h1 className="py-2 text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
             Photo Gallery
           </h1>
 

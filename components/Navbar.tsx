@@ -296,9 +296,9 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0, x: 0 }}
             exit={{
               opacity: 0,
-              x: 80,
-              scale: 0.95,
-              transition: { duration: 0.25, ease: "easeInOut" },
+              x: 160,
+              scale: 0.96,
+              transition: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
             }}
             className="sticky top-2 md:top-11 z-50 h-0 w-full pointer-events-none"
           >
@@ -319,7 +319,7 @@ export function Navbar() {
             initial={{ opacity: 0, scale: 0.6, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             exit={{ opacity: 0, scale: 0.6, x: 50 }}
-            transition={{ type: "spring", stiffness: 400, damping: 28 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="fixed top-14 right-4 md:top-16 md:right-8 z-[70]"
           >
             <button
@@ -342,10 +342,10 @@ export function Navbar() {
           <motion.div
             key="scrolled-expanded-navbar"
             ref={navRef}
-            initial={{ opacity: 0, x: 80, scale: 0.95 }}
+            initial={{ opacity: 0, x: 160, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 80, scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 350, damping: 28 }}
+            exit={{ opacity: 0, x: 160, scale: 0.96 }}
+            transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
             className="fixed top-3 md:top-12 left-0 right-0 z-[70] w-full max-w-[98%] xl:max-w-350 mx-auto px-2 md:px-4"
           >
             <header className="w-full relative z-50 flex items-center gap-2 lg:gap-4">
@@ -363,10 +363,10 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-            className="fixed inset-0 z-[100] bg-slate-50/95 backdrop-blur-xl p-6 shadow-2xl"
+            className="fixed inset-0 z-[100] bg-slate-50/95 backdrop-blur-xl p-6 shadow-2xl flex flex-col"
           >
-            <div className="flex justify-between items-center mb-8 border-b border-slate-200/60 pb-4">
-              <img src="/logos/CV Kollam BLACK.png" alt="Logo" className="h-20 w-auto" />
+            <div className="flex justify-between items-center mb-6 border-b border-slate-200/60 pb-4 shrink-0">
+              <img src="/logos/CV Kollam BLACK.png" alt="Logo" className="h-16 sm:h-20 w-auto" />
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-10 h-10 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center transition-colors cursor-pointer"
@@ -376,7 +376,7 @@ export function Navbar() {
               </button>
             </div>
 
-            <div className="flex flex-col space-y-2 overflow-y-auto h-full pb-10">
+            <div className="flex flex-col space-y-2 overflow-y-auto flex-1 pb-16">
               {navLinks.map((link) => (
                 <div key={link.name} className="flex flex-col">
                   {link.hasDropdown ? (

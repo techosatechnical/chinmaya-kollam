@@ -31,7 +31,7 @@ export default function PrincipalDeskPage() {
             <span className="text-sm font-medium tracking-wide text-slate-300 uppercase">Leadership</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
             From the Principal's Desk
           </h1>
 

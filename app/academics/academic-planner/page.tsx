@@ -25,7 +25,7 @@ export default function AcademicPlannerPage() {
             <span className="text-sm font-medium tracking-wide text-black uppercase">Calendar & Planning</span>
           </div>
 
-          <h1 className="py-2 text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white">
+          <h1 className="py-2 text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white">
             Academic Planner
           </h1>
 

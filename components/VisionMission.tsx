@@ -147,7 +147,7 @@ export function VisionMission() {
         dragConstraints={constraints}
         dragElastic={0.1}
         whileDrag={{ scale: 1.1, cursor: "grabbing" }}
-        className="absolute -top-12 -right-12 sm:-right-24 md:top-1/2 md:-translate-y-1/2 md:-right-32 xl:-right-48 z-50 cursor-grab select-none"
+        className="absolute -top-10 right-2 sm:right-0 md:top-1/2 md:-translate-y-1/2 md:-right-32 xl:-right-48 z-50 cursor-grab select-none"
       >
         <motion.div
           animate={{

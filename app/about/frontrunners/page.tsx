@@ -52,7 +52,7 @@ export default function FrontrunnersPage() {
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
 
-          <h1 className=" text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
             Our Frontrunners
           </h1>
 
@@ -121,7 +121,7 @@ export default function FrontrunnersPage() {
       {/* Modal */}
       {selectedItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-          <div className="relative bg-white rounded-md shadow-2xl max-w-3xl w-full p-8 md:p-12 max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative bg-white rounded-md shadow-2xl max-w-3xl w-full p-6 sm:p-8 md:p-12 max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
             <button
               onClick={() => setSelectedItem(null)}
               className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors p-2 bg-slate-100 rounded-full"

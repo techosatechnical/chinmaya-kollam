@@ -57,7 +57,7 @@ export default function NewsletterPage() {
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
 
 
-          <h1 className="py-6 text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
+          <h1 className="py-4 text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400">
             Newsletters
           </h1>
 

@@ -112,7 +112,7 @@ export function LeadershipMessages() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-3xl bg-white rounded-md shadow-2xl overflow-hidden flex flex-col md:flex-row z-10"
+              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-md shadow-2xl flex flex-col md:flex-row z-10"
             >
               {(() => {
                 const data = messages.find((m) => m.id === activeMessage)!;
@@ -133,7 +133,7 @@ export function LeadershipMessages() {
                     </div>
 
                     {/* Modal Content */}
-                    <div className="w-full md:w-3/5 p-8 md:p-10 relative">
+                    <div className="w-full md:w-3/5 p-6 sm:p-8 md:p-10 relative">
                       <button
                         onClick={() => setActiveMessage(null)}
                         className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors"

@@ -33,7 +33,7 @@ export default function AiTeachersPage() {
             <span className="text-sm font-medium tracking-wide text-white uppercase">Innovation Hub</span>
           </div>
 
-          <h1 className="py-2 text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white drop-shadow-lg">
+          <h1 className="py-2 text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white drop-shadow-lg">
             AI Trained Teachers
           </h1>
           <p className="text-lg md:text-2xl max-w-2xl mx-auto text-white font-medium tracking-tight drop-shadow-md">

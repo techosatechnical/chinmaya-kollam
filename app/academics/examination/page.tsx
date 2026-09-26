@@ -18,7 +18,7 @@ export default function ExaminationPage() {
           />
         </div>
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <h1 className="py-2 text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white drop-shadow-lg">
+          <h1 className="py-2 text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white drop-shadow-lg">
             Examination
           </h1>
           <p className="text-lg md:text-2xl max-w-2xl mx-auto text-white font-medium tracking-tight drop-shadow-md">
@@ -27,8 +27,8 @@ export default function ExaminationPage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-32 text-center">
-        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-16 max-w-2xl mx-auto">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-32 text-center">
+        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-6 sm:p-10 md:p-16 max-w-2xl mx-auto">
           <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg className="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
