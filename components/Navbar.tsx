@@ -162,20 +162,42 @@ export function Navbar() {
     }
   };
 
-  const renderNavbarContent = (isFloating: boolean = false) => (
-    <div
-      className={`flex w-full items-center justify-between rounded-full transition-all duration-300 ${isFloating
-          ? "bg-white/95 backdrop-blur-xl border border-slate-200/90 px-4 py-2 lg:py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.12)]"
-          : "bg-linear-to-r from-indigo-100/50 via-sky-100/90 to-blue-100/50 backdrop-blur-md border border-slate-200/60 px-4 py-2 lg:py-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.05)]"
-        }`}
-    >
-      {/* Logo */}
-      <Link href="/" onClick={handleLinkClick} className="flex items-center shrink-0 ml-4 lg:ml-6">
-        <img src="/logos/CV Kollam BLACK.png" alt="Logo" className="h-16 lg:h-20 w-auto" />
-      </Link>
+  const renderNavbarContent = (isFloating: boolean = false) => {
+    const baseTheme = isFloating
+      ? "bg-white/95 backdrop-blur-xl border-slate-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.12)]"
+      : "bg-linear-to-r from-indigo-100/50 via-sky-100/90 to-blue-100/50 backdrop-blur-md border-slate-200/60 shadow-[0_8px_30px_rgb(0,0,0,0.05)]";
+    // Orange badge UI for the logo container
+    const logoContainerClasses = `flex flex-col items-center rounded-b-xl transition-all duration-300 bg-[#DE7129] shadow-md shrink-0 self-start z-10`;
 
-      {/* Desktop Nav */}
-      <nav className="hidden xl:flex items-center justify-start gap-1">
+    return (
+      <div className={`relative flex items-center mx-auto w-full xl:w-max justify-between xl:justify-start gap-4 rounded-full border transition-all duration-300 pr-4 lg:pr-6 py-2 lg:py-2.5 mt-1 xl:mt-4 shadow-xs ${baseTheme}`}>
+        
+        {/* Left Side: Logo and Text */}
+        <div className="flex items-center shrink-0">
+          {/* Logo Container (Badge) */}
+          <div className={`${logoContainerClasses} absolute left-4 lg:left-6 top-0 z-20 !ml-0 !mt-0`}>
+            <Link href="/" onClick={handleLinkClick} className="flex items-center px-1.5 lg:px-3 pt-1 lg:pt-1.5 pb-2 lg:pb-3">
+              <img 
+                src="/logos/CV Kollam white logo.png" 
+                alt="Logo Graphic" 
+                className="h-12 lg:h-16 w-auto drop-shadow-sm" 
+              />
+            </Link>
+          </div>
+
+          {/* Logo Text outside the badge */}
+          <Link href="/" onClick={handleLinkClick} className="flex items-center shrink-0 ml-16 lg:ml-24 z-10">
+            <img 
+              src="/logos/CV Kollam text white.png" 
+              alt="Logo Text" 
+              className="h-6 lg:h-7 w-auto drop-shadow-sm" 
+              style={{ filter: "brightness(0) saturate(100%) invert(45%) sepia(93%) saturate(1352%) hue-rotate(346deg) brightness(92%) contrast(91%)" }}
+            />
+          </Link>
+        </div>
+
+        {/* Desktop Nav */}
+        <nav className="hidden xl:flex items-center justify-start gap-1 ml-4 lg:ml-8">
         {navLinks.map((link) => (
           <div key={link.name} className="relative group">
             <Link
@@ -267,7 +289,7 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu Toggle */}
-      <div className="xl:hidden flex w-full items-center justify-end">
+      <div className="xl:hidden flex items-center justify-end">
         <button
           onClick={() => {
             if (isFloating) {
@@ -283,7 +305,8 @@ export function Navbar() {
         </button>
       </div>
     </div>
-  );
+    );
+  };
 
   return (
     <>

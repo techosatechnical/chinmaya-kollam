@@ -88,7 +88,7 @@ export function VisionMission() {
 
         {/* Right Side: Quotes Slider */}
         <div 
-          className="w-full md:w-[40%] px-5 lg:px-7 pt-52 md:pt-60 pb-0 text-white flex flex-col items-center justify-end relative bg-cover bg-[center_35%]"
+          className="w-full md:w-[40%] px-5 lg:px-7 pt-52 md:pt-60 pb-0 text-white flex flex-col items-center justify-end relative bg-cover bg-position-[center_35%]"
           style={{ backgroundImage: 'linear-gradient(to bottom, rgba(253, 135, 51, 0.1), rgba(253, 135, 51, 0.95)), url("/image/gurudev2.jfif")' }}
         >
 
@@ -258,7 +258,7 @@ export function VisionMission() {
               {/* Text AI & Robotics */}
               <div className="flex flex-col text-left leading-none">
                 <span className="text-slate-800 font-black text-[15px] sm:text-[17px] xl:text-[20px] tracking-tighter drop-shadow-sm pointer-events-none">AI &</span>
-                <span className="text-slate-800 font-black text-[15px] sm:text-[17px] xl:text-[20px] tracking-tighter drop-shadow-sm pointer-events-none mt-[1px]">Robotics</span>
+                <span className="text-slate-800 font-black text-[15px] sm:text-[17px] xl:text-[20px] tracking-tighter drop-shadow-sm pointer-events-none mt-px">Robotics</span>
               </div>
             </div>
 
