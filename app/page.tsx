@@ -10,10 +10,12 @@ import { RecentNews } from "@/components/RecentNews";
 import { Testimonials } from "@/components/Testimonials";
 import { Facilities } from "@/components/Facilities";
 import { Footer } from "@/components/Footer";
+import { AnnouncementModal } from "@/components/AnnouncementModal";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <AnnouncementModal />
       <TopBar />
       <Navbar />
       <Hero />

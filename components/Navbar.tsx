@@ -171,26 +171,26 @@ export function Navbar() {
 
     return (
       <div className={`relative flex items-center mx-auto w-full xl:w-max justify-between xl:justify-start gap-4 lg:gap-5 rounded-full border transition-all duration-300 pr-4 lg:pr-7 py-2.5 lg:py-3.5 mt-1 xl:mt-4 shadow-xs ${baseTheme}`}>
-        
+
         {/* Left Side: Logo and Text */}
         <div className="flex items-center shrink-0">
           {/* Logo Container (Badge) */}
           <div className={`${logoContainerClasses} absolute left-4 lg:left-6 top-0 z-20 !ml-0 !mt-0`}>
             <Link href="/" onClick={handleLinkClick} className="flex items-center px-2 lg:px-3.5 pt-1 lg:pt-2 pb-2 lg:pb-3.5">
-              <img 
-                src="/logos/CV Kollam white logo.png" 
-                alt="Logo Graphic" 
-                className="h-13 lg:h-[4.5rem] w-auto drop-shadow-sm" 
+              <img
+                src="/logos/CV Kollam white logo.png"
+                alt="Logo Graphic"
+                className="h-13 lg:h-[4.5rem] w-auto drop-shadow-sm"
               />
             </Link>
           </div>
 
           {/* Logo Text outside the badge */}
           <Link href="/" onClick={handleLinkClick} className="flex items-center shrink-0 ml-18 lg:ml-28 z-10">
-            <img 
-              src="/logos/CV Kollam text white.png" 
-              alt="Logo Text" 
-              className="h-6.5 lg:h-8 w-auto drop-shadow-sm" 
+            <img
+              src="/logos/CV Kollam text white.png"
+              alt="Logo Text"
+              className="h-6.5 lg:h-8 w-auto drop-shadow-sm"
               style={{ filter: "brightness(0) saturate(100%) invert(45%) sepia(93%) saturate(1352%) hue-rotate(346deg) brightness(92%) contrast(91%)" }}
             />
           </Link>
@@ -198,113 +198,113 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden xl:flex items-center justify-start gap-1.5 ml-4 lg:ml-8">
-        {navLinks.map((link) => (
-          <div key={link.name} className="relative group">
-            <Link
-              href={link.href}
-              onClick={handleLinkClick}
-              className={`flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[15px] font-bold text-slate-700 hover:text-[#FF6A00] transition-colors cursor-pointer tracking-wide ${link.hasDropdown ? "ml-1.5" : ""
-                }`}
-            >
-              {link.name}
-              {link.hasDropdown && (
-                <ChevronDown className="w-4 h-4 opacity-70 group-hover:rotate-180 transition-transform duration-300" />
-              )}
-            </Link>
+          {navLinks.map((link) => (
+            <div key={link.name} className="relative group">
+              <Link
+                href={link.href}
+                onClick={handleLinkClick}
+                className={`flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[15px] font-bold text-slate-700 hover:text-[#FF6A00] transition-colors cursor-pointer tracking-wide ${link.hasDropdown ? "ml-1.5" : ""
+                  }`}
+              >
+                {link.name}
+                {link.hasDropdown && (
+                  <ChevronDown className="w-4 h-4 opacity-70 group-hover:rotate-180 transition-transform duration-300" />
+                )}
+              </Link>
 
-            {/* Dropdown Menu */}
-            {link.hasDropdown && link.subItems && (
-              <div className="absolute left-0 top-full pt-4 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-out z-50">
-                <div
-                  className={`bg-white rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-slate-100 p-3 ${link.subItems.length > 5 ? "w-180 grid grid-cols-3 gap-2.5" : "w-70 flex flex-col gap-2"
-                    }`}
-                >
-                  {link.subItems.map((sub, index) => {
-                    const themes = [
-                      { text: "text-orange-500", bg: "bg-orange-50", border: "border-orange-200" },
-                      { text: "text-emerald-500", bg: "bg-emerald-50", border: "border-emerald-200" },
-                      { text: "text-indigo-500", bg: "bg-indigo-50", border: "border-indigo-200" },
-                      { text: "text-purple-500", bg: "bg-purple-50", border: "border-purple-200" },
-                      { text: "text-amber-500", bg: "bg-amber-50", border: "border-amber-200" },
-                      { text: "text-blue-500", bg: "bg-blue-50", border: "border-blue-200" },
-                      { text: "text-pink-500", bg: "bg-pink-50", border: "border-pink-200" },
-                    ];
-                    const theme = themes[index % themes.length];
-                    return (
-                      <Link
-                        key={sub.title}
-                        href={sub.href}
-                        onClick={handleLinkClick}
-                        className="flex items-center px-3 py-2.5 rounded-xl border border-slate-100 bg-white hover:shadow-md hover:border-slate-200 transition-all group/item relative"
-                      >
-                        <div className="relative shrink-0 ml-1">
-                          <div
-                            className={`absolute -top-2 -left-2 px-1 py-[1px] rounded-[4px] text-[9px] font-black border bg-white z-10 ${theme.border} ${theme.text}`}
-                          >
-                            {String(index + 1).padStart(2, "0")}
+              {/* Dropdown Menu */}
+              {link.hasDropdown && link.subItems && (
+                <div className="absolute left-0 top-full pt-4 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-out z-50">
+                  <div
+                    className={`bg-white rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-slate-100 p-3 ${link.subItems.length > 5 ? "w-180 grid grid-cols-3 gap-2.5" : "w-70 flex flex-col gap-2"
+                      }`}
+                  >
+                    {link.subItems.map((sub, index) => {
+                      const themes = [
+                        { text: "text-orange-500", bg: "bg-orange-50", border: "border-orange-200" },
+                        { text: "text-emerald-500", bg: "bg-emerald-50", border: "border-emerald-200" },
+                        { text: "text-indigo-500", bg: "bg-indigo-50", border: "border-indigo-200" },
+                        { text: "text-purple-500", bg: "bg-purple-50", border: "border-purple-200" },
+                        { text: "text-amber-500", bg: "bg-amber-50", border: "border-amber-200" },
+                        { text: "text-blue-500", bg: "bg-blue-50", border: "border-blue-200" },
+                        { text: "text-pink-500", bg: "bg-pink-50", border: "border-pink-200" },
+                      ];
+                      const theme = themes[index % themes.length];
+                      return (
+                        <Link
+                          key={sub.title}
+                          href={sub.href}
+                          onClick={handleLinkClick}
+                          className="flex items-center px-3 py-2.5 rounded-xl border border-slate-100 bg-white hover:shadow-md hover:border-slate-200 transition-all group/item relative"
+                        >
+                          <div className="relative shrink-0 ml-1">
+                            <div
+                              className={`absolute -top-2 -left-2 px-1 py-[1px] rounded-[4px] text-[9px] font-black border bg-white z-10 ${theme.border} ${theme.text}`}
+                            >
+                              {String(index + 1).padStart(2, "0")}
+                            </div>
+                            <div
+                              className={`w-9 h-9 rounded-lg border flex items-center justify-center ${theme.border} ${theme.bg}`}
+                            >
+                              {sub.icon ? <sub.icon className={`w-4 h-4 ${theme.text}`} /> : <div className="w-4 h-4" />}
+                            </div>
                           </div>
-                          <div
-                            className={`w-9 h-9 rounded-lg border flex items-center justify-center ${theme.border} ${theme.bg}`}
-                          >
-                            {sub.icon ? <sub.icon className={`w-4 h-4 ${theme.text}`} /> : <div className="w-4 h-4" />}
-                          </div>
-                        </div>
-                        <div className="ml-4 flex flex-col justify-center">
-                          <div className="flex items-center gap-2">
-                            <span className="text-slate-800 font-bold text-[13px] leading-tight group-hover/item:text-[#385EEC] transition-colors capitalize">
-                              {sub.title.toLowerCase()}
-                            </span>
-                            {sub.badge && (
-                              <span
-                                className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md border ${sub.badge.classes} leading-none whitespace-nowrap`}
-                              >
-                                {sub.badge.text}
+                          <div className="ml-4 flex flex-col justify-center">
+                            <div className="flex items-center gap-2">
+                              <span className="text-slate-800 font-bold text-[13px] leading-tight group-hover/item:text-[#385EEC] transition-colors capitalize">
+                                {sub.title.toLowerCase()}
                               </span>
-                            )}
+                              {sub.badge && (
+                                <span
+                                  className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md border ${sub.badge.classes} leading-none whitespace-nowrap`}
+                                >
+                                  {sub.badge.text}
+                                </span>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      </Link>
-                    );
-                  })}
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        ))}
-      </nav>
+              )}
+            </div>
+          ))}
+        </nav>
 
-      {/* Right Action / Close Button on Desktop */}
-      <div className="hidden xl:flex items-center justify-end">
-        {isFloating && (
+        {/* Right Action / Close Button on Desktop */}
+        <div className="hidden xl:flex items-center justify-end">
+          {isFloating && (
+            <button
+              onClick={() => setIsNavOpenScrolled(false)}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100/90 hover:bg-red-50 text-slate-700 hover:text-red-600 transition-all duration-200 font-bold text-xs tracking-wider cursor-pointer border border-slate-200 shadow-xs group ml-2"
+              title="Collapse navbar"
+              aria-label="Collapse navigation bar"
+            >
+              <X className="w-4 h-4 text-slate-600 group-hover:text-red-600 transition-colors" />
+              <span>CLOSE</span>
+            </button>
+          )}
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="xl:hidden flex items-center justify-end">
           <button
-            onClick={() => setIsNavOpenScrolled(false)}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100/90 hover:bg-red-50 text-slate-700 hover:text-red-600 transition-all duration-200 font-bold text-xs tracking-wider cursor-pointer border border-slate-200 shadow-xs group ml-2"
-            title="Collapse navbar"
-            aria-label="Collapse navigation bar"
+            onClick={() => {
+              if (isFloating) {
+                setIsNavOpenScrolled(false);
+              } else {
+                setIsMobileMenuOpen(true);
+              }
+            }}
+            className="flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors cursor-pointer"
+            aria-label={isFloating ? "Close navbar" : "Open mobile menu"}
           >
-            <X className="w-4 h-4 text-slate-600 group-hover:text-red-600 transition-colors" />
-            <span>CLOSE</span>
+            {isFloating ? <X className="w-5.5 h-5.5 text-slate-600" /> : <Menu className="w-5.5 h-5.5 text-slate-600" />}
           </button>
-        )}
+        </div>
       </div>
-
-      {/* Mobile Menu Toggle */}
-      <div className="xl:hidden flex items-center justify-end">
-        <button
-          onClick={() => {
-            if (isFloating) {
-              setIsNavOpenScrolled(false);
-            } else {
-              setIsMobileMenuOpen(true);
-            }
-          }}
-          className="flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors cursor-pointer"
-          aria-label={isFloating ? "Close navbar" : "Open mobile menu"}
-        >
-          {isFloating ? <X className="w-5.5 h-5.5 text-slate-600" /> : <Menu className="w-5.5 h-5.5 text-slate-600" />}
-        </button>
-      </div>
-    </div>
     );
   };
 
@@ -406,8 +406,8 @@ export function Navbar() {
                     <button
                       onClick={() => setExpandedMenu(expandedMenu === link.name ? null : link.name)}
                       className={`group font-[var(--font-heading)] tracking-wide text-[19px] font-extrabold rounded-sm px-5 py-4 flex justify-between items-center transition-all duration-300 w-full text-left cursor-pointer ${expandedMenu === link.name
-                          ? "bg-white text-[#385EEC] shadow-sm border border-slate-100"
-                          : "text-slate-800 hover:bg-white hover:shadow-sm border border-transparent"
+                        ? "bg-white text-[#385EEC] shadow-sm border border-slate-100"
+                        : "text-slate-800 hover:bg-white hover:shadow-sm border border-transparent"
                         }`}
                     >
                       <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
