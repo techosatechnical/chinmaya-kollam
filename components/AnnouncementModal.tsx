@@ -5,10 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
 
-/**
- * Configure your Advertisement here.
- * Set image path and optional link when someone clicks the advertisement.
- */
 const AD_IMAGE = "/accolades/Class X and XII 2024-25.jpeg";
 const AD_ALT = "Chinmaya Vidyalaya Kollam Advertisement";
 const AD_LINK = "/academics/academic-results"; // set to "" or null if not clickable

@@ -88,6 +88,7 @@ export function HistoryAnnouncements() {
                   src="/image/about3.webp"
                   alt="Chinmaya Vidyalaya School Campus"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover scale-[1.6] group-hover:scale-[1.65] transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
