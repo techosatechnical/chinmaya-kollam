@@ -135,7 +135,7 @@ function FeaturedLeaders() {
                 {/* Image Side */}
                 <div className={`relative h-72 md:h-auto md:w-5/12 overflow-hidden ${isEven ? 'order-1' : 'order-1 md:order-2'}`}>
                   {person.image ? (
-                    <Image src={person.image} alt={person.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    <Image src={person.image} alt={person.name} fill sizes="(max-width: 768px) 100vw, 42vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   ) : (
                     <div className={`absolute inset-0 bg-linear-to-br ${person.color} flex items-center justify-center`}>
                       <span className="text-white font-black text-6xl opacity-50">{person.initials}</span>
@@ -218,7 +218,7 @@ function MembersGrid() {
               {/* Avatar */}
               <div className={`shrink-0 w-16 h-16 rounded-full bg-linear-to-br ${accentColors[i]} flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300 overflow-hidden relative border border-slate-100`}>
                 {member.image ? (
-                  <Image src={member.image} alt={member.name} fill className="object-cover" />
+                  <Image src={member.image} alt={member.name} fill sizes="64px" className="object-cover" />
                 ) : (
                   <span className="text-white font-black text-base">{member.initials}</span>
                 )}

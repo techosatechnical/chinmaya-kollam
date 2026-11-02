@@ -148,7 +148,7 @@ function CurriculumOverview() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="relative h-64 md:h-72 w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-blue-900/20"
             >
-              <Image src="/image/academics2.jpg" alt="Academics" fill className="object-cover" />
+              <Image src="/image/academics2.jpg" alt="Academics" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
             </motion.div>
           </div>
         </div>
@@ -223,7 +223,7 @@ function SectionsGrid() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="hidden lg:flex rounded-md bg-slate-900 overflow-hidden relative"
           >
-            <Image src="/image/academic.jfif" alt="Classroom" fill className="object-cover transition-opacity duration-700  hover:grayscale-0" />
+            <Image src="/image/academic.jfif" alt="Classroom" fill sizes="(max-width: 1200px) 33vw, 384px" className="object-cover transition-opacity duration-700  hover:grayscale-0" />
             <div className="absolute inset-0 bg-linear-to-t from-slate-900 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
               <p className="text-white/60 text-xs font-black uppercase tracking-widest mb-1">Our Promise</p>
