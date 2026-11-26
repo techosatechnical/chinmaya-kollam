@@ -17,6 +17,18 @@ export function isFirebaseAdminConfigured(): boolean {
   );
 }
 
+function cleanEnv(value: string | undefined): string | undefined {
+  if (!value) return undefined;
+  const trimmed = value.trim();
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return trimmed.slice(1, -1);
+  }
+  return trimmed;
+}
+
 export function getFirebaseAdminApp(): App {
   if (cachedApp) return cachedApp;
   const existing = getApps();
@@ -25,8 +37,9 @@ export function getFirebaseAdminApp(): App {
     return cachedApp;
   }
 
-  const projectId =
-    process.env.FIREBASE_PROJECT_ID || process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+  const projectId = cleanEnv(
+    process.env.FIREBASE_PROJECT_ID || process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
+  );
 
   if (!projectId) {
     throw new Error("FIREBASE_PROJECT_ID is not configured.");
@@ -38,8 +51,8 @@ export function getFirebaseAdminApp(): App {
     return cachedApp;
   }
 
-  const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-  const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+  const clientEmail = cleanEnv(process.env.FIREBASE_CLIENT_EMAIL);
+  const privateKey = cleanEnv(process.env.FIREBASE_PRIVATE_KEY)?.replace(/\\n/g, "\n");
 
   if (!clientEmail || !privateKey) {
     throw new Error(
