@@ -1,0 +1,55 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function adminDoc() {
+      return get(/databases/$(database)/documents/admins/$(request.auth.uid)).data;
+    }
+
+    function isActiveAdmin() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+        && adminDoc().active == true;
+    }
+
+    function isSuperAdmin() {
+      return isActiveAdmin() && adminDoc().role == 'super_admin';
+    }
+
+    function canManageSchool(schoolId) {
+      return isSuperAdmin()
+        || (isActiveAdmin() && schoolId in adminDoc().assignedSchoolIds);
+    }
+
+    // Admin records are never publicly readable or client-writable
+    match /admins/{uid} {
+      allow read: if isSignedIn() && (request.auth.uid == uid || isSuperAdmin());
+      allow write: if false; // Managed via server-side Admin SDK only
+    }
+
+    // Tenant school root documents
+    match /schools/{schoolId} {
+      allow read: if resource.data.status == 'published' || canManageSchool(schoolId);
+      allow write: if canManageSchool(schoolId);
+
+      // Private contact form submissions: never publicly readable
+      match /submissions/{submissionId} {
+        allow read, update, delete: if canManageSchool(schoolId);
+        allow create: if false; // Written via validated server API route only
+      }
+
+      // Publicly readable subcollections ONLY when status == 'published'
+      match /{subcollection}/{docId} {
+        allow read: if (
+          subcollection in ['announcements', 'news', 'people', 'documents', 'albums', 'videos', 'accolades', 'pages']
+          && resource.data.status == 'published'
+        ) || canManageSchool(schoolId);
+        allow write: if canManageSchool(schoolId);
+      }
+    }
+  }
+}

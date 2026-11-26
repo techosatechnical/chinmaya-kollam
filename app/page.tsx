@@ -11,23 +11,56 @@ import { Testimonials } from "@/components/Testimonials";
 import { Facilities } from "@/components/Facilities";
 import { Footer } from "@/components/Footer";
 import { AnnouncementModal } from "@/components/AnnouncementModal";
+import { requireActiveSchool } from "@/lib/data/get-active-school";
+import {
+  getSchoolAnnouncements,
+  getSchoolNews,
+  getSchoolPeople,
+} from "@/lib/data/school-repository";
 
-export default function Home() {
+export default async function Home() {
+  const school = await requireActiveSchool();
+  const [announcements, newsItems, testimonials] = await Promise.all([
+    getSchoolAnnouncements(school.id),
+    getSchoolNews(school.id, { featuredOnly: true }),
+    getSchoolPeople(school.id, ["testimonial"]),
+  ]);
+
   return (
     <main className="min-h-screen">
-      <AnnouncementModal />
-      <TopBar />
-      <Navbar />
-      <Hero />
-      <VisionMission />
-      <HistoryAnnouncements />
-      <LeadershipMessages />
-      <Categories />
+      <AnnouncementModal ads={announcements} />
+      <TopBar items={announcements} />
+      <Navbar
+        schoolName={school.name}
+        shortName={school.shortName}
+        branding={school.branding}
+        navVisibility={school.navVisibility}
+      />
+      <Hero hero={school.hero} schoolName={school.name} />
+      <VisionMission data={school.visionMission} />
+      <HistoryAnnouncements
+        history={school.historySummary}
+        announcements={announcements}
+        brandBlueColor={school.theme.brandBlue}
+      />
+      <LeadershipMessages messages={school.leadershipMessages} />
+      <Categories
+        section={school.categoriesSection}
+        accentAltColor={school.theme.accentAlt}
+      />
       <About />
-      <RecentNews />
-      <Testimonials />
-      <Facilities />
-      <Footer />
+      <RecentNews
+        enabled={school.recentNewsSection.enabled}
+        eyebrow={school.recentNewsSection.eyebrow}
+        items={newsItems}
+      />
+      <Testimonials
+        enabled={school.testimonialsSection.enabled}
+        badge={school.testimonialsSection.badge}
+        items={testimonials}
+      />
+      <Facilities section={school.facilitiesSection} />
+      <Footer school={school} />
     </main>
   );
 }

@@ -1,15 +1,15 @@
-import React from 'react';
-import { TopBar } from "@/components/TopBar";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import React from "react";
+import { TenantPageShell } from "@/components/TenantPageShell";
+import { requireActiveSchool } from "@/lib/data/get-active-school";
+import { getSchoolDocuments } from "@/lib/data/school-repository";
 
-export default function DownloadsPage() {
+export default async function DownloadsPage() {
+  const school = await requireActiveSchool();
+  const docs = await getSchoolDocuments(school.id, "download");
+
   return (
-    <main className="min-h-screen bg-slate-50 font-sans selection:bg-slate-900 selection:text-white">
-      <TopBar />
-      <Navbar />
-
-      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-[#0B1121] text-white flex flex-col items-center justify-center border-b border-white/10">
+    <TenantPageShell school={school}>
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-dark-surface text-white flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/image/academics2.jpg"
@@ -22,30 +22,50 @@ export default function DownloadsPage() {
             Downloads
           </h1>
           <p className="text-lg md:text-2xl max-w-2xl mx-auto text-white font-medium tracking-tight drop-shadow-md">
-            Important documents and resources will be available here soon.
+            Important documents and resources for {school.name}.
           </p>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-32 text-center">
-        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-6 sm:p-10 md:p-16 max-w-2xl mx-auto">
-          <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-24">
+        {docs.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {docs.map((doc) => (
+              <div
+                key={doc.id}
+                className="bg-white rounded-md shadow-md border border-slate-200 p-6 flex flex-col justify-between"
+              >
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900 mb-2">{doc.title}</h2>
+                  {doc.description && (
+                    <p className="text-slate-600 text-sm mb-4">{doc.description}</p>
+                  )}
+                </div>
+                <a
+                  href={doc.fileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-4 py-2.5 bg-primary text-white text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
+                >
+                  Download
+                </a>
+              </div>
+            ))}
           </div>
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Content Coming Soon</h2>
-          <p className="text-slate-600 text-lg">
-            We are currently preparing the downloadable resources. Please check back later.
-          </p>
-        </div>
+        ) : (
+          <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-6 sm:p-10 md:p-16 max-w-2xl mx-auto text-center">
+            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+            </div>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Content Coming Soon</h2>
+            <p className="text-slate-600 text-lg">
+              We are currently preparing the downloadable resources for {school.name}. Please check back later.
+            </p>
+          </div>
+        )}
       </section>
-
-      <Footer />
-    </main>
+    </TenantPageShell>
   );
 }
-
-
-
-

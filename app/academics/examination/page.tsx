@@ -1,28 +1,30 @@
-import React from 'react';
-import { TopBar } from "@/components/TopBar";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import React from "react";
+import { TenantPageShell } from "@/components/TenantPageShell";
+import { requireActiveSchool } from "@/lib/data/get-active-school";
+import { getSchoolPageContent } from "@/lib/data/school-repository";
 
-export default function ExaminationPage() {
+export default async function ExaminationPage() {
+  const school = await requireActiveSchool();
+  const page = await getSchoolPageContent(school.id, "examination");
+  const body = (page?.data?.body as string | undefined) ?? "";
+
   return (
-    <main className="min-h-screen bg-slate-50 font-sans selection:bg-slate-900 selection:text-white">
-      <TopBar />
-      <Navbar />
-
-      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-[#0B1121] text-white flex flex-col items-center justify-center border-b border-white/10">
+    <TenantPageShell school={school}>
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-dark-surface text-white flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="/image/academics.webp"
+            src={page?.heroImage || "/image/academics.webp"}
             alt="Examination background"
             className="w-full h-full object-cover opacity-30"
           />
         </div>
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <h1 className="py-2 text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white drop-shadow-lg">
-            Examination
+            {page?.title || "Examination"}
           </h1>
           <p className="text-lg md:text-2xl max-w-2xl mx-auto text-white font-medium tracking-tight drop-shadow-md">
-            Schedules, guidelines, and results information will be posted here.
+            {page?.subtitle ||
+              `Schedules, guidelines, and results information for ${school.name}.`}
           </p>
         </div>
       </section>
@@ -34,18 +36,15 @@ export default function ExaminationPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Content Coming Soon</h2>
-          <p className="text-slate-600 text-lg">
-            We are currently updating our examination details. Please check back later.
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            {body ? "Examination Guidelines" : "Content Coming Soon"}
+          </h2>
+          <p className="text-slate-600 text-lg whitespace-pre-line">
+            {body ||
+              `We are currently updating our examination details for ${school.name}. Please check back later.`}
           </p>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </TenantPageShell>
   );
 }
-
-
-
-

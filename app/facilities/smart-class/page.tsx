@@ -1,15 +1,13 @@
-import React from 'react';
-import { TopBar } from "@/components/TopBar";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import React from "react";
+import { TenantPageShell } from "@/components/TenantPageShell";
+import { requireActiveSchool } from "@/lib/data/get-active-school";
 
-export default function SmartClassPage() {
+export default async function SmartClassPage() {
+  const school = await requireActiveSchool();
+
   return (
-    <main className="min-h-screen bg-slate-50 font-sans selection:bg-slate-900 selection:text-white">
-      <TopBar />
-      <Navbar />
-
-      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+    <TenantPageShell school={school}>
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-dark-surface text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/facilities/smart class.jpg"
@@ -40,24 +38,18 @@ export default function SmartClassPage() {
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Interactive Learning</h2>
               <p>
-                Smart class - a digital initiative pioneered by Tata Class Edge makes learning visually appealing to the students and thereby enhances their academic performance.
+                Smart class — a digital initiative that makes learning visually appealing to the students at {school.name} and thereby enhances their academic performance.
               </p>
               <p>
-                Smart class room facilities have been introduced as part of an innovative method of teaching. The programme which enables the use of digital resources in addition to the chalk and talk method of teaching has succeeded in capturing the interest & enthusiasm of students.
+                Smart classroom facilities have been introduced as part of an innovative method of teaching. The programme which enables the use of digital resources in addition to the chalk and talk method of teaching has succeeded in capturing the interest &amp; enthusiasm of students.
               </p>
               <p>
-                This multi-sensory learning experience will definitely improve the academic performance of the students and will make learning an enjoyable experience. The Vidyalaya has 7 smart class rooms to enable the students to experience the digital world.
+                This multi-sensory learning experience improves academic performance and makes learning an enjoyable experience.
               </p>
             </div>
           </div>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </TenantPageShell>
   );
 }
-
-
-
-

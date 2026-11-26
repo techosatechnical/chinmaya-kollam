@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Publicly published school media is stored under schools/{schoolId}/public/
+    // Uploads are performed via authenticated server API routes with MIME/size checks.
+    match /schools/{schoolId}/public/{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Private school documents are never directly accessible via client SDK
+    match /schools/{schoolId}/private/{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

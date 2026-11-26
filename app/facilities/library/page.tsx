@@ -1,15 +1,13 @@
-import React from 'react';
-import { TopBar } from "@/components/TopBar";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import React from "react";
+import { TenantPageShell } from "@/components/TenantPageShell";
+import { requireActiveSchool } from "@/lib/data/get-active-school";
 
-export default function LibraryPage() {
+export default async function LibraryPage() {
+  const school = await requireActiveSchool();
+
   return (
-    <main className="min-h-screen bg-slate-50 font-sans selection:bg-slate-900 selection:text-white">
-      <TopBar />
-      <Navbar />
-
-      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+    <TenantPageShell school={school}>
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-dark-surface text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="/facilities/library.jpg"
@@ -22,7 +20,7 @@ export default function LibraryPage() {
             Library
           </h1>
           <p className="text-lg md:text-2xl max-w-2xl mx-auto text-white font-medium tracking-tight drop-shadow-md">
-            “Reading Maketh a Man full.”
+            &ldquo;Reading Maketh a Man full.&rdquo;
           </p>
         </div>
       </section>
@@ -33,7 +31,7 @@ export default function LibraryPage() {
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">A World of Knowledge</h2>
               <p>
-                The Vidyalaya library fulfills this adage. The Vidyalaya corner in our library is the main attraction.
+                The Vidyalaya library at {school.name} fulfills this adage, serving as a hub of curiosity and learning.
               </p>
               <p>
                 The library is updated every academic year and leads all the children to the path of reading. It serves as a quiet sanctuary for students to explore diverse genres, broaden their horizons, and cultivate a lifelong love for literature.
@@ -49,12 +47,6 @@ export default function LibraryPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </TenantPageShell>
   );
 }
-
-
-
-

@@ -1,15 +1,13 @@
-import React from 'react';
-import { TopBar } from "@/components/TopBar";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import React from "react";
+import { TenantPageShell } from "@/components/TenantPageShell";
+import { requireActiveSchool } from "@/lib/data/get-active-school";
 
-export default function CoCurricularPage() {
+export default async function CoCurricularPage() {
+  const school = await requireActiveSchool();
+
   return (
-    <main className="min-h-screen bg-slate-50 font-sans selection:bg-slate-900 selection:text-white">
-      <TopBar />
-      <Navbar />
-
-      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+    <TenantPageShell school={school}>
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-dark-surface text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
             src="https://www.theasianschool.net/blog/wp-content/uploads/2019/06/Importance-of-Co-Curricular-Activities-in-School.jpg"
@@ -22,7 +20,7 @@ export default function CoCurricularPage() {
             Co-curricular Activities
           </h1>
           <p className="text-lg md:text-2xl max-w-2xl mx-auto text-white font-medium tracking-tight drop-shadow-md">
-            Fostering creativity, critical thinking, and holistic development.
+            Fostering creativity, critical thinking, and holistic development at {school.name}.
           </p>
         </div>
       </section>
@@ -33,7 +31,7 @@ export default function CoCurricularPage() {
             <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Beyond the Classroom</h2>
               <p>
-                At Chinmaya Vidyalaya, we strongly believe that education extends beyond the four walls of a classroom. Our wide array of co-curricular activities ensures that every child discovers their unique talents.
+                At {school.name}, we strongly believe that education extends beyond the four walls of a classroom. Our wide array of co-curricular activities ensures that every child discovers their unique talents.
               </p>
               <p>
                 From literary clubs and debates to science exhibitions and environmental clubs, we provide platforms for students to explore their interests, build confidence, and develop essential life skills in a supportive environment.
@@ -54,12 +52,6 @@ export default function CoCurricularPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </TenantPageShell>
   );
 }
-
-
-
-

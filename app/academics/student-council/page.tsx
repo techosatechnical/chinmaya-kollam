@@ -1,100 +1,77 @@
-import React from 'react';
-import { TopBar } from "@/components/TopBar";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import React from "react";
+import { TenantPageShell } from "@/components/TenantPageShell";
+import { requireActiveSchool } from "@/lib/data/get-active-school";
+import { getSchoolPageContent } from "@/lib/data/school-repository";
 
-export default function StudentCouncilPage() {
+export default async function StudentCouncilPage() {
+  const school = await requireActiveSchool();
+  const page = await getSchoolPageContent(school.id, "student-council");
+  const data = (page?.data ?? {}) as {
+    quote?: string;
+    paragraphs?: string[];
+    roles?: string[];
+    closingNote?: string;
+  };
+
   return (
-    <main className="min-h-screen bg-slate-50 font-sans selection:bg-slate-900 selection:text-white">
-      <TopBar />
-      <Navbar />
-
-      {/* Header */}
-      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-[#0B1121] text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
+    <TenantPageShell school={school}>
+      <section className="relative pt-32 pb-10 md:pt-40 md:pb-10 bg-dark-surface text-white overflow-hidden flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="/image/students council.jpeg"
+            src={page?.heroImage || "/image/students council.jpeg"}
             alt="Student Council background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-50"
           />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <h1 className="py-2 text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 bg-clip-text text-transparent bg-white drop-shadow-lg">
-            Student Council
+            {page?.title || "Student Council"}
           </h1>
         </div>
       </section>
 
-      {/* Content Section */}
       <section className="max-w-4xl mx-auto px-6 lg:px-8 py-10">
-        <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
+        {data.paragraphs && data.paragraphs.length > 0 ? (
+          <div className="bg-white rounded-md shadow-xl shadow-slate-200/50 border border-slate-200 p-8 md:p-12">
+            {data.quote && (
+              <blockquote className="border-l-4 border-blue-500 pl-6 mb-8">
+                <p className="italic text-slate-700 font-medium text-xl md:text-2xl leading-relaxed">
+                  {data.quote}
+                </p>
+              </blockquote>
+            )}
 
-          {/* Quote */}
-          <blockquote className="border-l-4 border-blue-500 pl-6 mb-8">
-            <p className="italic text-slate-700 font-medium text-xl md:text-2xl leading-relaxed">
-              “Student council speaks a lot more about itself rather than just being a group of people, it showcases its unity, cooperation, coordination, and strengths to the world.”
-            </p>
-          </blockquote>
+            <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
+              {data.paragraphs.map((p, idx) => (
+                <p key={idx}>{p}</p>
+              ))}
 
-          {/* Main Body */}
-          <div className="space-y-6 text-slate-600 text-lg leading-relaxed">
-            <p>
-              Our School Council, which changes every year, has always been vibrant sets of students selected through a process of an election and later followed up by an interview. They share their interests, express their opinions and mark a change in the perspective of our school time for the other students. The feedback offered by the students and parents alike about the school council is the sense of ambition, and the awareness of the stronger feeling of membership in the school.
-            </p>
+              {data.roles && data.roles.length > 0 && (
+                <div className="bg-slate-50 rounded-md p-8 my-10 border border-slate-100">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">
+                    Our Vibrant Team Includes:
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {data.roles.map((role) => (
+                      <div key={role} className="flex items-center gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        <span className="text-slate-700 font-medium">{role}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-            <p>
-              All the members are equally welcome to try out for the school council. It creates a sense of self-learning and enables them to better manage their own learning. The school has always been proud of all the batches of school council leaders who have come forward as great leaders, who are positive about their competence in organisation and leadership skills.
-            </p>
-
-            <p>
-              Even during the pandemic period, we have conducted online elections, interviews for selecting our new brilliant set of school council leaders, who have, like their predecessors, fulfilled their legacy and are setting the path for the new leaders.
-            </p>
-
-            {/* Team Roles Callout Box */}
-            <div className="bg-slate-50 rounded-md p-8 my-10 border border-slate-100">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Our Vibrant Team Includes:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                  <span className="text-slate-700 font-medium">Head Boy & Head Girl</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                  <span className="text-slate-700 font-medium">Assistant Head Boy & Girl</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                  <span className="text-slate-700 font-medium">Sports Secretary</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                  <span className="text-slate-700 font-medium">Arts Secretary</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                  <span className="text-slate-700 font-medium">House Captains</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                  <span className="text-slate-700 font-medium">Executive Posts</span>
-                </div>
-              </div>
+              {data.closingNote && <p>{data.closingNote}</p>}
             </div>
-
-            <p>
-              We also are very elated to present a small other group of people in the council, who are the ambassadors of <strong>CVP (Chinmaya Vision Programme)</strong> as well as <strong>Swacch Vidyalaya</strong> leaders, who help in the running of the programs smoothly throughout.
-            </p>
           </div>
-
-        </div>
+        ) : (
+          <div className="bg-white rounded-md shadow-sm border border-slate-200 p-12 text-center text-slate-500">
+            Student Council details for {school.name} will be published soon.
+          </div>
+        )}
       </section>
-
-      <Footer />
-    </main>
+    </TenantPageShell>
   );
 }
-
-
-
-

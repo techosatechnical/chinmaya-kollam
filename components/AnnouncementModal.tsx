@@ -4,45 +4,21 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import type { AnnouncementItem } from "@/lib/types/school";
 
-export interface AdItem {
-  id: string | number;
-  image: string;
-  alt: string;
-  link?: string;
+const AUTO_PLAY_INTERVAL = 5000;
+
+interface AnnouncementModalProps {
+  ads?: AnnouncementItem[];
 }
 
-// Add, remove, or reorder announcements/ads here
-export const ADS: AdItem[] = [
-  {
-    id: 1,
-    image: "/accolades/Class X and XII 2024-25.jpeg",
-    alt: "Chinmaya Vidyalaya Class X and XII Results 2024-25",
-    link: "/academics/academic-results",
-  },
-  {
-    id: 2,
-    image: "/accolades/jee main.jpeg",
-    alt: "JEE Main Achievers",
-    link: "/accolades",
-  },
-  {
-    id: 3,
-    image: "/accolades/sports everrolling trophy.jpeg",
-    alt: "Sports Ever-Rolling Trophy Winners",
-    link: "/activities/sports",
-  },
-];
-
-const AUTO_PLAY_INTERVAL = 5000; // 5 seconds per ad
-
-export function AnnouncementModal() {
-  const [isOpen, setIsOpen] = useState(true);
+export function AnnouncementModal({ ads = [] }: AnnouncementModalProps) {
+  const validAds = ads.filter((a) => a.kind === "modal" && a.image);
+  const [isOpen, setIsOpen] = useState(validAds.length > 0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Lock body scroll while advertisement is visible
   useEffect(() => {
     if (isOpen) {
       const originalOverflow = document.body.style.overflow;
@@ -54,14 +30,16 @@ export function AnnouncementModal() {
   }, [isOpen]);
 
   const handleNext = useCallback(() => {
+    if (validAds.length === 0) return;
     setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % ADS.length);
-  }, []);
+    setCurrentIndex((prev) => (prev + 1) % validAds.length);
+  }, [validAds.length]);
 
   const handlePrev = useCallback(() => {
+    if (validAds.length === 0) return;
     setDirection(-1);
-    setCurrentIndex((prev) => (prev === 0 ? ADS.length - 1 : prev - 1));
-  }, []);
+    setCurrentIndex((prev) => (prev === 0 ? validAds.length - 1 : prev - 1));
+  }, [validAds.length]);
 
   const handleDotClick = (index: number) => {
     if (index === currentIndex) return;
@@ -69,21 +47,16 @@ export function AnnouncementModal() {
     setCurrentIndex(index);
   };
 
-  // Auto-play: cycles every 5 seconds, pauses when hovered
   useEffect(() => {
-    if (!isOpen || isHovered || ADS.length <= 1) return;
-
+    if (!isOpen || isHovered || validAds.length <= 1) return;
     const timer = setInterval(() => {
       handleNext();
     }, AUTO_PLAY_INTERVAL);
-
     return () => clearInterval(timer);
-  }, [isOpen, isHovered, handleNext]);
+  }, [isOpen, isHovered, validAds.length, handleNext]);
 
-  // Keyboard navigation: Escape to close, Left/Right arrow keys to navigate
   useEffect(() => {
     if (!isOpen) return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setIsOpen(false);
@@ -93,20 +66,18 @@ export function AnnouncementModal() {
         handleNext();
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, handlePrev, handleNext]);
 
-  if (!isOpen || ADS.length === 0) return null;
+  if (!isOpen || validAds.length === 0) return null;
 
-  const currentAd = ADS[currentIndex];
+  const currentAd = validAds[currentIndex % validAds.length]!;
 
   return (
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-8">
-          {/* Dark Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -117,7 +88,6 @@ export function AnnouncementModal() {
             aria-hidden="true"
           />
 
-          {/* Advertisement Container */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -129,7 +99,6 @@ export function AnnouncementModal() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
               className="absolute -top-3.5 -right-3.5 sm:-top-4 sm:-right-4 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black hover:bg-red-600 text-white flex items-center justify-center transition-colors shadow-lg cursor-pointer z-30 border-2 border-white"
@@ -139,21 +108,19 @@ export function AnnouncementModal() {
               <X className="w-5 h-5 stroke-[2.5]" />
             </button>
 
-            {/* Counter Badge (e.g. 1 / 3) */}
-            {ADS.length > 1 && (
+            {validAds.length > 1 && (
               <div className="absolute top-3 left-3 z-20 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-xs text-white text-[11px] font-bold tracking-wider select-none border border-white/20 shadow-sm">
-                {currentIndex + 1} / {ADS.length}
+                {currentIndex + 1} / {validAds.length}
               </div>
             )}
 
-            {/* Previous Arrow Button */}
-            {ADS.length > 1 && (
+            {validAds.length > 1 && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   handlePrev();
                 }}
-                className="absolute left-2 sm:-left-5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/80 hover:bg-[#FF6A00] text-white flex items-center justify-center transition-all shadow-xl cursor-pointer z-30 border-2 border-white hover:scale-110 active:scale-95"
+                className="absolute left-2 sm:-left-5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/80 hover:bg-accent text-white flex items-center justify-center transition-all shadow-xl cursor-pointer z-30 border-2 border-white hover:scale-110 active:scale-95"
                 title="Previous ad"
                 aria-label="Previous ad"
               >
@@ -161,14 +128,13 @@ export function AnnouncementModal() {
               </button>
             )}
 
-            {/* Next Arrow Button */}
-            {ADS.length > 1 && (
+            {validAds.length > 1 && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   handleNext();
                 }}
-                className="absolute right-2 sm:-right-5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/80 hover:bg-[#FF6A00] text-white flex items-center justify-center transition-all shadow-xl cursor-pointer z-30 border-2 border-white hover:scale-110 active:scale-95"
+                className="absolute right-2 sm:-right-5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/80 hover:bg-accent text-white flex items-center justify-center transition-all shadow-xl cursor-pointer z-30 border-2 border-white hover:scale-110 active:scale-95"
                 title="Next ad"
                 aria-label="Next ad"
               >
@@ -176,7 +142,6 @@ export function AnnouncementModal() {
               </button>
             )}
 
-            {/* Ad Image / Flyer Slide */}
             <div className="relative w-full max-h-[82vh] overflow-hidden flex items-center justify-center bg-black/5">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
@@ -192,18 +157,18 @@ export function AnnouncementModal() {
                       href={currentAd.link}
                       onClick={() => setIsOpen(false)}
                       className="block w-full h-full cursor-pointer"
-                      title={currentAd.alt}
+                      title={currentAd.alt || currentAd.title}
                     >
                       <img
                         src={currentAd.image}
-                        alt={currentAd.alt}
+                        alt={currentAd.alt || currentAd.title}
                         className="w-full max-h-[82vh] object-contain block select-none"
                       />
                     </Link>
                   ) : (
                     <img
                       src={currentAd.image}
-                      alt={currentAd.alt}
+                      alt={currentAd.alt || currentAd.title}
                       className="w-full max-h-[82vh] object-contain block select-none"
                     />
                   )}
@@ -211,10 +176,9 @@ export function AnnouncementModal() {
               </AnimatePresence>
             </div>
 
-            {/* Pagination Dots */}
-            {ADS.length > 1 && (
+            {validAds.length > 1 && (
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-xs border border-white/20 shadow-md">
-                {ADS.map((ad, idx) => (
+                {validAds.map((ad, idx) => (
                   <button
                     key={ad.id}
                     onClick={(e) => {
@@ -224,7 +188,7 @@ export function AnnouncementModal() {
                     aria-label={`Go to ad ${idx + 1}`}
                     className={`transition-all duration-300 rounded-full cursor-pointer ${
                       idx === currentIndex
-                        ? "w-6 h-2 bg-[#FF6A00]"
+                        ? "w-6 h-2 bg-accent"
                         : "w-2 h-2 bg-white/60 hover:bg-white"
                     }`}
                   />
