@@ -195,12 +195,16 @@ export function buildUnpublishedSchoolBundle(meta: OtherSchoolMeta): SchoolSeedB
     leadershipMessages: [],
     categoriesSection: {
       enabled: true,
-      eyebrow: "Quick Access",
+      eyebrow: "New List",
       items: [
         { id: "planner", iconName: "CalendarDays", title: "Academic Planner", href: "/academics/academic-planner" },
         { id: "results", iconName: "Award", title: "Academic Results", href: "/academics/academic-results" },
         { id: "mentors", iconName: "Users", title: "Mentors", href: "/academics/mentors" },
+        { id: "cocurricular", iconName: "Activity", title: "Co Curricular Activities", href: "/activities/co-curricular" },
+        { id: "council", iconName: "Megaphone", title: "Student Council", href: "/academics/student-council" },
+        { id: "scouts", iconName: "Compass", title: "Scouts & Guides", href: "/activities/scouts" },
         { id: "sports", iconName: "Trophy", title: "Sports", href: "/activities/sports" },
+        { id: "arts", iconName: "Music", title: "Arts & Culture", href: "/activities/arts" },
       ],
     },
     recentNewsSection: {
