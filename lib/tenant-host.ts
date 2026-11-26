@@ -16,9 +16,9 @@ export const SCHOOL_HOST_REGISTRY: Record<string, SchoolHostEntry> = {
     canonicalHost: "chinmaya-kollam.vercel.app",
     displayName: "Chinmaya Vidyalaya Kollam",
   },
-  "chinmaya-attukal.vercel.app": {
+  "chinmaya-vidyalaya-attukal.vercel.app": {
     schoolId: "attukal",
-    canonicalHost: "chinmaya-attukal.vercel.app",
+    canonicalHost: "chinmaya-vidyalaya-attukal.vercel.app",
     displayName: "Chinmaya Vidyalaya Attukal",
   },
   "chinmaya-naruvamodu.vercel.app": {
@@ -45,7 +45,7 @@ export const SCHOOL_HOST_REGISTRY: Record<string, SchoolHostEntry> = {
 
 export const SCHOOL_CANONICAL_HOSTS: Record<SchoolId, string> = {
   kollam: "chinmaya-kollam.vercel.app",
-  attukal: "chinmaya-attukal.vercel.app",
+  attukal: "chinmaya-vidyalaya-attukal.vercel.app",
   naruvamodu: "chinmaya-naruvamodu.vercel.app",
   kattakada: "chinmaya-kattakada.vercel.app",
   kunnumpuram: "chinmaya-kunnumpuram.vercel.app",
@@ -118,7 +118,8 @@ export function resolveSchoolIdFromHostname(
     deploymentSchoolId &&
     isSchoolId(deploymentSchoolId) &&
     host.endsWith(".vercel.app") &&
-    host.startsWith(`chinmaya-${deploymentSchoolId}-`)
+    (host.startsWith(`chinmaya-${deploymentSchoolId}-`) ||
+      host.startsWith(`chinmaya-vidyalaya-${deploymentSchoolId}-`))
   ) {
     return deploymentSchoolId;
   }

@@ -28,7 +28,7 @@ function canAdminManageSchoolPure(admin: AdminUserRecord, schoolId: SchoolId): b
 console.log("1. Testing hostname resolution...");
 const expectedHosts: Record<string, SchoolId> = {
   "chinmaya-kollam.vercel.app": "kollam",
-  "chinmaya-attukal.vercel.app": "attukal",
+  "chinmaya-vidyalaya-attukal.vercel.app": "attukal",
   "chinmaya-naruvamodu.vercel.app": "naruvamodu",
   "chinmaya-kattakada.vercel.app": "kattakada",
   "chinmaya-kunnumpuram.vercel.app": "kunnumpuram",

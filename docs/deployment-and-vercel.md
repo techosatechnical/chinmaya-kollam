@@ -7,7 +7,7 @@ The six requested hostnames are:
 | School      | Hostname                        | `schoolId`    |
 | ----------- | ------------------------------- | ------------- |
 | Kollam      | chinmaya-kollam.vercel.app      | `kollam`      |
-| Attukal     | chinmaya-attukal.vercel.app     | `attukal`     |
+| Attukal     | chinmaya-vidyalaya-attukal.vercel.app | `attukal`     |
 | Naruvamodu  | chinmaya-naruvamodu.vercel.app  | `naruvamodu`  |
 | Kattakada   | chinmaya-kattakada.vercel.app   | `kattakada`   |
 | Kunnumpuram | chinmaya-kunnumpuram.vercel.app | `kunnumpuram` |

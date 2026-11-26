@@ -16,7 +16,7 @@ const OTHER_SCHOOLS_META: OtherSchoolMeta[] = [
     name: "Chinmaya Vidyalaya Attukal",
     shortName: "CV Attukal",
     location: "Attukal, Thiruvananthapuram",
-    hostname: "chinmaya-attukal.vercel.app",
+    hostname: "chinmaya-vidyalaya-attukal.vercel.app",
     theme: {
       primary: "#1B3B2B",
       secondary: "#E68A00",
