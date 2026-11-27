@@ -6,10 +6,15 @@ import { getFirebaseClientAuth, isFirebaseClientConfigured } from "@/lib/firebas
 import type { AdminUserRecord, SchoolConfig, SchoolId } from "@/lib/types/school";
 import { SCHOOL_IDS } from "@/lib/types/school";
 import {
+  CollectionItemForm,
+  type CollectionName,
+} from "@/components/admin/CollectionItemForm";
+import {
   LogOut,
   Save,
   Plus,
   Trash2,
+  Pencil,
   CheckCircle2,
   AlertCircle,
   Shield,
@@ -22,14 +27,6 @@ import {
 } from "lucide-react";
 
 type TabId = "branding" | "homepage" | "collections" | "submissions" | "admins";
-type CollectionName =
-  | "announcements"
-  | "news"
-  | "people"
-  | "documents"
-  | "albums"
-  | "videos"
-  | "accolades";
 
 interface SessionResponse {
   admin: AdminUserRecord;
@@ -54,10 +51,12 @@ export function AdminDashboardClient() {
   const [schoolConfig, setSchoolConfig] = useState<SchoolConfig | null>(null);
   const [activeCollection, setActiveCollection] = useState<CollectionName>("announcements");
   const [collectionItems, setCollectionItems] = useState<Array<Record<string, unknown>>>([]);
+  const [editingItem, setEditingItem] = useState<Record<string, unknown> | null>(null);
+  const [showNewForm, setShowNewForm] = useState(false);
+
   const [submissions, setSubmissions] = useState<Array<Record<string, unknown>>>([]);
   const [adminUsers, setAdminUsers] = useState<AdminUserRecord[]>([]);
 
-  const [newItemJson, setNewItemJson] = useState("");
   const [newAdminEmail, setNewAdminEmail] = useState("");
   const [newAdminRole, setNewAdminRole] = useState<"school_admin" | "super_admin">("school_admin");
   const [newAdminSchools, setNewAdminSchools] = useState<SchoolId[]>(["kollam"]);
@@ -250,25 +249,17 @@ export function AdminDashboardClient() {
     }
   };
 
-  const handleCreateItem = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedSchoolId || !newItemJson.trim()) return;
-    try {
-      const parsed = JSON.parse(newItemJson) as Record<string, unknown>;
-      await authedFetch(`/api/admin/schools/${selectedSchoolId}/items`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ collection: activeCollection, item: parsed }),
-      });
-      setNewItemJson("");
-      await loadSchoolData();
-      setFeedback({ type: "ok", text: `Saved item in ${activeCollection}.` });
-    } catch (err) {
-      setFeedback({
-        type: "err",
-        text: err instanceof Error ? err.message : "Invalid JSON or validation error",
-      });
-    }
+  const handleSaveCollectionItem = async (item: Record<string, unknown>) => {
+    if (!selectedSchoolId) return;
+    await authedFetch(`/api/admin/schools/${selectedSchoolId}/items`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ collection: activeCollection, item }),
+    });
+    setEditingItem(null);
+    setShowNewForm(false);
+    await loadSchoolData();
+    setFeedback({ type: "ok", text: `Saved item in ${activeCollection}.` });
   };
 
   const handleAssignAdmin = async (e: React.FormEvent) => {
@@ -398,7 +389,11 @@ export function AdminDashboardClient() {
           {accessibleSchools.length > 0 && (
             <select
               value={selectedSchoolId ?? ""}
-              onChange={(e) => setSelectedSchoolId(e.target.value as SchoolId)}
+              onChange={(e) => {
+                setSelectedSchoolId(e.target.value as SchoolId);
+                setEditingItem(null);
+                setShowNewForm(false);
+              }}
               aria-label="Select school"
               className="bg-slate-800 text-white text-sm px-3 py-2 rounded-md border border-slate-700"
             >
@@ -633,6 +628,70 @@ export function AdminDashboardClient() {
               </button>
             </div>
 
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 bg-slate-50 p-4 rounded-md border border-slate-200">
+              <label className="inline-flex items-center gap-2 text-sm font-medium">
+                <input
+                  type="checkbox"
+                  checked={schoolConfig.visionMission.enabled}
+                  onChange={(e) =>
+                    setSchoolConfig({
+                      ...schoolConfig,
+                      visionMission: { ...schoolConfig.visionMission, enabled: e.target.checked },
+                    })
+                  }
+                />
+                Vision &amp; Mission
+              </label>
+              <label className="inline-flex items-center gap-2 text-sm font-medium">
+                <input
+                  type="checkbox"
+                  checked={schoolConfig.historySummary.enabled}
+                  onChange={(e) =>
+                    setSchoolConfig({
+                      ...schoolConfig,
+                      historySummary: {
+                        ...schoolConfig.historySummary,
+                        enabled: e.target.checked,
+                      },
+                    })
+                  }
+                />
+                Origin &amp; History
+              </label>
+              <label className="inline-flex items-center gap-2 text-sm font-medium">
+                <input
+                  type="checkbox"
+                  checked={schoolConfig.recentNewsSection.enabled}
+                  onChange={(e) =>
+                    setSchoolConfig({
+                      ...schoolConfig,
+                      recentNewsSection: {
+                        ...schoolConfig.recentNewsSection,
+                        enabled: e.target.checked,
+                      },
+                    })
+                  }
+                />
+                Recent News
+              </label>
+              <label className="inline-flex items-center gap-2 text-sm font-medium">
+                <input
+                  type="checkbox"
+                  checked={schoolConfig.testimonialsSection.enabled}
+                  onChange={(e) =>
+                    setSchoolConfig({
+                      ...schoolConfig,
+                      testimonialsSection: {
+                        ...schoolConfig.testimonialsSection,
+                        enabled: e.target.checked,
+                      },
+                    })
+                  }
+                />
+                Testimonials
+              </label>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-500 mb-1">
@@ -715,7 +774,7 @@ export function AdminDashboardClient() {
           </div>
         )}
 
-        {activeTab === "collections" && (
+        {activeTab === "collections" && selectedSchoolId && user && (
           <div className="bg-white rounded-md border border-slate-200 p-6 space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap gap-2">
@@ -732,7 +791,11 @@ export function AdminDashboardClient() {
                 ).map((col) => (
                   <button
                     key={col}
-                    onClick={() => setActiveCollection(col)}
+                    onClick={() => {
+                      setActiveCollection(col);
+                      setEditingItem(null);
+                      setShowNewForm(false);
+                    }}
                     className={`px-3 py-1.5 rounded-md text-xs font-bold uppercase cursor-pointer ${
                       activeCollection === col
                         ? "bg-slate-900 text-white"
@@ -743,24 +806,52 @@ export function AdminDashboardClient() {
                   </button>
                 ))}
               </div>
-              <button
-                onClick={() => loadSchoolData()}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 cursor-pointer"
-              >
-                <RefreshCw className="w-3.5 h-3.5" />
-                Refresh
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    setEditingItem(null);
+                    setShowNewForm((prev) => !prev);
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded-md hover:bg-slate-800 cursor-pointer"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  Add New
+                </button>
+                <button
+                  onClick={() => loadSchoolData()}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 cursor-pointer"
+                >
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  Refresh
+                </button>
+              </div>
             </div>
+
+            {(showNewForm || editingItem) && (
+              <CollectionItemForm
+                key={String(editingItem?.id ?? `new-${activeCollection}`)}
+                collection={activeCollection}
+                initialItem={editingItem}
+                schoolId={selectedSchoolId}
+                getToken={() => user.getIdToken()}
+                onSave={handleSaveCollectionItem}
+                onCancel={() => {
+                  setShowNewForm(false);
+                  setEditingItem(null);
+                }}
+              />
+            )}
 
             <div className="divide-y divide-slate-100 border border-slate-200 rounded-md">
               {collectionItems.length === 0 ? (
                 <p className="p-6 text-sm text-slate-500 text-center">
-                  No records in {activeCollection} yet.
+                  No records in {activeCollection} yet. Click &ldquo;Add New&rdquo; above to create one.
                 </p>
               ) : (
                 collectionItems.map((item) => {
                   const id = String(item.id);
                   const title = String(item.title || item.name || id);
+                  const subtitle = String(item.kind || item.category || item.role || "");
                   const status = String(item.status || "published");
                   return (
                     <div
@@ -769,12 +860,26 @@ export function AdminDashboardClient() {
                     >
                       <div>
                         <p className="font-semibold text-sm text-slate-900">{title}</p>
-                        <p className="text-xs text-slate-500 font-mono">{id}</p>
+                        <p className="text-xs text-slate-500">
+                          {subtitle ? `${subtitle} · ` : ""}
+                          <span className="font-mono">{id}</span>
+                        </p>
                         {typeof item.reviewNote === "string" && item.reviewNote && (
                           <p className="text-xs text-amber-700 mt-1">{item.reviewNote}</p>
                         )}
                       </div>
                       <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            setShowNewForm(false);
+                            setEditingItem(item);
+                          }}
+                          aria-label={`Edit ${title}`}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer"
+                        >
+                          <Pencil className="w-3 h-3" />
+                          Edit
+                        </button>
                         <button
                           onClick={() => handleToggleItemStatus(item)}
                           className={`px-3 py-1 rounded-full text-xs font-bold cursor-pointer ${
@@ -798,26 +903,6 @@ export function AdminDashboardClient() {
                 })
               )}
             </div>
-
-            <form onSubmit={handleCreateItem} className="space-y-3 pt-4 border-t border-slate-200">
-              <label className="block text-xs font-bold uppercase text-slate-500">
-                Add / Update Item in <code>{activeCollection}</code> (JSON)
-              </label>
-              <textarea
-                rows={4}
-                value={newItemJson}
-                onChange={(e) => setNewItemJson(e.target.value)}
-                placeholder='{"id": "item-1", "title": "Sample", "status": "draft", "order": 1}'
-                className="w-full px-3 py-2 border border-slate-200 rounded-md text-xs font-mono"
-              />
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-md hover:bg-slate-800 cursor-pointer"
-              >
-                <Plus className="w-4 h-4" />
-                Upsert Item
-              </button>
-            </form>
           </div>
         )}
 
