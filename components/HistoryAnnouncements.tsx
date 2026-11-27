@@ -137,30 +137,40 @@ export function HistoryAnnouncements({
                 <div className="absolute bottom-0 left-0 w-full h-16 bg-linear-to-t from-slate-100/90 to-transparent z-10 pointer-events-none rounded-b-4xl" />
 
                 {boardItems.length > 0 ? (
-                  <div className="flex flex-col animate-[scrollUp_25s_linear_infinite] hover:[animation-play-state:paused] pt-4">
-                    {[...boardItems, ...boardItems].map((announcement, index) => {
-                      const parts = (announcement.dateLabel || "").split(" ");
-                      const month = parts[0]?.substring(0, 3) || "NEW";
-                      const day = parts[1]?.replace(",", "") || "•";
+                  <div
+                    className={`flex flex-col pt-4 ${
+                      boardItems.length >= 4
+                        ? "animate-[scrollUp_25s_linear_infinite] hover:[animation-play-state:paused]"
+                        : ""
+                    }`}
+                  >
+                    {(boardItems.length >= 4 ? [...boardItems, ...boardItems] : boardItems).map(
+                      (announcement, index) => {
+                        const parts = (announcement.dateLabel || "").split(" ");
+                        const month = parts[0]?.substring(0, 3) || "NEW";
+                        const day = parts[1]?.replace(",", "") || "•";
 
-                      return (
-                        <div
-                          key={`${announcement.id}-${index}`}
-                          className="group flex items-center gap-5 p-5 mb-4 bg-white/90 backdrop-blur-sm rounded-md border border-white shadow-[0_4px_15px_rgb(0,0,0,0.02)] transition-all duration-300"
-                        >
-                          <div className="flex flex-col items-center justify-center min-w-16.25 h-16.25 rounded-md bg-blue-50 text-brand-blue shrink-0 shadow-inner">
-                            <span className="text-[11px] font-bold uppercase tracking-widest">{month}</span>
-                            <span className="text-2xl font-black leading-none mt-0.5">{day}</span>
-                          </div>
+                        return (
+                          <div
+                            key={`${announcement.id}-${index}`}
+                            className="group flex items-center gap-5 p-5 mb-4 bg-white/90 backdrop-blur-sm rounded-md border border-white shadow-[0_4px_15px_rgb(0,0,0,0.02)] transition-all duration-300"
+                          >
+                            <div className="flex flex-col items-center justify-center min-w-16.25 h-16.25 rounded-md bg-blue-50 text-brand-blue shrink-0 shadow-inner">
+                              <span className="text-[11px] font-bold uppercase tracking-widest">
+                                {month}
+                              </span>
+                              <span className="text-2xl font-black leading-none mt-0.5">{day}</span>
+                            </div>
 
-                          <div className="flex-1 pr-2">
-                            <h4 className="text-[15px] font-bold text-slate-800 leading-snug line-clamp-2">
-                              {announcement.title}
-                            </h4>
+                            <div className="flex-1 pr-2">
+                              <h4 className="text-[15px] font-bold text-slate-800 leading-snug line-clamp-2">
+                                {announcement.title}
+                              </h4>
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      }
+                    )}
                   </div>
                 ) : (
                   <div className="h-full flex items-center justify-center text-slate-500 text-sm font-medium">

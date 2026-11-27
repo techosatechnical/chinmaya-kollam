@@ -30,6 +30,7 @@ type TabId = "branding" | "homepage" | "collections" | "submissions" | "admins";
 
 interface SessionResponse {
   admin: AdminUserRecord;
+  currentHostSchoolId?: SchoolId | null;
   schools: Array<{ id: SchoolId; canonicalHost: string }>;
 }
 
@@ -109,7 +110,12 @@ export function AdminDashboardClient() {
         setAdminProfile(data.admin);
         setAccessibleSchools(data.schools);
         if (data.schools.length > 0) {
-          setSelectedSchoolId((prev) => prev ?? data.schools[0]!.id);
+          const preferred =
+            data.currentHostSchoolId &&
+            data.schools.some((s) => s.id === data.currentHostSchoolId)
+              ? data.currentHostSchoolId
+              : data.schools[0]!.id;
+          setSelectedSchoolId((prev) => prev ?? preferred);
         }
       })
       .catch((err) => {
