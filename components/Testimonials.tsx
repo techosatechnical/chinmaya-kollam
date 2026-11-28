@@ -86,22 +86,22 @@ export function Testimonials({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white p-8 lg:p-10 rounded-md shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-white/50 flex flex-col"
+              className="bg-white p-8 lg:p-10 rounded-md shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-white/50 flex flex-col min-w-0 overflow-hidden"
             >
-              <div className="flex items-center gap-5 mb-6">
+              <div className="flex items-center gap-5 mb-6 min-w-0">
                 {testimonial.image && (
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover border-[3px] border-[#F0F4F8]"
+                    className="w-16 h-16 rounded-full object-cover border-[3px] border-[#F0F4F8] shrink-0"
                   />
                 )}
-                <div>
-                  <h3 className="font-bold text-lg text-slate-900">{testimonial.name}</h3>
-                  <p className="text-sm text-slate-500 font-medium">{testimonial.role}</p>
+                <div className="min-w-0">
+                  <h3 className="font-bold text-lg text-slate-900 break-words">{testimonial.name}</h3>
+                  <p className="text-sm text-slate-500 font-medium break-words">{testimonial.role}</p>
                 </div>
               </div>
-              <p className="text-slate-500 italic leading-relaxed mb-8 flex-1">
+              <p className="text-slate-500 italic leading-relaxed mb-8 flex-1 break-words wrap-anywhere">
                 {testimonial.quote}
               </p>
             </motion.div>
@@ -165,7 +165,7 @@ export function Testimonials({
                       <p className="text-[12px] text-slate-500 font-medium">{testimonial.role}</p>
                     </div>
                   </div>
-                  <p className="text-slate-500 italic text-sm leading-relaxed flex-1">
+                  <p className="text-slate-500 italic text-sm leading-relaxed flex-1 break-words">
                     {testimonial.quote}
                   </p>
                 </div>
