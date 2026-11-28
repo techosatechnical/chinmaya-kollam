@@ -1,22 +1,9 @@
 import type { Metadata } from "next";
-import { Manrope, Urbanist } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "@/components/CustomCursor";
 import { getResolvedSchoolId } from "@/lib/tenant";
 import { getSchoolConfig } from "@/lib/data/school-repository";
 import { getThemeCssVariables } from "@/lib/theme";
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const urbanist = Urbanist({
-  variable: "--font-urbanist",
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-});
 
 export async function generateMetadata(): Promise<Metadata> {
   const schoolId = await getResolvedSchoolId();
@@ -78,8 +65,16 @@ export default async function RootLayout({
     <html
       lang="en"
       style={themeVars}
-      className={`${manrope.variable} ${urbanist.variable} h-full antialiased`}
+      className="h-full antialiased"
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Urbanist:wght@200;300;400;500;600;700;800;900&display=swap"
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans text-body">
         <CustomCursor />
         {children}

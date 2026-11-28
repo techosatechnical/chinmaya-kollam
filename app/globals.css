@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #77726e;
+  --font-manrope: "Manrope", sans-serif;
+  --font-urbanist: "Urbanist", sans-serif;
 
   /* Default Kollam baseline theme tokens (overridden per-tenant on the server) */
   --school-primary: #0F284A;
