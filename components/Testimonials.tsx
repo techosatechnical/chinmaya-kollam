@@ -108,40 +108,70 @@ export function Testimonials({
           ))}
         </div>
 
-        {/* Mobile Scrolling Cards */}
+        {/* Mobile Cards */}
         <div className="block md:hidden overflow-hidden py-4 relative -mx-4 px-4">
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#F0F4F8] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#F0F4F8] to-transparent z-10 pointer-events-none" />
+          {items.length >= 3 ? (
+            <>
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#F0F4F8] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#F0F4F8] to-transparent z-10 pointer-events-none" />
 
-          <motion.div
-            className="flex gap-4 w-max"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ ease: "linear", duration: 25, repeat: Infinity }}
-          >
-            {[...items, ...items, ...items, ...items].map((testimonial, index) => (
-              <div
-                key={`${testimonial.id}-${index}`}
-                className="w-[280px] shrink-0 bg-white p-6 rounded-md shadow-sm border border-white/50 flex flex-col"
+              <motion.div
+                className="flex gap-4 w-max"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ ease: "linear", duration: 25, repeat: Infinity }}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  {testimonial.image && (
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-[3px] border-[#F0F4F8]"
-                    />
-                  )}
-                  <div>
-                    <h3 className="font-bold text-[15px] text-slate-900 leading-tight">{testimonial.name}</h3>
-                    <p className="text-[12px] text-slate-500 font-medium">{testimonial.role}</p>
+                {[...items, ...items, ...items, ...items].map((testimonial, index) => (
+                  <div
+                    key={`${testimonial.id}-${index}`}
+                    className="w-[280px] shrink-0 bg-white p-6 rounded-md shadow-sm border border-white/50 flex flex-col"
+                  >
+                    <div className="flex items-center gap-4 mb-4">
+                      {testimonial.image && (
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-12 h-12 rounded-full object-cover border-[3px] border-[#F0F4F8]"
+                        />
+                      )}
+                      <div>
+                        <h3 className="font-bold text-[15px] text-slate-900 leading-tight">{testimonial.name}</h3>
+                        <p className="text-[12px] text-slate-500 font-medium">{testimonial.role}</p>
+                      </div>
+                    </div>
+                    <p className="text-slate-500 italic text-sm leading-relaxed flex-1">
+                      {testimonial.quote}
+                    </p>
                   </div>
+                ))}
+              </motion.div>
+            </>
+          ) : (
+            <div className="flex flex-col gap-4">
+              {items.map((testimonial) => (
+                <div
+                  key={testimonial.id}
+                  className="bg-white p-6 rounded-md shadow-sm border border-white/50 flex flex-col"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    {testimonial.image && (
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-12 h-12 rounded-full object-cover border-[3px] border-[#F0F4F8]"
+                      />
+                    )}
+                    <div>
+                      <h3 className="font-bold text-[15px] text-slate-900 leading-tight">{testimonial.name}</h3>
+                      <p className="text-[12px] text-slate-500 font-medium">{testimonial.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-slate-500 italic text-sm leading-relaxed flex-1">
+                    {testimonial.quote}
+                  </p>
                 </div>
-                <p className="text-slate-500 italic text-sm leading-relaxed flex-1">
-                  {testimonial.quote}
-                </p>
-              </div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

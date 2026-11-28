@@ -62,49 +62,90 @@ export function RecentNews({ eyebrow = "Highlights", enabled = true, items }: Re
         </motion.div>
 
         <div className="overflow-hidden py-8 relative -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
+          {items.length >= 4 ? (
+            <>
+              <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
-          <motion.div
-            className="flex gap-6 md:gap-8 w-max"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ ease: "linear", duration: 25, repeat: Infinity }}
-          >
-            {[...items, ...items, ...items].map((news, index) => (
-              <div
-                key={`${news.id}-${index}`}
-                className="w-70 md:w-87.5 shrink-0 bg-white rounded-md overflow-hidden group hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300 border border-slate-100 flex flex-col"
+              <motion.div
+                className="flex gap-6 md:gap-8 w-max"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ ease: "linear", duration: 25, repeat: Infinity }}
               >
-                <div className="relative overflow-hidden h-48 shrink-0">
-                  <img
-                    src={news.image}
-                    alt={news.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-white/95 backdrop-blur-sm text-brand-blue text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
-                      {news.badge}
-                    </span>
+                {[...items, ...items, ...items].map((news, index) => (
+                  <div
+                    key={`${news.id}-${index}`}
+                    className="w-70 md:w-87.5 shrink-0 bg-white rounded-md overflow-hidden group hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300 border border-slate-100 flex flex-col"
+                  >
+                    <div className="relative overflow-hidden h-48 shrink-0">
+                      <img
+                        src={news.image}
+                        alt={news.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-white/95 backdrop-blur-sm text-brand-blue text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+                          {news.badge}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-6 flex flex-col flex-1">
+                      <div className="flex items-center gap-2 text-sm text-slate-500 font-medium mb-3">
+                        <Calendar className="w-4 h-4 text-accent" />
+                        <span>{news.dateLabel}</span>
+                      </div>
+
+                      <h3 className="text-[19px] font-bold text-slate-900 mb-3 group-hover:text-accent-alt transition-colors leading-snug">
+                        <Link href={news.link || "/academics/news"}>{news.title}</Link>
+                      </h3>
+
+                      <p className="text-slate-600 text-sm leading-relaxed flex-1 line-clamp-3">
+                        {news.excerpt}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </>
+          ) : (
+            <div className="flex flex-wrap justify-center gap-6 md:gap-8">
+              {items.map((news) => (
+                <div
+                  key={news.id}
+                  className="w-70 md:w-87.5 shrink-0 bg-white rounded-md overflow-hidden group hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300 border border-slate-100 flex flex-col"
+                >
+                  <div className="relative overflow-hidden h-48 shrink-0">
+                    <img
+                      src={news.image}
+                      alt={news.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-white/95 backdrop-blur-sm text-brand-blue text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+                        {news.badge}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 text-sm text-slate-500 font-medium mb-3">
+                      <Calendar className="w-4 h-4 text-accent" />
+                      <span>{news.dateLabel}</span>
+                    </div>
+
+                    <h3 className="text-[19px] font-bold text-slate-900 mb-3 group-hover:text-accent-alt transition-colors leading-snug">
+                      <Link href={news.link || "/academics/news"}>{news.title}</Link>
+                    </h3>
+
+                    <p className="text-slate-600 text-sm leading-relaxed flex-1 line-clamp-3">
+                      {news.excerpt}
+                    </p>
                   </div>
                 </div>
-
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 text-sm text-slate-500 font-medium mb-3">
-                    <Calendar className="w-4 h-4 text-accent" />
-                    <span>{news.dateLabel}</span>
-                  </div>
-
-                  <h3 className="text-[19px] font-bold text-slate-900 mb-3 group-hover:text-accent-alt transition-colors leading-snug">
-                    <Link href={news.link || "/academics/news"}>{news.title}</Link>
-                  </h3>
-
-                  <p className="text-slate-600 text-sm leading-relaxed flex-1 line-clamp-3">
-                    {news.excerpt}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          )}
         </div>
 
         <motion.div
